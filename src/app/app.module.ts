@@ -1,3 +1,4 @@
+import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -8,22 +9,26 @@ import { AppComponent } from './app.component';
 import { EventsListComponent } from '../components/events-list/events-list.component';
 import { HomePage } from '../pages/home/home.page';
 import { EventService } from '../services/event-service';
+import { SideMenuComponent } from '../components/side-menu/side-menu.component';
+
+const components = [
+    // components
+    AppComponent,
+    EventsListComponent,
+    SideMenuComponent,
+    TopNavbarComponent,
+    // pages
+    HomePage
+];
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomePage,
-        EventsListComponent
-    ],
+    declarations: components,
     imports: [
         BrowserModule,
         IonicModule.forRoot(AppComponent)
     ],
     bootstrap: [IonicApp],
-    entryComponents: [
-        AppComponent,
-        HomePage
-    ],
+    entryComponents: components,
     providers: [
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         StatusBar,
