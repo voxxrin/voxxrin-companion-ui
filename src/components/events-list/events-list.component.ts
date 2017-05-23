@@ -1,11 +1,16 @@
+import { Event } from './../../models/event';
+import { Input } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'events-list',
-    templateUrl: 'events-list.component.html'
+  selector: 'events-list',
+  templateUrl: 'events-list.component.html'
 })
 export class EventsListComponent {
 
-    constructor() {
-    }
+  @Input() events : Event[];
+
+  constructor() {
+  }
+
 }

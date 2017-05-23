@@ -1,4 +1,6 @@
+import { HttpModule } from '@angular/http';
 import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
+import { EventsPage } from './../pages/events/events.page';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -18,12 +20,14 @@ const components = [
     SideMenuComponent,
     TopNavbarComponent,
     // pages
-    HomePage
+    HomePage,
+    EventsPage
 ];
 
 @NgModule({
     declarations: components,
     imports: [
+        HttpModule,
         BrowserModule,
         IonicModule.forRoot(AppComponent)
     ],

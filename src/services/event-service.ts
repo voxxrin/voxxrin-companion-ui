@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { environment } from '../app/environment';
 import { Event } from '../models/event';
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class EventService {
