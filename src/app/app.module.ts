@@ -4,30 +4,30 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { VoxxrinApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { EventsListComponent } from '../components/events-list/events-list';
+import { AppComponent } from './app.component';
+import { EventsListComponent } from '../components/events-list/events-list.component';
+import { HomePage } from '../pages/home/home.page';
 import { EventService } from '../services/event-service';
 
 @NgModule({
     declarations: [
-        VoxxrinApp,
+        AppComponent,
         HomePage,
         EventsListComponent
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(VoxxrinApp)
+        IonicModule.forRoot(AppComponent)
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        VoxxrinApp,
+        AppComponent,
         HomePage
     ],
     providers: [
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
         StatusBar,
         SplashScreen,
-        { provide: ErrorHandler, useClass: IonicErrorHandler },
         EventService
     ]
 })

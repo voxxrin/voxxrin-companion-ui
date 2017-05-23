@@ -7,7 +7,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class EventService {
 
-    constructor(private http: Http) {}
+    constructor(private http: Http) {
+    }
 
     public fetchEvents(): Observable<Event[]> {
         return this.http.get(`${environment.backendApiBaseUrl}/events`)
