@@ -13,3 +13,21 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// Home page
+.home-page {
+    background: url($img-path + '/bg-login.png');
+    .app-logo {
+        display: block;
+        height: 70px;
+        margin-bottom: 12px !important;
+        background: url($icon-path + '/logo.svg') no-repeat;
+        background-position: center center;
+    }
+
+    .part-bottom-login {
+        height: 45%;
+        margin-top: 50px;
+    }
+}
+

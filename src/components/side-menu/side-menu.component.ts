@@ -1,7 +1,8 @@
+import { HomePage } from './../../pages/home/home.page';
+import { EventsPage } from './../../pages/events/events.page';
 import { App } from 'ionic-angular';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
-import { EventsPage } from '../../pages/events/events.page';
 
 @Component({
     selector: 'side-menu',
@@ -11,11 +12,13 @@ export class SideMenuComponent {
 
     @Input() content: any;
 
-    constructor(private app: App) {
+    constructor(private app: App) { }
 
+    goToHome(): void {
+        this.app.getActiveNav().push(HomePage);
     }
 
-    goToEventsList(): void{
+    goToEvents(): void {
         this.app.getActiveNav().push(EventsPage);
     }
 }
