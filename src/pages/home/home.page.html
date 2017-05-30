@@ -1,12 +1,5 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>
-            Voxxrin 3
-        </ion-title>
-    </ion-navbar>
-</ion-header>
-
-<ion-content padding class="home-page">
+<top-navbar [title]="'Accueil'"></top-navbar>
+<ion-content padding has-header class="home-page">
     <h1 class="col-55 element-centered app-logo"></h1>
     <div class="part-bottom-login">
         <button ion-button full (click)="goToEvents()">Evenements</button>
