@@ -1,15 +1,15 @@
 <ion-content class='events-list scroll-content ionic-scroll'>
     <ion-list *ngFor="let event of events">
         <ion-card>
+            <ion-item>
+                <ion-avatar item-left>
+                    <img [src]="event.imageUrl">
+                </ion-avatar>
+                <ion-card-title class="wrap">
+                    {{event.name}}
+                </ion-card-title>
+            </ion-item>
             <ion-card-content>
-                <ion-item>
-                    <ion-avatar item-left>
-                        <img [src]="event.imageUrl">
-                    </ion-avatar>
-                    <ion-card-title>
-                        {{event.name}}
-                    </ion-card-title>
-                </ion-item>
                 <p>
                     <ion-icon name="calendar"></ion-icon>
                     {{event.from | date:'shortDate'}} - {{event.to | date:'shortDate'}}
