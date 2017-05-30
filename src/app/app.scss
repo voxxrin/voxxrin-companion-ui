@@ -31,3 +31,22 @@
     }
 }
 
+// Events list
+.events-list {
+    ion-card-title {
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: red;
+    }
+
+    img {
+      object-fit: scale-down;
+    }
+
+    img {
+      width: 100px !important;
+      height: 100px !important;
+    }
+}
+
