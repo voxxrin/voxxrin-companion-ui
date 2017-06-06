@@ -5,5 +5,5 @@ import { Component, Input } from '@angular/core';
     templateUrl: './top-navbar.component.html'
 })
 export class TopNavbarComponent {
-    @Input() title: string;
+   @Input() title: string;
 }

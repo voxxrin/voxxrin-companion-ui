@@ -1,4 +1,4 @@
 <top-navbar title="Liste des évènements"></top-navbar>
 <ion-content padding has-header>
-    <events-list [events]="events" *ngIf="events"></events-list>
+    <events-list [events]="events" *ngIf="events" (eventSelected)="navigateToEvent($event)"></events-list>
 </ion-content>

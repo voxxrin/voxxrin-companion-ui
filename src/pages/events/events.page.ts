@@ -1,3 +1,4 @@
+import { EventPage } from './../event/event.page';
 import { Event } from './../../models/event';
 import { Observable } from 'rxjs/Rx';
 import { EventService } from './../../services/event-service';
@@ -10,13 +11,17 @@ import { NavController } from 'ionic-angular';
 })
 export class EventsPage implements OnInit {
 
-  events : Event[];
+  events: Event[];
 
   constructor(private navCtrl: NavController, private eventService: EventService) {
   }
 
   ngOnInit(): void {
     this.eventService.fetchEvents().subscribe(events => this.events = events);
+  }
+
+  navigateToEvent(event: Event) : void {
+    this.navCtrl.push(EventPage, {event : event} );
   }
 
 }

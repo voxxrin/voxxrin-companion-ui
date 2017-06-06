@@ -1,3 +1,6 @@
+import { EventComponent } from './../components/event/event.component';
+import { EventPage } from './../pages/event/event.page';
+import { ConstantsService } from './../services/constants-service';
 import { HttpModule } from '@angular/http';
 import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { EventsPage } from './../pages/events/events.page';
@@ -19,9 +22,11 @@ const components = [
     EventsListComponent,
     SideMenuComponent,
     TopNavbarComponent,
+    EventComponent,
     // pages
     HomePage,
-    EventsPage
+    EventsPage,
+    EventPage
 ];
 
 @NgModule({
@@ -37,7 +42,8 @@ const components = [
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         StatusBar,
         SplashScreen,
-        EventService
+        EventService,
+        ConstantsService
     ]
 })
 export class AppModule {

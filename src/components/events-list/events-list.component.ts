@@ -1,14 +1,22 @@
+import { EventEmitter, Output } from '@angular/core';
+import { ConstantsService } from '../../services/constants-service';
 import { Event } from './../../models/event';
 import { Input, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'events-list',
-    templateUrl: 'events-list.component.html'
+  selector: 'events-list',
+  templateUrl: 'events-list.component.html'
 })
 export class EventsListComponent {
 
-    @Input() events: Event[];
+  @Input() events: Event[];
+  @Output() eventSelected: EventEmitter<Event> = new EventEmitter<Event>();
 
-    constructor() { }
+  constructor(public constants: ConstantsService) {
+  }
+
+  onSelectedEvent(event: Event): void {
+    this.eventSelected.emit(event);
+  }
 }
