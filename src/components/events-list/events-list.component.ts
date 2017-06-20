@@ -5,18 +5,18 @@ import { Input, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'events-list',
-  templateUrl: 'events-list.component.html'
+    selector: 'events-list',
+    templateUrl: 'events-list.component.html'
 })
 export class EventsListComponent {
 
-  @Input() events: Event[];
-  @Output() eventSelected: EventEmitter<Event> = new EventEmitter<Event>();
+    @Input() events: Event[];
+    @Output() eventSelected: EventEmitter<Event> = new EventEmitter<Event>();
 
-  constructor(public constants: ConstantsService) {
-  }
+    constructor(public constants: ConstantsService) {
+    }
 
-  onSelectedEvent(event: Event): void {
-    this.eventSelected.emit(event);
-  }
+    onSelectedEvent(event: Event): void {
+        this.eventSelected.emit(event);
+    }
 }

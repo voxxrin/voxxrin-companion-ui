@@ -1,24 +1,24 @@
 <ion-content class='events-list scroll-content ionic-scroll'>
-  <ion-list *ngFor="let event of events">
-    <ion-card>
-      <ion-card-content>
-        <ion-item (click)="onSelectedEvent(event)">
-          <ion-avatar item-left>
-            <img [src]="event.imageUrl">
-          </ion-avatar>
-          <ion-card-title class="wrap">
-            {{event.name}}
-          </ion-card-title>
-        </ion-item>
-        <p>
-          <ion-icon name="calendar"></ion-icon>
-          {{event.from | date: constants.dateFormat}} - {{event.to | date: constants.dateFormat}}
-        </p>
-        <p>
-          <ion-icon name="locate"></ion-icon>
-          {{event.location}}
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+    <ion-list *ngFor="let event of events">
+        <ion-card>
+            <ion-card-content>
+                <ion-item (click)="onSelectedEvent(event)">
+                    <ion-avatar item-left>
+                        <img [src]="event.imageUrl">
+                    </ion-avatar>
+                    <ion-card-title class="wrap">
+                        {{event.name}}
+                    </ion-card-title>
+                </ion-item>
+                <p>
+                    <ion-icon name="calendar"></ion-icon>
+                    {{event.from | date: constants.dateFormat}} - {{event.to | date: constants.dateFormat}}
+                </p>
+                <p>
+                    <ion-icon name="locate"></ion-icon>
+                    {{event.location}}
+                </p>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
 </ion-content>

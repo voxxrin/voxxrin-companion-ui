@@ -12,7 +12,8 @@ export class SideMenuComponent {
 
     @Input() content: any;
 
-    constructor(private app: App) { }
+    constructor(private app: App) {
+    }
 
     goToHome(): void {
         this.app.getActiveNav().push(HomePage);
