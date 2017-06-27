@@ -6,5 +6,5 @@ export class ConstantsService {
     constructor() {
     }
 
-    dateFormat : string = "dd/MM/yyyy";
+    dateFormat: string = "dd/MM/yyyy";
 }
