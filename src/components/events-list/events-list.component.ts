@@ -1,7 +1,7 @@
+import { ConstantsService } from './../../services/constants.service';
 import { EventEmitter, Output } from '@angular/core';
-import { ConstantsService } from '../../services/constants-service';
-import { Event } from './../../models/event';
-import { Input, OnInit } from '@angular/core';
+import { Event } from './../../models/event.model';
+import { Input } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
