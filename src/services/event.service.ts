@@ -17,8 +17,8 @@ export class EventService {
             .map((response: Response) => response.json())
             .map((data: any) => data as Event[])
             .map((events: Event[]) => events.map(event => {
-                event.from = moment(event.from).toDate();
-                event.to = moment(event.to).toDate();
+                event.from = moment(event.from);
+                event.to = moment(event.to);
                 return event;
             }))
             .map((events: Event[]) => _.orderBy(events, ['from'], ['desc']));

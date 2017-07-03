@@ -1,8 +1,10 @@
+import * as moment from 'moment';
+
 export interface Event {
     name: string;
     description: string;
     location: string;
-    from: Date;
-    to: Date;
+    from: moment.Moment;
+    to: moment.Moment;
     imageUrl: string;
 }
