@@ -1,4 +1,4 @@
-import { NavController, NavParams } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +8,9 @@ export class EventPage implements OnInit {
 
     event: Event;
 
-    constructor(private navCtrl: NavController, private navParams: NavParams) {
-    }
+    constructor(private navParams: NavParams) { }
 
     ngOnInit(): void {
         this.event = this.navParams.data.event;
-        console.log(this.event);
     }
 }
