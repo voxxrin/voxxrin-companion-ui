@@ -15,7 +15,7 @@ export class HttpClient {
         return this.localStorageService.get().getItem('token');
     }
 
-    get(url: string, opts?: any) {
+    public get(url: string, opts?: any) {
         let headers = new Headers();
         const token = this.getStoredToken();
         if (token) {
@@ -24,12 +24,12 @@ export class HttpClient {
         return this.http.get(url, { headers: headers });
     }
 
-    post(url, data, opts?: any) {
+    public post(url, data, opts?: any) {
         let headers = new Headers();
         const token = this.getStoredToken();
         if (token) {
             this.createAuthorizationHeader(headers, token);
         }
-        return this.http.post(url, data, { headers: headers });
+        return this.http.post(url, data, Object.assign({ headers: headers }, opts));
     }
 }

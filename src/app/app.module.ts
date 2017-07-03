@@ -17,6 +17,7 @@ import { SideMenuComponent } from './../components/side-menu/side-menu.component
 import { AuthActionsComponent } from './../components/auth/auth-actions/auth-actions.component';
 import { EventsListComponent } from './../components/events-list/events-list.component';
 import { AppComponent } from './app.component';
+import { FilteredEventsPage } from '../pages/filtered-events/filtered-events.page';
 
 const components = [
     // components
@@ -29,6 +30,7 @@ const components = [
     // pages
     HomePage,
     EventsPage,
+    FilteredEventsPage,
     EventPage
 ];
 

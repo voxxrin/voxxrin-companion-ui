@@ -1,7 +1,8 @@
 <top-navbar title="Liste des évènements"></top-navbar>
-<ion-tabs>
-    <ion-tab tabTitle="Pouet 1"></ion-tab>
-    <ion-tab tabTitle="Pouet 2"></ion-tab>
-    <ion-tab tabTitle="Pouet 3"></ion-tab>
-    <!--<events-list [events]="events" *ngIf="events" (eventSelected)="navigateToEvent($event)"></events-list>-->
-</ion-tabs>
+<ion-content>
+    <ion-tabs selectedIndex="0" *ngIf="events">
+        <ion-tab tabTitle="Futurs" [root]="futureEventsPage" [rootParams]="{ events: events }" has-header></ion-tab>
+        <ion-tab tabTitle="Passés" [root]="pastEventsPage" [rootParams]="{ events: events }" has-header></ion-tab>
+        <ion-tab tabTitle="Tous" [root]="allEventsPage" [rootParams]="{ events: events }" has-header></ion-tab>
+    </ion-tabs>
+</ion-content>

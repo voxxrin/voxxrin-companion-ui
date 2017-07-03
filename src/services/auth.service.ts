@@ -11,7 +11,7 @@ export class AuthService {
         return '';
     }
 
-    private storeToken(token: string): void {
+    public storeToken(token: string): void {
         // TODO
     }
 }
