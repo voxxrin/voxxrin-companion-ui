@@ -16,11 +16,17 @@ export class EventService {
         return this.http.get(`${environment.backendApiBaseUrl}/events`)
             .map((response: Response) => response.json())
             .map((data: any) => data as Event[])
-            .map((events: Event[]) => events.map(event => {
-                event.from = moment(event.from);
-                event.to = moment(event.to);
-                return event;
-            }))
+            .map((events: Event[]) => this.parseEvents(events))
             .map((events: Event[]) => _.orderBy(events, ['from'], ['desc']));
+    }
+
+    private parseEvents(events: Event[]) {
+        return events.map(event => this.parseEvent(event));
+    }
+
+    private parseEvent(event: Event) {
+        event.from = moment(event.from);
+        event.to = moment(event.to);
+        return event;
     }
 }
