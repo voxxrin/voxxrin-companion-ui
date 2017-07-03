@@ -16,10 +16,10 @@ export class SideMenuComponent {
     }
 
     goToHome(): void {
-        this.app.getActiveNav().push(HomePage);
+        this.app.getRootNav().push(HomePage);
     }
 
     goToEvents(): void {
-        this.app.getActiveNav().push(EventsPage);
+        this.app.getRootNav().push(EventsPage);
     }
 }

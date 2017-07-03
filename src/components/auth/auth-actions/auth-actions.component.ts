@@ -1,5 +1,5 @@
 import { EventsPage } from './../../../pages/events/events.page';
-import { NavController } from 'ionic-angular';
+import { App, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AuthActionsComponent {
 
-    constructor(public navCtrl: NavController) { }
+    constructor(public app: App) { }
 
     goToEvents(): void {
-        this.navCtrl.push(EventsPage);
+        this.app.getRootNav().push(EventsPage);
     }
 }
