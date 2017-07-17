@@ -1,0 +1,6 @@
+<ion-list *ngFor="let day of days">
+    <ion-item (click)="onSelectedDay(day)">
+        <p>{{day.date | date:'dd'}}</p>
+        <p>{{day.date | date:'MMMM'}}</p>
+    </ion-item>
+</ion-list>
