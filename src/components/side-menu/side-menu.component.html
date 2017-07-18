@@ -5,6 +5,13 @@
         </ion-toolbar>
     </ion-header>
     <ion-content>
+        <ion-item *ngIf="user">
+            <ion-avatar item-start>
+                <img [src]="user.avatarUrl">
+            </ion-avatar>
+            <h2>{{ user.displayName }}</h2>
+            <p>{{ user.name }}</p>
+        </ion-item>
         <ion-list>
             <button ion-item (click)="goToHome()">Accueil</button>
             <button ion-item>Autentification</button>

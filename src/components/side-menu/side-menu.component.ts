@@ -3,6 +3,8 @@ import { EventsPage } from './../../pages/events/events.page';
 import { App } from 'ionic-angular';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
 
 @Component({
     selector: 'side-menu',
@@ -11,8 +13,10 @@ import { Component } from '@angular/core';
 export class SideMenuComponent {
 
     @Input() content: any;
+    user: User;
 
-    constructor(private app: App) {
+    constructor(private app: App, private authService: AuthService) {
+        this.authService.currentUser().subscribe(user => this.user = user);
     }
 
     goToHome(): void {
