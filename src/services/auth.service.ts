@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs/Rx';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 
-export type OAuthProvider = 'twitter' | 'linkedin';
+export type OAuthProvider = 'twitter' | 'linkedin' | 'facebook';
 
 @Injectable()
 export class AuthService {

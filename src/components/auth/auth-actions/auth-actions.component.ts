@@ -20,12 +20,8 @@ export class AuthActionsComponent {
         this.app.getRootNav().push(EventsPage);
     }
 
-    linkedinAuth(): void {
-        this.authService.auth('linkedin');
-    }
-
-    twitterAuth(): void {
-        this.authService.auth('twitter');
+    auth(provider): void {
+        this.authService.auth(provider);
     }
 
     logout() {

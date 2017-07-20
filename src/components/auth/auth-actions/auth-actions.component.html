@@ -1,10 +1,13 @@
 <div>
     <ion-buttons end>
         <div *ngIf="!authenticatedUser">
-            <button ion-button icon-only full (click)="twitterAuth()">
+            <button ion-button icon-only full (click)="auth('twitter')">
                 <ion-icon name="logo-twitter"></ion-icon>
             </button>
-            <button ion-button icon-only full (click)="linkedinAuth()">
+            <button ion-button icon-only full (click)="auth('facebook')">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+            <button ion-button icon-only full (click)="auth('linkedin')">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </button>
             <button ion-button full (click)="goToEvents()">
