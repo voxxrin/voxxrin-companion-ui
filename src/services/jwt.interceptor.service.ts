@@ -6,16 +6,15 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class JWTInterceptor implements HttpInterceptor {
 
-    constructor(private jwtService: JWTService) {
-    }
+    constructor(private jwtService: JWTService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         const currentToken = this.jwtService.currentToken();
-        if (req.method !== 'OPTIONS' && req.withCredentials && currentToken) {
+        if (currentToken) {
             return next.handle(req.clone({
                 setHeaders: {
-                    Authorization: `Bearer ${currentToken}`
+                    'Authorization': `Bearer ${currentToken}`
                 }
             }));
         }

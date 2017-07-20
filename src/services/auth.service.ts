@@ -34,7 +34,7 @@ export class AuthService {
     private validateTokenIfExists() {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
-                .get(`${environment.backendApiBaseUrl}/auth/validate`, { withCredentials: true })
+                .get(`${environment.backendApiBaseUrl}/auth/validate`)
                 .subscribe((user: User) => this.currentUserSubject.next(user));
         }
     }
