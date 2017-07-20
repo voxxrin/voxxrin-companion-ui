@@ -14,7 +14,7 @@ export class AuthService {
     private currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 
     constructor(private jwtService: JWTService, private httpClient: HttpClient) {
-        this.validateTokenIfExists();
+        this.validateTokenAndFetchCurrentUser();
     }
 
     public auth(provider: OAuthProvider): void {
@@ -28,7 +28,7 @@ export class AuthService {
     }
 
     public currentUser(): Observable<User> {
-        return this.currentUserSubject.asObservable();
+        return this.currentUserSubject.map(user => this.transformOAuthUser(user));
     }
 
     public logout() {
@@ -36,7 +36,16 @@ export class AuthService {
         this.currentUserSubject.next(null);
     }
 
-    private validateTokenIfExists() {
+    private transformOAuthUser(user) {
+        if (user) {
+            if (!user.avatarUrl && user.providerInfo && user.providerInfo['profile_image_url_https']) {
+                user.avatarUrl = user.providerInfo['profile_image_url_https'];
+            }
+        }
+        return user;
+    }
+
+    private validateTokenAndFetchCurrentUser() {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
                 .get(`${environment.backendApiBaseUrl}/auth/validate`)
@@ -49,7 +58,7 @@ export class AuthService {
             this.subscription.unsubscribe();
             if (event.data.auth_token) {
                 this.jwtService.storeToken(event.data.auth_token);
-                this.currentUserSubject.next(event.data);
+                this.validateTokenAndFetchCurrentUser();
             }
         }
     }

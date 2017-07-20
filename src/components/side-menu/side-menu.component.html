@@ -10,11 +10,10 @@
                 <img [src]="user.avatarUrl">
             </ion-avatar>
             <h2>{{ user.displayName }}</h2>
-            <p>{{ user.name }}</p>
+            <p>{{ user.login }}</p>
         </ion-item>
         <ion-list>
             <button ion-item (click)="goToHome()">Accueil</button>
-            <button ion-item>Autentification</button>
             <button ion-item (click)="goToEvents()">Evenements</button>
             <button ion-item>A propos</button>
         </ion-list>
