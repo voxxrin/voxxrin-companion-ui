@@ -15,4 +15,8 @@ export class JWTService {
     public storeToken(token: string): void {
         this.localStorageService.get().setItem(this.tokenStorageKey, token);
     }
+
+    public clearToken() {
+        this.localStorageService.get().removeItem(this.tokenStorageKey);
+    }
 }

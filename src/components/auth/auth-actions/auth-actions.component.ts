@@ -1,7 +1,8 @@
-import { EventsPage } from './../../../pages/events/events.page';
-import { App, NavController } from 'ionic-angular';
+import { EventsPage } from '../../../pages/events/events.page';
+import { App } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../models/user.model';
 
 @Component({
     selector: 'auth-actions',
@@ -9,7 +10,11 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class AuthActionsComponent {
 
-    constructor(public app: App, private authService: AuthService) { }
+    private authenticatedUser: User;
+
+    constructor(public app: App, private authService: AuthService) {
+        this.authService.currentUser().subscribe(user => this.authenticatedUser = user);
+    }
 
     goToEvents(): void {
         this.app.getRootNav().push(EventsPage);
@@ -21,5 +26,9 @@ export class AuthActionsComponent {
 
     twitterAuth(): void {
         this.authService.auth('twitter');
+    }
+
+    logout() {
+        this.authService.logout();
     }
 }

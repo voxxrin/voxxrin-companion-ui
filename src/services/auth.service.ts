@@ -31,6 +31,11 @@ export class AuthService {
         return this.currentUserSubject.asObservable();
     }
 
+    public logout() {
+        this.jwtService.clearToken();
+        this.currentUserSubject.next(null);
+    }
+
     private validateTokenIfExists() {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
