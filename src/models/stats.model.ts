@@ -9,9 +9,6 @@ export interface Statistic {
     usersWithFavoritesCount: number;
     remindersCount: number;
     usersWithRemindersCount: number;
-    topFavoritedPresentation:	Event;
-    topRemindedPresentation: Event;
     ratingsCount: number;
     ratingsAvg:	number;
-    topRatedPresentation: Event;
 }
