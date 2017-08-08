@@ -20,6 +20,8 @@ import { FilteredEventsPage } from '../pages/filtered-events/filtered-events.pag
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JWTService } from '../services/jwt.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
+import { MapsComponent } from '../components/maps/maps.component';
+import { LocationService } from '../services/location.service';
 
 const components = [
     // components
@@ -29,6 +31,7 @@ const components = [
     TopNavbarComponent,
     EventComponent,
     AuthActionsComponent,
+    MapsComponent,
     // pages
     HomePage,
     EventsPage,
@@ -54,7 +57,8 @@ const components = [
         EventService,
         ConstantsService,
         AuthService,
-        JWTService
+        JWTService,
+        LocationService
     ]
 })
 export class AppModule {

@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { LocationService } from '../../services/location.service';
+import { Event } from '../../models/event.model';
+import { Location } from '../../models/location.model';
 
 @Component({
     selector: 'event',
@@ -7,10 +10,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EventComponent implements OnInit {
 
     @Input() event: Event;
+    location: Location;
 
-    constructor() {
-    }
+    constructor(private locationService: LocationService) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.locationService.geocode(this.event.location).subscribe(location => this.location = location);
     }
 }
