@@ -1,3 +1,4 @@
+import { Event } from './../../models/event.model';
 import { NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 

@@ -4,8 +4,10 @@ import { AuthActionsComponent } from '../components/auth/auth-actions/auth-actio
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ConstantsService } from '../services/constants.service';
+import { DayService } from '../services/day.service';
 import { DaysListComponent } from '../components/days-list/days-list.component';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { EventAbstractComponent } from '../components/event-abstract/event-abstract.component';
 import { EventComponent } from '../components/event/event.component';
 import { EventPage } from '../pages/event/event.page';
 import { EventService } from '../services/event.service';
@@ -34,7 +36,7 @@ const components = [
     TopNavbarComponent,
     EventComponent,
     DaysListComponent,
-    AbstractEventComponent,
+    EventAbstractComponent,
     AuthActionsComponent,
     MapsComponent,
     // pages
@@ -60,6 +62,7 @@ const components = [
         StatusBar,
         SplashScreen,
         EventService,
+        DayService,
         ConstantsService,
         AuthService,
         JWTService,
