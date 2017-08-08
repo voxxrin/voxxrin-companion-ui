@@ -1,5 +1,6 @@
 import { HomePage } from './../../pages/home/home.page';
 import { EventsPage } from './../../pages/events/events.page';
+import { StatsPage } from './../../pages/stats/stats.page';
 import { App } from 'ionic-angular';
 import { Input } from '@angular/core';
 import { Component } from '@angular/core';
@@ -25,5 +26,9 @@ export class SideMenuComponent {
 
     goToEvents(): void {
         this.app.getRootNav().push(EventsPage);
+    }
+
+    goToStats(): void {
+        this.app.getRootNav().push(StatsPage);
     }
 }

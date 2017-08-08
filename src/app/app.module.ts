@@ -7,9 +7,6 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { EventPage } from '../pages/event/event.page';
-import { EventsPage } from '../pages/events/events.page';
-import { HomePage } from '../pages/home/home.page';
 import { EventComponent } from '../components/event/event.component';
 import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { SideMenuComponent } from '../components/side-menu/side-menu.component';
@@ -20,6 +17,12 @@ import { FilteredEventsPage } from '../pages/filtered-events/filtered-events.pag
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JWTService } from '../services/jwt.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
+import { HttpModule } from '@angular/http';
+import { EventPage } from './../pages/event/event.page';
+import { EventsPage } from './../pages/events/events.page';
+import { HomePage } from './../pages/home/home.page';
+import { StatsPage } from './../pages/stats/stats.page';
+import { StatsService } from './../services/stats.service'; 
 
 const components = [
     // components
@@ -33,7 +36,8 @@ const components = [
     HomePage,
     EventsPage,
     FilteredEventsPage,
-    EventPage
+    EventPage,
+    StatsPage
 ];
 
 @NgModule({
@@ -54,7 +58,8 @@ const components = [
         EventService,
         ConstantsService,
         AuthService,
-        JWTService
+        JWTService,
+        StatsService
     ]
 })
 export class AppModule {
