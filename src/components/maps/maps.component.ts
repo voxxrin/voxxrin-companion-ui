@@ -1,5 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Location } from '../../models/location.model';
+import { environment } from '../../app/environment';
+import { UtilsService } from '../../services/utils.service';
 
 declare let google;
 
@@ -13,11 +15,17 @@ export class MapsComponent implements OnInit {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
 
+    constructor(private utils: UtilsService) { }
+
     ngOnInit(): void {
-        this.loadMap();
+        if (typeof google === 'undefined') {
+            this.utils.asyncImportScript(`http://maps.google.com/maps/api/js?key=${environment.googleApiKey}`, () => this.loadMap());
+        } else {
+            this.loadMap();
+        }
     }
 
-    loadMap() {
+    private loadMap() {
 
         let latLng = new google.maps.LatLng(this.location.latitude, this.location.longitude);
 

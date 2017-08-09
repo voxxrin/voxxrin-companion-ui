@@ -22,6 +22,7 @@ import { JWTService } from '../services/jwt.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
 import { MapsComponent } from '../components/maps/maps.component';
 import { LocationService } from '../services/location.service';
+import { UtilsService } from '../services/utils.service';
 
 const components = [
     // components
@@ -58,7 +59,8 @@ const components = [
         ConstantsService,
         AuthService,
         JWTService,
-        LocationService
+        LocationService,
+        UtilsService
     ]
 })
 export class AppModule {
