@@ -1,4 +1,4 @@
-<ion-content class='events-list scroll-content ionic-scroll'>
+<div class='events-list scroll-content ionic-scroll'>
     <ion-list *ngFor="let event of events">
         <ion-card (click)="onSelectedEvent(event)" class="clickable">
             <ion-card-content>
@@ -21,4 +21,4 @@
             </ion-card-content>
         </ion-card>
     </ion-list>
-</ion-content>
+</div>

@@ -1,1 +1,17 @@
-<maps [location]="location" *ngIf="location"></maps>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-9>
+                <event-abstract [event]="event">
+                </event-abstract>
+            </ion-col>
+            <ion-col col-3>
+                <days-list [days]="days" (daySelected)="onSelectedDay($event)">
+                </days-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <maps [location]="location" *ngIf="location"></maps>
+        </ion-row>
+    </ion-grid>
+</ion-content>
