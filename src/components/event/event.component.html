@@ -2,11 +2,11 @@
     <ion-grid>
         <ion-row>
             <ion-col col-9>
-                <abstract-event [event]="event">
-                </abstract-event>
+                <event-abstract [event]="event">
+                </event-abstract>
             </ion-col>
             <ion-col col-3>
-                <days-list [days]="event.days">
+                <days-list [days]="days" (daySelected)="onSelectedDay($event)">
                 </days-list>
             </ion-col>
         </ion-row>

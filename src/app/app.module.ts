@@ -22,11 +22,13 @@ import { JWTService } from '../services/jwt.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { LocationService } from '../services/location.service';
 import { MapsComponent } from '../components/maps/maps.component';
+import { PresentationsPage } from '../pages/presentations/presentations.page';
 import { SideMenuComponent } from '../components/side-menu/side-menu.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { UtilsService } from '../services/utils.service';
+import { PresentationService } from "../services/presentation.service";
 
 const components = [
     // components
@@ -43,7 +45,8 @@ const components = [
     HomePage,
     EventsPage,
     EventPage,
-    FilteredEventsPage
+    FilteredEventsPage,
+    PresentationsPage
 ];
 
 @NgModule({
@@ -67,7 +70,8 @@ const components = [
         AuthService,
         JWTService,
         LocationService,
-        UtilsService
+        UtilsService,
+        PresentationService
     ]
 })
 export class AppModule {

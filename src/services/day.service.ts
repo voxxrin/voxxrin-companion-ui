@@ -13,8 +13,8 @@ export class DayService {
 
     constructor(private http: Http) { }
 
-    public fetchDays(eventId: string): Observable<Day[]> {
-        return this.http.get(`${environment.backendApiBaseUrl}/events/${eventId}/days`)
+    public fetchDays(event: Event): Observable<Day[]> {
+        return this.http.get(`${environment.backendApiBaseUrl}/events/${event._id}/days`)
             .map((response: Response) => response.json())
             .map((data: any) => data as Day[])
             .map((days: Day[]) => _.orderBy(days, ['date'], ['asc']));
