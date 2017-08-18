@@ -1,13 +1,27 @@
 //////////////////////////////////////////
+// VARIABLES
+//////////////////////////////////////////
+
+$header-height: 55px;
+
+//////////////////////////////////////////
 // COMMON
 //////////////////////////////////////////
 
 [has-header] {
-    margin-top: 55px;
+  margin-top: $header-height !important;
+}
+
+[full-height] {
+  height: calc(100% - #{$header-height});
+}
+
+ion-row {
+  height: 100%;
 }
 
 .wrap {
-    white-space: normal;
+  white-space: normal;
 }
 
 .clickable {
@@ -19,52 +33,56 @@
 //////////////////////////////////////////
 
 .home-page {
-    background: url($img-path + '/bg-login.png');
-    .app-logo {
-        display: block;
-        height: 70px;
-        margin-bottom: 12px !important;
-        background: url($icon-path + '/logo.svg') no-repeat;
-        background-position: center center;
-    }
+  background: url($img-path + '/bg-login.png');
+  .app-logo {
+    display: block;
+    height: 70px;
+    margin-bottom: 12px !important;
+    background: url($icon-path + '/logo.svg') no-repeat;
+    background-position: center center;
+  }
 
-    .part-bottom-login {
-        height: 45%;
-        margin-bottom: 0px;
-    }
+  .part-bottom-login {
+    height: 45%;
+    margin-bottom: 0px;
+  }
 }
 
 //////////////////////////////////////////
 // COMPONENTS
 //////////////////////////////////////////
 
+maps {
+  display: block;
+  height: 100%;
+}
+
 .events-list {
-    ion-card-title {
-      font-size: 1.5em;
-      width: 100%;
-      font-weight: bold;
-      color: red;
-    }
+  ion-card-title {
+    font-size: 1.5em;
+    width: 100%;
+    font-weight: bold;
+    color: red;
+  }
 
-    img {
-      object-fit: scale-down;
-    }
+  img {
+    object-fit: scale-down;
+  }
 
-    img {
-      width: 100px !important;
-      height: 100px !important;
-    }
+  img {
+    width: 100px !important;
+    height: 100px !important;
+  }
 }
 
 .event-abstract {
-    img {
-      object-fit: scale-down;
-    }
+  img {
+    object-fit: scale-down;
+  }
 
-    img {
-      width: 100px !important;
-      height: 100px !important;
-    }
+  img {
+    width: 100px !important;
+    height: 100px !important;
+  }
 }
-
 

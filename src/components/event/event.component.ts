@@ -11,11 +11,11 @@ import { Location } from '../../models/location.model';
 })
 export class EventComponent implements OnInit {
 
-    days: Day[];
-    location: Location;
-    @Input() event: Event;    
+    @Input() event: Event;
     @Output() daySelected: EventEmitter<Day> = new EventEmitter<Day>();
 
+    days: Day[];
+    location: Location;
 
     constructor(private locationService: LocationService, private dayService: DayService) { }
 
