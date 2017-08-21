@@ -1,7 +1,16 @@
 <div>
-    <ion-avatar item-left>
-        <img [src]="event.imageUrl">
-    </ion-avatar>
-    <ion-title> {{event.name}} </ion-title>
-    <div [innerHTML]="event.description"></div>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4>
+                <ion-avatar item-left class="fix-ratio">
+                    <img [src]="event.imageUrl">
+                </ion-avatar>
+            </ion-col>
+            <ion-col col-8>
+                <ion-title>{{ event.name }}</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <br>
+    <p [innerHTML]="event.description"></p>
 </div>

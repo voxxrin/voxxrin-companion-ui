@@ -1,6 +1,5 @@
-import { Event } from './../../models/event.model';
-import { Input } from '@angular/core';
-import { Component } from '@angular/core';
+import { Event } from '../../models/event.model';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'event-abstract',
@@ -9,7 +8,4 @@ import { Component } from '@angular/core';
 export class EventAbstractComponent {
 
     @Input() event: Event;
-
-    constructor() {
-    }
 }

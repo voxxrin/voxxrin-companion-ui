@@ -28,6 +28,19 @@ ion-grid, ion-row {
   cursor: pointer;
 }
 
+ion-avatar.fix-ratio {
+  img {
+    border-radius: 50px;
+    object-fit: scale-down;
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+[right-border] {
+  border-right: 2px solid darkgray;
+}
+
 //////////////////////////////////////////
 // PAGES
 //////////////////////////////////////////
@@ -64,25 +77,4 @@ maps {
     font-weight: bold;
     color: red;
   }
-
-  img {
-    object-fit: scale-down;
-  }
-
-  img {
-    width: 100px !important;
-    height: 100px !important;
-  }
 }
-
-.event-abstract {
-  img {
-    object-fit: scale-down;
-  }
-
-  img {
-    width: 100px !important;
-    height: 100px !important;
-  }
-}
-

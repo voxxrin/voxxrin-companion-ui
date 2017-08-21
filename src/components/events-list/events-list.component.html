@@ -1,9 +1,9 @@
-<div class='events-list scroll-content ionic-scroll'>
+<div class="events-list scroll-content ionic-scroll">
     <ion-list *ngFor="let event of events">
         <ion-card (click)="onSelectedEvent(event)" class="clickable">
             <ion-card-content>
                 <ion-item>
-                    <ion-avatar item-left>
+                    <ion-avatar item-left class="fix-ratio">
                         <img [src]="event.imageUrl">
                     </ion-avatar>
                     <ion-card-title class="wrap">
