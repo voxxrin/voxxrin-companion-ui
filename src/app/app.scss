@@ -16,8 +16,8 @@ $header-height: 55px;
   height: calc(100% - #{$header-height});
 }
 
-ion-row {
-  height: 100%;
+ion-grid, ion-row {
+  height: calc(100% - #{$header-height});
 }
 
 .wrap {
