@@ -1,0 +1,16 @@
+<ion-card>
+  <ion-item color="danger" class="stat-ion-item">
+    <ion-icon [name]="iconName" class="stat-ion-item-icon" color="light"></ion-icon>
+  </ion-item>
+  <ion-card-content class="stat-ion-card-content">
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </ion-card-content>
+  <ion-item color="light" class="stat-ion-item">
+    {{ titleName }}
+    <div *ngIf="titleInfoCount || titleInfoName">
+      ({{ titleInfoCount }} {{ titleInfoName }})
+    </div>
+  </ion-item>
+</ion-card>
