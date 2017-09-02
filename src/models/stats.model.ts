@@ -1,4 +1,4 @@
-import { Event } from '../models/event.model';
+import { Presentation } from './presentation.model';
 
 export interface Statistic {
     eventId: string;
@@ -9,6 +9,9 @@ export interface Statistic {
     usersWithFavoritesCount: number;
     remindersCount: number;
     usersWithRemindersCount: number;
+    topFavoritedPresentation: Presentation;
+    topRemindedPresentaion: Presentation;
     ratingsCount: number;
     ratingsAvg:	number;
+    topRatedPresentation: Presentation;
 }

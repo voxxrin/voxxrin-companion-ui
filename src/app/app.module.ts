@@ -1,3 +1,5 @@
+import { StatItemPage } from './../pages/stat-item/stat-item';
+import { StatItemComponent } from './../components/stat-item/stat-item.component';
 import { AuthService } from '../services/auth.service';
 import { ConstantsService } from '../services/constants.service';
 import { EventService } from '../services/event.service';
@@ -32,12 +34,14 @@ const components = [
     TopNavbarComponent,
     EventComponent,
     AuthActionsComponent,
+    StatItemComponent,
     // pages
     HomePage,
     EventsPage,
     FilteredEventsPage,
     EventPage,
-    StatsPage
+    StatsPage,
+    StatItemPage
 ];
 
 @NgModule({

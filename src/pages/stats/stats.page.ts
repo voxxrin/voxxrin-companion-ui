@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { StatsService } from '../../services/stats.service'; 
-import { Statistic } from "../../models/stats.model";
+import { Statistic } from './../../models/stats.model';
+import { Component } from '@angular/core';
+import { StatsService } from '../../services/stats.service';
 
 @Component({
     selector: 'page-stats',
     templateUrl: './stats.page.html'
 })
-export class StatsPage implements OnInit {
-    
-    statistic: Statistic;
+export class StatsPage {
 
-    constructor(private statsService: StatsService) {}
+    stat: Statistic;
 
-    ngOnInit(): void {
-        this.statsService.fecthStats().subscribe(statistic => {
-            this.statistic = statistic;
-        })
+    constructor(private statsService: StatsService) {
+        this.statsService.fecthStats().subscribe(statistic => this.stat = statistic);
     }
 }

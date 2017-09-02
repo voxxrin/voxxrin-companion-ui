@@ -1,27 +1,14 @@
-<top-navbar [title]="'Statistiques'"></top-navbar>
-<ion-content class="page-stats"> 
+<top-navbar title="Administration des Evénements"></top-navbar>
+<ion-content class="page-stats" *ngIf="stat">
   <p padding>
     Equal-width columns
   </p>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <div>Nombre de talks : {{statistic}}</div>
-      </ion-col>
-      <ion-col>
-        <div>Nombre de speakers</div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>Favorisation</div>
-      </ion-col>
-      <ion-col>
-        <div>Souscriptions</div>
-      </ion-col>
-      <ion-col>
-        <div>Note moyenne</div>
-      </ion-col>
-    </ion-row>
-</ion-grid>
+  <ion-card>
+    <ion-card-content class="stat-ion-card-content">
+      <ion-icon name="md-ionic" color="primary"></ion-icon>
+        {{ stat.eventName }}
+    </ion-card-content>
+  </ion-card>
+
+  <stat-item [stat]="stat"></stat-item>
 </ion-content>
