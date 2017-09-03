@@ -13,6 +13,7 @@ export class EventComponent implements OnInit {
 
     @Input() event: Event;
     @Output() daySelected: EventEmitter<Day> = new EventEmitter<Day>();
+    @Output() adminButtonSelected: EventEmitter<Event> = new EventEmitter<Event>();
 
     days: Day[];
     location: Location;
@@ -26,5 +27,9 @@ export class EventComponent implements OnInit {
 
     onSelectedDay(day: Day): void {
     	this.daySelected.emit(day);
+    }
+
+    onSelectedAdminButton(): void {
+        this.adminButtonSelected.emit();
     }
 }

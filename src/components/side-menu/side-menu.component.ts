@@ -1,4 +1,3 @@
-import { EventAdminPage } from './../../pages/event-admin/event-admin.page';
 import { HomePage } from './../../pages/home/home.page';
 import { EventsPage } from './../../pages/events/events.page';
 import { App } from 'ionic-angular';
@@ -26,9 +25,5 @@ export class SideMenuComponent {
 
     goToEvents(): void {
         this.app.getRootNav().push(EventsPage);
-    }
-
-    goToStats(): void {
-        this.app.getRootNav().push(EventAdminPage);
     }
 }

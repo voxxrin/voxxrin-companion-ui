@@ -1,3 +1,5 @@
+import { Event } from './../../models/event.model';
+import { NavController, NavParams } from 'ionic-angular';
 import { Presentation } from './../../models/presentation.model';
 import { PresentationService } from './../../services/presentation.service';
 import { Statistic } from './../../models/stats.model';
@@ -12,9 +14,16 @@ export class EventAdminPage {
 
     statistic: Statistic;
     presentations: Presentation[];
+    selectedEvent: Event;
 
-    constructor(private statsService: StatsService, private presentationService: PresentationService) {
-        this.statsService.getStatFromPresentation().subscribe(statistic => this.statistic = statistic);
-        this.presentationService.getAllPresentationFromAnEvent().subscribe(presentations => this.presentations = presentations);
+    constructor(private navCtrl: NavController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService) {
+
+        //Getting the selected event
+        this.selectedEvent = navParams.get("selectedEvent"); 
+
+        //Getting associated statistic of the selected event
+        this.statsService.getStatFromPresentation(this.selectedEvent).subscribe(statistic => this.statistic = statistic);
+        //Getting the presentation list of the selected event
+        this.presentationService.getAllPresentationFromAnEvent(this.selectedEvent).subscribe(presentations => this.presentations = presentations);
     }
 }

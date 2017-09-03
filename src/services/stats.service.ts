@@ -1,3 +1,4 @@
+import { Event } from './../models/event.model';
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Statistic } from '../models/stats.model'
@@ -10,8 +11,8 @@ export class StatsService {
 
     constructor (private http: HttpClient) {}
 
-    public getStatFromPresentation() : Observable<Statistic> {
-        return this.http.get(`${environment.backendApiBaseUrl}/stats/event/5935c2d3e4b080c4b46a8e1b`)
+    public getStatFromPresentation(event: Event) : Observable<Statistic> {
+        return this.http.get(`${environment.backendApiBaseUrl}/stats/event/${event._id}`)
             .map((data: any) => data as Statistic);
     }
 }

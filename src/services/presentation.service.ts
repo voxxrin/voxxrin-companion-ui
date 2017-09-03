@@ -1,3 +1,4 @@
+import { Event } from './../models/event.model';
 import { Presentation } from './../models/presentation.model';
 import { environment } from './../app/environment';
 import { Day } from './../models/day.model';
@@ -17,8 +18,8 @@ export class PresentationService {
                 .map((presentations: Presentation[]) => _.presentations.orderBy(['from'], ['asc']));
     }
 
-    public getAllPresentationFromAnEvent() : Observable<Presentation[]> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/events/5935c2d3e4b080c4b46a8e1b/presentations`)
+    public getAllPresentationFromAnEvent(event: Event) : Observable<Presentation[]> {
+        return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${event._id}/presentations`)
             .map((data: any) => data as Presentation[]);
     }
 }
