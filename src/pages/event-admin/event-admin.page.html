@@ -1,0 +1,11 @@
+<top-navbar title="Administration des Evénements"></top-navbar>
+<ion-content class="page-stats" *ngIf="statistic">
+  <p padding>
+    Equal-width columns
+  </p>
+
+  <stats [statistic]="statistic"> </stats>
+
+  <stat-presentation-list [presentations]="presentations"></stat-presentation-list>
+
+</ion-content>

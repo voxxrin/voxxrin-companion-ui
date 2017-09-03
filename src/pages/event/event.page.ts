@@ -1,3 +1,4 @@
+import { EventAdminPage } from './../event-admin/event-admin.page';
 import { Day } from './../../models/day.model';
 import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from './../../models/event.model';
@@ -19,5 +20,9 @@ export class EventPage implements OnInit {
 
     public navigateToPresentationsPage(day: Day): void {
         this.app.getRootNav().push(PresentationsPage, { day: day }, { animate: true, direction: 'forward' });
+    }
+
+    public navigateToEventAdminPage(): void {
+        this.app.getRootNav().push(EventAdminPage, { selectedEvent: this.event });
     }
 }

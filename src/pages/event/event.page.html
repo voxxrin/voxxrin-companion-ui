@@ -1,4 +1,4 @@
 <top-navbar title="Jours"></top-navbar>
 <ion-content has-header>
-    <event [event]="event" (daySelected)="navigateToPresentationsPage($event)" full-height></event>
+    <event [event]="event" (daySelected)="navigateToPresentationsPage($event)" (adminButtonSelected)="navigateToEventAdminPage()" full-height></event>
 </ion-content>

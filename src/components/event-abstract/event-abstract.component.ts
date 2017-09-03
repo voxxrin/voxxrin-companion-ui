@@ -1,5 +1,5 @@
 import { Event } from '../../models/event.model';
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'event-abstract',
@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 export class EventAbstractComponent {
 
     @Input() event: Event;
+    @Output() adminButtonSelected: EventEmitter<Event> = new EventEmitter<Event>();
+
+    goToEventAdministration(): void {
+        this.adminButtonSelected.emit();
+    }
 }
