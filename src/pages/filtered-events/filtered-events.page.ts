@@ -15,6 +15,6 @@ export class FilteredEventsPage {
     }
 
     public navigateToEvent(event: Event): void {
-        this.app.getRootNav().setRoot(EventPage, { event: event }, { animate: true, direction: 'forward' });
+        this.app.getRootNav().push(EventPage, { event: event }, { animate: true, direction: 'forward' });
     }
 }

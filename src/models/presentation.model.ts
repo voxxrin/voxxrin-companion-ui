@@ -1,9 +1,12 @@
+import { Speaker } from './speaker.model';
 
 export interface Presentation {
-    eventId: string;
+    _id: string;
     title: string;
     summary: string;
-    kind: string;
-    favoriteCount: number;
-    remindMeCount: number;
+    speakers: Speaker[];
+    location: Location;
+    from: Date;
+    to: Date;
+    kind: string;    
 }

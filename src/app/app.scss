@@ -1,13 +1,44 @@
 //////////////////////////////////////////
+// VARIABLES
+//////////////////////////////////////////
+
+$header-height: 55px;
+
+//////////////////////////////////////////
 // COMMON
 //////////////////////////////////////////
 
 [has-header] {
-    margin-top: 55px;
+  margin-top: $header-height !important;
+}
+
+[full-height] {
+  height: calc(100% - #{$header-height});
+}
+
+ion-grid, ion-row {
+  height: calc(100% - #{$header-height});
 }
 
 .wrap {
-    white-space: normal;
+  white-space: normal;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+ion-avatar.fix-ratio {
+  img {
+    border-radius: 50px;
+    object-fit: scale-down;
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+[right-border] {
+  border-right: 2px solid darkgray;
 }
 
 //////////////////////////////////////////
@@ -15,41 +46,35 @@
 //////////////////////////////////////////
 
 .home-page {
-    background: url($img-path + '/bg-login.png');
-    .app-logo {
-        display: block;
-        height: 70px;
-        margin-bottom: 12px !important;
-        background: url($icon-path + '/logo.svg') no-repeat;
-        background-position: center center;
-    }
+  background: url($img-path + '/bg-login.png');
+  .app-logo {
+    display: block;
+    height: 70px;
+    margin-bottom: 12px !important;
+    background: url($icon-path + '/logo.svg') no-repeat;
+    background-position: center center;
+  }
 
-    .part-bottom-login {
-        height: 45%;
-        margin-bottom: 0px;
-    }
+  .part-bottom-login {
+    height: 45%;
+    margin-bottom: 0;
+  }
 }
 
 //////////////////////////////////////////
 // COMPONENTS
 //////////////////////////////////////////
 
-.events-list {
-    ion-card-title {
-      font-size: 1.5em;
-      width: 100%;
-      font-weight: bold;
-      color: red;
-    }
-
-    img {
-      object-fit: scale-down;
-    }
-
-    img {
-      width: 100px !important;
-      height: 100px !important;
-    }
+maps {
+  display: block;
+  height: 100%;
 }
 
-
+.events-list {
+  ion-card-title {
+    font-size: 1.5em;
+    width: 100%;
+    font-weight: bold;
+    color: red;
+  }
+}
