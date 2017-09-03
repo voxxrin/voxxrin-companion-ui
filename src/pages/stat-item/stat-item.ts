@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StatItemPage {
 
-    @Input() stat: Statistic;
+    @Input() statistic: Statistic;
 
     constructor(private statsService: StatsService) {
     }

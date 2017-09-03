@@ -10,7 +10,7 @@ export class StatsService {
 
     constructor (private http: HttpClient) {}
 
-    public fecthStats() : Observable<Statistic> {
+    public getStatFromPresentation() : Observable<Statistic> {
         return this.http.get(`${environment.backendApiBaseUrl}/stats/event/5935c2d3e4b080c4b46a8e1b`)
             .map((data: any) => data as Statistic);
     }

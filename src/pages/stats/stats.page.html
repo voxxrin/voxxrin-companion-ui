@@ -1,14 +1,11 @@
 <top-navbar title="Administration des Evénements"></top-navbar>
-<ion-content class="page-stats" *ngIf="stat">
+<ion-content class="page-stats" *ngIf="statistic">
   <p padding>
     Equal-width columns
   </p>
-  <ion-card>
-    <ion-card-content class="stat-ion-card-content">
-      <ion-icon name="md-ionic" color="primary"></ion-icon>
-        {{ stat.eventName }}
-    </ion-card-content>
-  </ion-card>
 
-  <stat-item [stat]="stat"></stat-item>
+  <stat-item [statistic]="statistic"> </stat-item>
+
+  <stat-presentation-list [presentations]="presentations"></stat-presentation-list>
+
 </ion-content>

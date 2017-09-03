@@ -2,43 +2,43 @@
   <ion-row>
     <ion-col>
       <stat-item-component iconName="ios-microphone" titleName="Nombre de talks">
-        {{ stat.talksCount }}
+        {{ statistic.talksCount }}
       </stat-item-component>
     </ion-col>
     <ion-col>
       <stat-item-component iconName="ios-person" titleName="Nombre de speakers">
-        {{ stat.speakersCount }}
+        {{ statistic.speakersCount }}
       </stat-item-component>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <stat-item-component iconName="ios-star" titleName="Favorisation de talks" titleInfoName="utilisateurs" [titleInfoCount]="stat.usersWithFavoritesCount" >
-        {{ stat.favoritesCount }}
+      <stat-item-component iconName="ios-star" titleName="Favorisation de talks" titleInfoName="utilisateurs" [titleInfoCount]="statistic.usersWithFavoritesCount" >
+        {{ statistic.favoritesCount }}
       </stat-item-component>
     </ion-col>
     <ion-col>
-      <stat-item-component iconName="ios-videocam" titleName="Souscription PUSH" titleInfoName="utilisateurs" [titleInfoCount]="stat.usersWithRemindersCount">
-        {{ stat.remindersCount }}
+      <stat-item-component iconName="ios-videocam" titleName="Souscription PUSH" titleInfoName="utilisateurs" [titleInfoCount]="statistic.usersWithRemindersCount">
+        {{ statistic.remindersCount }}
       </stat-item-component>
     </ion-col>
     <ion-col>
-      <stat-item-component iconName="ios-speedometer" titleName="Note moyenne" titleInfoName="notes" [titleInfoCount]="stat.ratingsCount">
-        {{ stat.ratingsAvg}}
+      <stat-item-component iconName="ios-speedometer" titleName="Note moyenne" titleInfoName="notes" [titleInfoCount]="statistic.ratingsCount">
+        {{ statistic.ratingsAvg}}
       </stat-item-component>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <stat-item-component iconName="ios-podium" titleName="Talk le plus favorisé" titleInfoName="notes" [titleInfoCount]="stat.topFavoritedPresentation?.favoriteCount">
-        {{ stat.topFavoritedPresentation?.title}}
+      <stat-item-component iconName="ios-podium" titleName="Talk le plus favorisé" titleInfoName="notes" [titleInfoCount]="statistic.topFavoritedPresentation?.favoriteCount">
+        {{ statistic.topFavoritedPresentation?.title}}
       </stat-item-component>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
       <stat-item-component iconName="ios-podium" titleName="Talk le mieux noté">
-        {{ stat.topRatedPresentation?.title}}
+        {{ statistic.topRatedPresentation?.title}}
       </stat-item-component>
     </ion-col>
   </ion-row>

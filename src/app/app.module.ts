@@ -1,3 +1,5 @@
+import { PresentationService } from './../services/presentation.service';
+import { StatPresentationListComponent } from './../components/stat-presentation-list/stat-presentation-list.component';
 import { StatItemPage } from './../pages/stat-item/stat-item';
 import { StatItemComponent } from './../components/stat-item/stat-item.component';
 import { AuthService } from '../services/auth.service';
@@ -35,6 +37,7 @@ const components = [
     EventComponent,
     AuthActionsComponent,
     StatItemComponent,
+    StatPresentationListComponent,
     // pages
     HomePage,
     EventsPage,
@@ -63,7 +66,8 @@ const components = [
         ConstantsService,
         AuthService,
         JWTService,
-        StatsService
+        StatsService,
+        PresentationService
     ]
 })
 export class AppModule {

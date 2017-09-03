@@ -1,0 +1,29 @@
+<ion-card>
+    <ion-card-header >
+        <ion-item color="danger" class="stat-pres-ion-card-header">
+            Ajouté du contenu associé à un talk
+        </ion-item>
+    </ion-card-header>
+
+    <ion-list *ngFor="let presentation of presentations">
+        <ion-card>
+            <ion-card-header>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col class="stat-pres-ion-col" text-wrap col-10>
+                            {{ presentation.title }}
+                        </ion-col>
+                        <ion-col class="stat-pres-ion-col-button">
+                            <button ion-button icon-only color="sun" >
+                                <ion-icon name="md-settings" color="light"></ion-icon>    
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-header>
+            <ion-card-content>
+                {{ presentation.title }}
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-card>
