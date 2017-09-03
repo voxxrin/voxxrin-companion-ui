@@ -9,4 +9,7 @@ export interface Presentation {
     from: Date;
     to: Date;
     kind: string;    
+    eventId: string;
+    favoriteCount: number;
+    remindMeCount: number;
 }

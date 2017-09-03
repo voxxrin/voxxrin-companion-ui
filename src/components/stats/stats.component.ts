@@ -4,10 +4,10 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @Component({
-  selector: 'stat-item',
-  templateUrl: 'stat-item.html',
+  selector: 'stats',
+  templateUrl: 'stats.component.html',
 })
-export class StatItemPage {
+export class StatsComponent {
 
     @Input() statistic: Statistic;
 

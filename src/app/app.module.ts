@@ -1,9 +1,10 @@
+import { StatsComponent } from './../components/stats/stats.component';
+import { EventAdminPage } from './../pages/event-admin/event-admin.page';
 import { AbstractEventComponent } from './../components/abstract-event/abstract-event.component';
 import { AppComponent } from './app.component';
 import { AuthActionsComponent } from '../components/auth/auth-actions/auth-actions.component';
 import { PresentationService } from './../services/presentation.service';
 import { StatPresentationListComponent } from './../components/stat-presentation-list/stat-presentation-list.component';
-import { StatItemPage } from './../pages/stat-item/stat-item';
 import { StatItemComponent } from './../components/stat-item/stat-item.component';
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,34 +22,18 @@ import { FilteredEventsPage } from '../pages/filtered-events/filtered-events.pag
 import { HomePage } from '../pages/home/home.page';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { BrowserModule } from '@angular/platform-browser';
-import { EventComponent } from '../components/event/event.component';
 import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { SideMenuComponent } from '../components/side-menu/side-menu.component';
-import { AuthActionsComponent } from '../components/auth/auth-actions/auth-actions.component';
-import { EventsListComponent } from '../components/events-list/events-list.component';
-import { AppComponent } from './app.component';
-import { FilteredEventsPage } from '../pages/filtered-events/filtered-events.page';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { JWTInterceptor } from '../services/jwt.interceptor.service';
 import { JWTService } from '../services/jwt.service';
 import { LocalStorageService } from '../services/local-storage.service';
 import { LocationService } from '../services/location.service';
 import { MapsComponent } from '../components/maps/maps.component';
-import { PresentationService } from '../services/presentation.service';
 import { PresentationsPage } from '../pages/presentations/presentations.page';
-import { SideMenuComponent } from '../components/side-menu/side-menu.component';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { TopNavbarComponent } from '../components/top-navbar/top-navbar.component';
 import { UtilsService } from '../services/utils.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
-import { HttpModule } from '@angular/http';
-import { EventPage } from './../pages/event/event.page';
-import { EventsPage } from './../pages/events/events.page';
-import { HomePage } from './../pages/home/home.page';
-import { StatsPage } from './../pages/stats/stats.page';
 import { StatsService } from './../services/stats.service'; 
 
 const components = [
@@ -64,14 +49,14 @@ const components = [
     StatItemComponent,
     StatPresentationListComponent,
     MapsComponent,
+    StatsComponent,
     // pages
     HomePage,
     EventsPage,
     EventPage,
     FilteredEventsPage,
     EventPage,
-    StatsPage,
-    StatItemPage
+    EventAdminPage,
     PresentationsPage
 ];
 
@@ -98,10 +83,9 @@ const components = [
         JWTService,
         LocationService,
         UtilsService,
-        PresentationService
+        PresentationService,
         JWTService,
-        StatsService,
-        PresentationService
+        StatsService
     ]
 })
 export class AppModule {

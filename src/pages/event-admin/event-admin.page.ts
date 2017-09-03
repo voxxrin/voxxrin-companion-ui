@@ -5,16 +5,16 @@ import { Component } from '@angular/core';
 import { StatsService } from '../../services/stats.service';
 
 @Component({
-    selector: 'page-stats',
-    templateUrl: './stats.page.html'
+    selector: 'event-admin',
+    templateUrl: './event-admin.page.html'
 })
-export class StatsPage {
+export class EventAdminPage {
 
     statistic: Statistic;
     presentations: Presentation[];
 
     constructor(private statsService: StatsService, private presentationService: PresentationService) {
         this.statsService.getStatFromPresentation().subscribe(statistic => this.statistic = statistic);
-        this.presentationService.getAllPresentation().subscribe(presentations => this.presentations = presentations);
+        this.presentationService.getAllPresentationFromAnEvent().subscribe(presentations => this.presentations = presentations);
     }
 }
