@@ -1,4 +1,4 @@
-import { Day } from './../models/day.model';
+import { Day } from '../models/day.model';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { environment } from '../app/environment';
