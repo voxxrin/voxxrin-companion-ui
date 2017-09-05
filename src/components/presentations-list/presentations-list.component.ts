@@ -1,3 +1,4 @@
+import { TimeSlot } from './../../models/time-slot.model';
 import { Presentation } from './../../models/presentation.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PresentationsListComponent {
 
-    @Input() presentations: Presentation[];
+    @Input() timeSlots: TimeSlot[];
     @Output() presentationSelected: EventEmitter<Presentation> = new EventEmitter<Presentation>();
 
     constructor() {}

@@ -1,3 +1,4 @@
+import { TimeSlotService } from './../services/time-slot.service';
 import { StatsComponent } from './../components/stats/stats.component';
 import { EventAdminPage } from './../pages/event-admin/event-admin.page';
 import { PresentationPage } from './../pages/presentation/presentation.page';
@@ -89,7 +90,8 @@ const components = [
         UtilsService,
         PresentationService,
         JWTService,
-        StatsService
+        StatsService,
+        TimeSlotService
     ]
 })
 export class AppModule {

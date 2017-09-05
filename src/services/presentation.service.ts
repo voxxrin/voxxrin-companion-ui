@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 
 @Injectable()
 export class PresentationService {
@@ -14,11 +15,24 @@ export class PresentationService {
     public fetchPresentations(day: Day): Observable<Presentation[]> {
         return this.httpClient.get(`${environment.backendApiBaseUrl}/days/${day._id}/presentations`)
                 .map((data: any) => data as Presentation[])
+                .map((presentations: Presentation[]) => this.parsePresentations(presentations))
                 .map((presentations: Presentation[]) =>_.orderBy(presentations, ['from'], ['asc']));
     }
 
     public getAllPresentationFromAnEvent(event: Event) : Observable<Presentation[]> {
         return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${event._id}/presentations`)
-            .map((data: any) => data as Presentation[]);
+            .map((data: any) => data as Presentation[])
+            .map((presentations: Presentation[]) => this.parsePresentations(presentations))
+            .map((presentations: Presentation[]) =>_.orderBy(presentations, ['from'], ['asc']));
+    }
+
+    private parsePresentations(presentations: Presentation[]) {
+        return presentations.map(presentation => this.parsePresentation(presentation));
+    }
+
+    private parsePresentation(presentation: Presentation) {
+        presentation.from = moment(presentation.from);
+        presentation.to = moment(presentation.to);
+        return presentation;
     }
 }

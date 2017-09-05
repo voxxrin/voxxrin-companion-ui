@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { Speaker } from './speaker.model';
 
 export interface Presentation {
@@ -6,8 +7,8 @@ export interface Presentation {
     summary: string;
     speakers: Speaker[];
     location: Location;
-    from: Date;
-    to: Date;
+    from: moment.Moment;
+    to: moment.Moment;
     kind: string;    
     eventId: string;
     favoriteCount: number;
