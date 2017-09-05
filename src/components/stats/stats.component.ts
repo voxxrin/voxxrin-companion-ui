@@ -11,6 +11,5 @@ export class StatsComponent {
 
     @Input() statistic: Statistic;
 
-    constructor(private statsService: StatsService) {
-    }
+    constructor() { }
 }

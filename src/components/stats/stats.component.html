@@ -1,47 +1,51 @@
 <ion-card>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <stat-item iconName="ios-microphone" titleName="Nombre de talks">
-          {{ statistic.talksCount }}
-        </stat-item>
-      </ion-col>
-      <ion-col>
-        <stat-item iconName="ios-person" titleName="Nombre de speakers">
-          {{ statistic.speakersCount }}
-        </stat-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <stat-item iconName="ios-star" titleName="Favorisation de talks" titleInfoName="utilisateurs" [titleInfoCount]="statistic.usersWithFavoritesCount">
-          {{ statistic.favoritesCount }}
-        </stat-item>
-      </ion-col>
-      <ion-col>
-        <stat-item iconName="ios-videocam" titleName="Souscription PUSH" titleInfoName="utilisateurs" [titleInfoCount]="statistic.usersWithRemindersCount">
-          {{ statistic.remindersCount }}
-        </stat-item>
-      </ion-col>
-      <ion-col>
-        <stat-item iconName="ios-speedometer" titleName="Note moyenne" titleInfoName="notes" [titleInfoCount]="statistic.ratingsCount">
-          {{ statistic.ratingsAvg}}
-        </stat-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <stat-item iconName="ios-podium" titleName="Talk le plus favorisé" titleInfoName="notes" [titleInfoCount]="statistic.topFavoritedPresentation?.favoriteCount">
-          {{ statistic.topFavoritedPresentation?.title}}
-        </stat-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <stat-item iconName="ios-podium" titleName="Talk le mieux noté">
-          {{ statistic.topRatedPresentation?.title}}
-        </stat-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <stat-item iconName="ios-microphone" titleName="Nombre de talks">
+                    {{ statistic.talksCount }}
+                </stat-item>
+            </ion-col>
+            <ion-col>
+                <stat-item iconName="ios-person" titleName="Nombre de speakers">
+                    {{ statistic.speakersCount }}
+                </stat-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <stat-item iconName="ios-star" titleName="Favorisation de talks" titleInfoName="utilisateurs"
+                           [titleInfoCount]="statistic.usersWithFavoritesCount">
+                    {{ statistic.favoritesCount }}
+                </stat-item>
+            </ion-col>
+            <ion-col>
+                <stat-item iconName="ios-videocam" titleName="Souscription PUSH" titleInfoName="utilisateurs"
+                           [titleInfoCount]="statistic.usersWithRemindersCount">
+                    {{ statistic.remindersCount }}
+                </stat-item>
+            </ion-col>
+            <ion-col>
+                <stat-item iconName="ios-speedometer" titleName="Note moyenne" titleInfoName="notes"
+                           [titleInfoCount]="statistic.ratingsCount">
+                    {{ statistic.ratingsAvg}}
+                </stat-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <stat-item iconName="ios-podium" titleName="Talk le plus favorisé" titleInfoName="notes"
+                           [titleInfoCount]="statistic.topFavoritedPresentation?.favoriteCount">
+                    {{ statistic.topFavoritedPresentation?.title}}
+                </stat-item>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <stat-item iconName="ios-podium" titleName="Talk le mieux noté">
+                    {{ statistic.topRatedPresentation?.title}}
+                </stat-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-card>

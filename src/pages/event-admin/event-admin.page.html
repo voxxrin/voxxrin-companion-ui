@@ -1,27 +1,25 @@
 <top-navbar title="Administration des Evénements"></top-navbar>
 <ion-content class="page-stats" *ngIf="statistic">
-  <p padding>
-    Equal-width columns
-  </p>
-  <!-- Page Header -->
-  <ion-card>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-4>
-          <ion-avatar item-left class="fix-ratio">
-            <img [src]="selectedEvent.imageUrl">
-          </ion-avatar>
-        </ion-col>
-        <ion-col col-8>
-          <ion-title>{{ selectedEvent.name }}</ion-title>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+    <p padding></p>
+    <!-- Page Header -->
+    <ion-card>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4>
+                    <ion-avatar item-left class="fix-ratio">
+                        <img [src]="selectedEvent.imageUrl">
+                    </ion-avatar>
+                </ion-col>
+                <ion-col col-8>
+                    <ion-title>{{ selectedEvent.name }}</ion-title>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
 
-  <!-- Page statistics -->
-  <stats [statistic]="statistic"> </stats>
+    <!-- Page statistics -->
+    <stats [statistic]="statistic"></stats>
 
-  <!-- Page presentations list  -->
-  <stat-presentation-list [presentations]="presentations"></stat-presentation-list>
+    <!-- Page presentations list  -->
+    <stat-presentation-list [presentations]="presentations"></stat-presentation-list>
 </ion-content>
