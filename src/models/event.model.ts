@@ -10,4 +10,5 @@ export interface Event {
     to: moment.Moment;
     days: Day[];
     imageUrl: string;
+    hashTag: string;
 }
