@@ -17,6 +17,6 @@ export class DayService {
         return this.http.get(`${environment.backendApiBaseUrl}/events/${event._id}/days`)
             .map((response: Response) => response.json())
             .map((data: any) => data as Day[])
-            .map((days: Day[]) => _.orderBy(days, ['date'], ['asc']));
+            .map((days: Day[]) => _.chain(days).orderBy('date', 'asc').value());
     }
 }

@@ -16,7 +16,7 @@ export class EventService {
         return this.http.get(`${environment.backendApiBaseUrl}/events`)
             .map((data: any) => data as Event[])
             .map((events: Event[]) => this.parseEvents(events))
-            .map((events: Event[]) => _.orderBy(events, ['from'], ['desc']));
+            .map((events: Event[]) => _.chain(events).orderBy('from', 'desc').value());
     }
 
     private parseEvents(events: Event[]) {
