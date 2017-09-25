@@ -1,5 +1,5 @@
 <top-navbar title="Administration des Evénements"></top-navbar>
-<ion-content class="page-stats" *ngIf="true"><!-- true instead of statistic-->
+<ion-content class="page-stats" *ngIf="statistic">
     <p padding></p>
     <!-- Page Header -->
     <ion-card>
@@ -18,13 +18,8 @@
     </ion-card>
 
     <!-- Page statistics -->
-    <!-- <stats [statistic]="statistic"></stats> -->
+    <stats [statistic]="statistic"></stats>
 
-    <ion-list [virtualScroll]="presentations">  
-        <ion-item *virtualItem="let presentation" >
-            {{ presentation.from }}
-        </ion-item>
-    </ion-list>
     <!-- Page presentations list  -->
-    <!-- <presentations-list [presentations]="presentations"></presentations-list> -->
+    <presentations-list [presentations]="presentations"></presentations-list>
 </ion-content>

@@ -14,7 +14,7 @@ import { StatsService } from '../../services/stats.service';
 })
 export class EventAdminPage implements OnInit{
 
-    statistic: Statistic;
+    statistic: Statistic = <Statistic>{};
     presentations: Presentation[] = [];
     selectedEvent: Event;
     timeSlots: TimeSlot[];
@@ -24,9 +24,7 @@ export class EventAdminPage implements OnInit{
 
         //Getting the selected event
         this.selectedEvent = navParams.get('selectedEvent');
-    }
 
-    public ngOnInit(): void {
         //Getting associated statistic of the selected event
         this.statsService.getStatFromPresentation(this.selectedEvent).subscribe(statistic => this.statistic = statistic);
         //Getting the presentation list of the selected event
@@ -34,5 +32,8 @@ export class EventAdminPage implements OnInit{
             //this.timeSlots =  this.timeSlot.convertPresentationsTimeSlots(presentations);     
             this.presentations = this.presentations.concat(presentations);
         });
+    }
+
+    public ngOnInit(): void {
     }
 }

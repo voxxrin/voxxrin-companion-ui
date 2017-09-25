@@ -16,14 +16,20 @@ export class PresentationService {
         return this.httpClient.get(`${environment.backendApiBaseUrl}/days/${day._id}/presentations`)
                 .map((data: any) => data as Presentation[])
                 .map((presentations: Presentation[]) => this.parsePresentations(presentations))
-                .map((presentations: Presentation[]) =>_.chain(presentations).orderBy('from', 'asc').value());
+                .map((presentations: Presentation[]) =>_.chain(presentations)
+                                                        .orderBy('from', 'asc')
+                                                        .orderBy('to','asc')
+                                                        .value());
     }
 
     public getAllPresentationFromAnEvent(event: Event) : Observable<Presentation[]> {
         return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${event._id}/presentations`)
             .map((data: any) => data as Presentation[])
             .map((presentations: Presentation[]) => this.parsePresentations(presentations))
-            .map((presentations: Presentation[]) =>_.chain(presentations).orderBy('from', 'asc').value());
+            .map((presentations: Presentation[]) =>_.chain(presentations)
+                                                    .orderBy('from', 'asc')
+                                                    .orderBy('to','asc')
+                                                    .value());
     }
 
     private parsePresentations(presentations: Presentation[]) {

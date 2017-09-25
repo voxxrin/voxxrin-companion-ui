@@ -7,4 +7,6 @@ export class ConstantsService {
     }
 
     dateFormat: string = "dd/MM/yyyy";
+
+    hourFormat: string = "HH:mm";
 }
