@@ -7,6 +7,7 @@ import { PresentationService } from '../../services/presentation.service';
 import { Statistic } from '../../models/stats.model';
 import { Component, OnInit } from '@angular/core';
 import { StatsService } from '../../services/stats.service';
+import { ConstantsService } from './../../services/constants.service';
 
 @Component({
     selector: 'event-admin',
@@ -20,7 +21,7 @@ export class EventAdminPage implements OnInit{
     timeSlots: TimeSlot[];
 
     constructor(private navCtrl: NavController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService,
-        private timeSlot: TimeSlotService) {
+        private timeSlot: TimeSlotService, private constants: ConstantsService) {
 
         //Getting the selected event
         this.selectedEvent = navParams.get('selectedEvent');

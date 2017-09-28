@@ -21,5 +21,26 @@
     <stats [statistic]="statistic"></stats>
 
     <!-- Page presentations list  -->
-    <presentations-list [presentations]="presentations"></presentations-list>
+    <presentations-list [presentations]="presentations">
+        <ng-template #presentationHeader let-header="headerTemplate">
+            {{ header.from.toDate() | date: constants.dateFormat }}
+            {{ header.from.toDate() | date: constants.hourFormat }} 
+            - 
+            {{ header.to.toDate() | date: constants.hourFormat }}
+        </ng-template>
+        <ng-template #presentationBody let-presentation="presentationTemplate">
+
+            <ion-avatar>
+                <img src="" />
+            </ion-avatar>
+
+            {{ presentation.title }} {{ presentation.kind }}
+
+            <ion-icon name="md-pin"></ion-icon>
+            {{ presentation.location}}
+
+            <ion-icon name="ios-person"></ion-icon>
+            {{ presentation.speakers}}
+        </ng-template>
+    </presentations-list>
 </ion-content>

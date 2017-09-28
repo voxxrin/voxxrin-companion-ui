@@ -1,7 +1,5 @@
-import { ConstantsService } from './../../services/constants.service';
-import { TimeSlot } from './../../models/time-slot.model';
 import { Presentation } from './../../models/presentation.model';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
     selector: 'presentations-list',
@@ -9,10 +7,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PresentationsListComponent {
 
+    @ContentChild('presentationHeader') templateHeader:TemplateRef<Presentation>;
+    @ContentChild('presentationBody') templateBody:TemplateRef<Presentation>;
+
     @Input() presentations: Presentation[];
     @Output() presentationSelected: EventEmitter<Presentation> = new EventEmitter<Presentation>();
 
-    constructor(public constants: ConstantsService ) {}
+    constructor() {}
 
     onSelectedPresentation(presentation: Presentation): void {
         this.presentationSelected.emit(presentation);

@@ -1,22 +1,23 @@
 <ion-list [virtualScroll]="presentations" [headerFn]="getPresentationSlotKey">
     <ion-item-divider *virtualHeader="let header">
         <ion-icon name="md-clock"></ion-icon>
-        {{ header.from.toDate() | date: constants.dateFormat  }}
-        {{ header.from.toDate() | date: constants.hourFormat  }} - {{ header.to.toDate() | date: constants.hourFormat  }}
+        <ng-template 
+            [ngTemplateOutlet]="templateHeader"
+            [ngOutletContext]="{
+                 headerTemplate: header
+                }">
+        </ng-template>
+
+        <!-- {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate()
+        | date: constants.hourFormat }} -->
     </ion-item-divider>
     <ion-item *virtualItem="let presentation">
-        <ion-avatar>
-            <img src=""/>
-        </ion-avatar>
-        {{ presentation.title }}
-
-        {{ presentation.kind }}
-
-        <ion-icon name="md-pin"></ion-icon>
-        {{ presentation.location}}  
-
-        <ion-icon name="ios-person"></ion-icon>
-        {{ presentation.speakers}}  
+        <ng-template 
+            [ngTemplateOutlet]="templateBody"
+            [ngOutletContext]="{
+                 presentationTemplate: presentation
+                }">
+        </ng-template>
     </ion-item>
 </ion-list>
 <!-- <ion-list *ngFor="let presentation of presentations">
