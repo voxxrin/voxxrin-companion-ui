@@ -6,7 +6,6 @@ import { AbstractEventComponent } from './../components/abstract-event/abstract-
 import { AppComponent } from './app.component';
 import { AuthActionsComponent } from '../components/auth/auth-actions/auth-actions.component';
 import { PresentationService } from './../services/presentation.service';
-import { StatPresentationListComponent } from './../components/stat-presentation-list/stat-presentation-list.component';
 import { StatItemComponent } from './../components/stat-item/stat-item.component';
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,7 +49,6 @@ const components = [
     EventAbstractComponent,
     AuthActionsComponent,
     StatItemComponent,
-    StatPresentationListComponent,
     MapsComponent,
     StatsComponent,
     PresentationsListComponent,
