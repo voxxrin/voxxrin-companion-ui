@@ -20,27 +20,30 @@
     <!-- Page statistics -->
     <stats [statistic]="statistic"></stats>
 
+    <ion-card-header>
+        <ion-item color="danger" class="stat-pres-ion-card-header">
+            Ajouter du contenu associé à un talk
+        </ion-item>
+    </ion-card-header>
     <!-- Page presentations list  -->
     <presentations-list [presentations]="presentations">
         <ng-template #presentationHeader let-header="headerTemplate">
-            {{ header.from.toDate() | date: constants.dateFormat }}
-            {{ header.from.toDate() | date: constants.hourFormat }} 
-            - 
-            {{ header.to.toDate() | date: constants.hourFormat }}
+            {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate()
+            | date: constants.hourFormat }}
         </ng-template>
         <ng-template #presentationBody let-presentation="presentationTemplate">
-
-            <ion-avatar>
-                <img src="" />
-            </ion-avatar>
-
-            {{ presentation.title }} {{ presentation.kind }}
-
-            <ion-icon name="md-pin"></ion-icon>
-            {{ presentation.location}}
-
-            <ion-icon name="ios-person"></ion-icon>
-            {{ presentation.speakers}}
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="stat-pres-ion-col" text-wrap col-10>
+                        {{ presentation.title }}
+                    </ion-col>
+                    <ion-col class="stat-pres-ion-col-button">
+                        <button ion-button icon-only color="sun">
+                            <ion-icon name="md-settings" color="light"></ion-icon>    
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ng-template>
     </presentations-list>
 </ion-content>

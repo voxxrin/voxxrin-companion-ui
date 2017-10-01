@@ -1,46 +1,17 @@
 <ion-list [virtualScroll]="presentations" [headerFn]="getPresentationSlotKey">
     <ion-item-divider *virtualHeader="let header">
-        <ion-icon name="md-clock"></ion-icon>
-        <ng-template 
-            [ngTemplateOutlet]="templateHeader"
-            [ngOutletContext]="{
+        <ion-item color="danger">
+            <ion-icon name="md-clock"></ion-icon>
+            <ng-template [ngTemplateOutlet]="templateHeader" [ngOutletContext]="{
                  headerTemplate: header
                 }">
-        </ng-template>
-
-        <!-- {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate()
-        | date: constants.hourFormat }} -->
+            </ng-template>
+        </ion-item>
     </ion-item-divider>
     <ion-item *virtualItem="let presentation">
-        <ng-template 
-            [ngTemplateOutlet]="templateBody"
-            [ngOutletContext]="{
+        <ng-template [ngTemplateOutlet]="templateBody" [ngOutletContext]="{
                  presentationTemplate: presentation
                 }">
         </ng-template>
     </ion-item>
 </ion-list>
-<!-- <ion-list *ngFor="let presentation of presentations">
-    <ion-card>
-        <ion-card-header>
-            <ion-grid>
-                <ion-row>
-                    <ion-col class="stat-pres-ion-col" text-wrap col-10>
-                        {{ presentation.title }}
-                    </ion-col>
-                    <ion-col class="stat-pres-ion-col-button">
-                        <button ion-button icon-only color="sun" >
-                            <ion-icon name="md-settings" color="light"></ion-icon>    
-                        </button>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-item>
-                <ion-datetime displayFormat="YYYY-MM-DD HH:mm" [(ngModel)]="presentation.from"> </ion-datetime>
-                <ion-datetime displayFormat="YYYY-MM-DD HH:mm" [(ngModel)]="presentation.to"> </ion-datetime>
-            </ion-item>
-        </ion-card-content>
-    </ion-card>
-</ion-list> -->
