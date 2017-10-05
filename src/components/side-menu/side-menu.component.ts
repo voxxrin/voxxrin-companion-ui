@@ -1,8 +1,7 @@
-import { HomePage } from './../../pages/home/home.page';
-import { EventsPage } from './../../pages/events/events.page';
+import { HomePage } from '../../pages/home/home.page';
+import { EventsPage } from '../../pages/events/events.page';
 import { App } from 'ionic-angular';
-import { Input } from '@angular/core';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 

@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { Event } from '../../models/event.model';
-import { Day } from './../../models/day.model';
-import { DayService } from "../../services/day.service";
+import { Day } from '../../models/day.model';
+import { DayService } from '../../services/day.service';
 import { Location } from '../../models/location.model';
 
 @Component({

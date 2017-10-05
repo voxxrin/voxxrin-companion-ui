@@ -1,4 +1,4 @@
-import { Presentation } from './../../models/presentation.model';
+import { Presentation } from '../../models/presentation.model';
 import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
@@ -18,11 +18,11 @@ export class PresentationsListComponent {
     onSelectedPresentation(presentation: Presentation): void {
         this.presentationSelected.emit(presentation);
     }
-    
+
     getPresentationSlotKey(presentation: Presentation, index: number, list: Presentation[]) {
         if (index == 0) {
             return presentation;
-        } else if(list[index-1].from.isSame(list[index].from, "minute") 
+        } else if(list[index-1].from.isSame(list[index].from, "minute")
             && list[index-1].to.isSame(list[index].to, "minute")){
             return null;
         } else {

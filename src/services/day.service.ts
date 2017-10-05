@@ -5,7 +5,6 @@ import { environment } from '../app/environment';
 import { Event } from '../models/event.model';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import * as moment from 'moment';
 import * as _ from 'lodash';
 
 @Injectable()

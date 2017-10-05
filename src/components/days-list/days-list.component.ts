@@ -1,6 +1,5 @@
-import { DateTime } from 'ionic-angular/es2015';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Day } from "../../models/day.model";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Day } from '../../models/day.model';
 
 @Component({
     selector: 'days-list',

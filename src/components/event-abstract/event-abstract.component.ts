@@ -1,5 +1,5 @@
 import { Event } from '../../models/event.model';
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'event-abstract',

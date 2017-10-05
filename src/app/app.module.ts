@@ -1,12 +1,13 @@
-import { PresentationModalComponent } from './../components/presentation-modal/presentation-modal.component';
-import { SpeakerNamesPipe } from './../services/speaker-names.pipe';
-import { StatsComponent } from './../components/stats/stats.component';
-import { EventAdminPage } from './../pages/event-admin/event-admin.page';
-import { PresentationPage } from './../pages/presentation/presentation.page';
+import 'moment';
+
+import { StatsComponent } from '../components/stats/stats.component';
+import { EventAdminPage } from '../pages/event-admin/event-admin.page';
+import { PresentationPage } from '../pages/presentation/presentation.page';
 import { AbstractEventComponent } from './../components/abstract-event/abstract-event.component';
 import { AppComponent } from './app.component';
 import { AuthActionsComponent } from '../components/auth/auth-actions/auth-actions.component';
 import { PresentationService } from './../services/presentation.service';
+import { StatPresentationListComponent } from './../components/stat-presentation-list/stat-presentation-list.component';
 import { StatItemComponent } from './../components/stat-item/stat-item.component';
 import { AuthService } from '../services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -37,7 +38,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { UtilsService } from '../services/utils.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
-import { StatsService } from './../services/stats.service'; 
+import { StatsService } from '../services/stats.service';
+import { PresentationModalComponent } from '../components/presentation-modal/presentation-modal.component';
+import { SpeakerNamesPipe } from '../services/speaker-names.pipe';
 
 let components:any[] = [
     // components
