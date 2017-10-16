@@ -10,6 +10,7 @@ import * as moment from 'moment';
 
 @Injectable()
 export class PresentationService {
+
     constructor (private httpClient: HttpClient) {}
 
     public fetchPresentations(day: Day): Observable<Presentation[]> {

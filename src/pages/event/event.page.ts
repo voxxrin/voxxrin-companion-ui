@@ -4,6 +4,8 @@ import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from './../../models/event.model';
 import { App, NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
+import { TwitterFeedPage } from '../tweet-feed/twitter-feed.page';
+import { Tweet } from '../../models/tweet.model';
 
 @Component({
     templateUrl: 'event.page.html'
@@ -24,5 +26,9 @@ export class EventPage implements OnInit {
 
     public navigateToEventAdminPage(): void {
         this.app.getRootNav().push(EventAdminPage, { selectedEvent: this.event });
+    }
+
+    public displayTwitterFeed(): void {
+        this.app.getRootNav().push(TwitterFeedPage, { event: this.event });
     }
 }

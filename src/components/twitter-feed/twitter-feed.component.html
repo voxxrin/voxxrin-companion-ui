@@ -1,0 +1,11 @@
+<ion-list>
+    <ion-item *ngFor="let tweet of tweets" text-wrap>
+        <ion-avatar item-left>
+            <img [src]="tweet.authorImage">
+        </ion-avatar>
+        <span>{{ tweet.text }}</span>
+        <br>
+        <ion-badge color="secondary">{{ tweet.authorName }}</ion-badge>
+        <ion-badge>{{ tweet.createdAt | date: constants.dateTimeFormat }}</ion-badge>
+    </ion-item>
+</ion-list>

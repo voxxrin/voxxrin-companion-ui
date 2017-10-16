@@ -3,6 +3,7 @@ import * as moment from 'moment';
 
 export interface Event {
     _id: string;
+    eventId: string;
     name: string;
     description: string;
     location: string;

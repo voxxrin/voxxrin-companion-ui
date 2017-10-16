@@ -41,6 +41,9 @@ import { JWTInterceptor } from '../services/jwt.interceptor.service';
 import { StatsService } from '../services/stats.service';
 import { PresentationModalComponent } from '../components/presentation-modal/presentation-modal.component';
 import { SpeakerNamesPipe } from '../services/speaker-names.pipe';
+import { TwitterFeedComponent } from '../components/twitter-feed/twitter-feed.component';
+import { TwitterFeedPage } from '../pages/tweet-feed/twitter-feed.page';
+import { FeedService } from '../services/feed.service';
 
 let components:any[] = [
     // components
@@ -57,6 +60,7 @@ let components:any[] = [
     StatsComponent,
     PresentationsListComponent,
     PresentationModalComponent,
+    TwitterFeedComponent,
     // pages
     HomePage,
     EventsPage,
@@ -65,7 +69,8 @@ let components:any[] = [
     EventPage,
     EventAdminPage,
     PresentationsPage,
-    PresentationPage
+    PresentationPage,
+    TwitterFeedPage
 ];
 let pipes = [SpeakerNamesPipe]
 
@@ -94,7 +99,8 @@ let pipes = [SpeakerNamesPipe]
         UtilsService,
         PresentationService,
         JWTService,
-        StatsService
+        StatsService,
+        FeedService
     ]
 })
 export class AppModule {
