@@ -7,14 +7,21 @@
             {{ header.to.toDate() | date: constants.hourFormat }}
         </ng-template>
         <ng-template #presentationBody let-presentation="presentationTemplate">
-            <ion-avatar *ngIf="presentation.speakers && presentation.speakers[0]">
-                <img [src]="presentation.speakers[0].avatarUrl" />
-            </ion-avatar>
-            {{ presentation.title }} {{ presentation.kind }}
-            <ion-icon name="md-pin"></ion-icon>
-            {{ presentation.location.fullname }}
-            <ion-icon name="ios-person"></ion-icon>
-            {{ presentation.speakers | speakerNames}}
+            <ion-item>
+                <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
+                    <img [src]="presentation.speakers[0].avatarUrl" />
+                </ion-avatar>
+                <h2>{{ presentation.title }}</h2>
+                <ion-badge>{{ presentation.kind }}</ion-badge>
+                <div *ngIf="presentation.location">
+                    <ion-icon name="md-pin"></ion-icon>
+                    {{ presentation.location.fullName }}
+                </div>
+                <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
+                    <ion-icon name="ios-person"></ion-icon>
+                    {{ presentation.speakers | speakerNames}}
+                </div>
+            </ion-item>
         </ng-template>
     </presentations-list>
 </ion-content>

@@ -1,3 +1,3 @@
 export interface Room {
-    fullname: string;
+    fullName: string;
 }
