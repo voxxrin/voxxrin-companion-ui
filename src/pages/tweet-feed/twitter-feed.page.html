@@ -1,4 +1,8 @@
-<top-navbar [title]="event.name + ' - Flux Twitter'"></top-navbar>
+<top-navbar [title]="event.name + ' - Flux Twitter'">
+    <button ion-button icon-only full (click)="goBackToEvent()">
+        <ion-icon name="md-arrow-back"></ion-icon>
+    </button>
+</top-navbar>
 <ion-content padding has-header>
     <twitter-feed [tweets]="tweets"></twitter-feed>
 </ion-content>

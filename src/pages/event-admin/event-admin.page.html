@@ -28,8 +28,7 @@
     <!-- Page presentations list  -->
     <presentations-list [presentations]="presentations">
         <ng-template #presentationHeader let-header="headerTemplate">
-            {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate()
-            | date: constants.hourFormat }}
+            {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
         </ng-template>
         <ng-template #presentationBody let-presentation="presentationTemplate">
             <ion-grid>
