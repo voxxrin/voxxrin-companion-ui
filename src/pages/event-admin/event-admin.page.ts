@@ -1,5 +1,6 @@
+import { PresentationModalComponent } from './../../components/presentation-modal/presentation-modal.component';
 import { Event } from '../../models/event.model';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { PresentationService } from '../../services/presentation.service';
 import { Statistic } from '../../models/stats.model';
@@ -17,7 +18,7 @@ export class EventAdminPage implements OnInit{
     presentations: Presentation[] = [];
     selectedEvent: Event;
 
-    constructor(private navCtrl: NavController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService, public constants: ConstantsService) {
+    constructor(private modalCtrl: ModalController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService, private constants: ConstantsService) {
 
         //Getting the selected event
         this.selectedEvent = navParams.get('selectedEvent');
@@ -32,5 +33,10 @@ export class EventAdminPage implements OnInit{
     }
 
     public ngOnInit(): void {
+    }
+
+    displayPresentationModal() {
+        const presentationModal = this.modalCtrl.create(PresentationModalComponent, {userId : 987651});
+        presentationModal.present();
     }
 }

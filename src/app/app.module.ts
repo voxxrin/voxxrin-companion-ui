@@ -1,3 +1,4 @@
+import { PresentationModalComponent } from './../components/presentation-modal/presentation-modal.component';
 import { SpeakerNamesPipe } from './../services/speaker-names.pipe';
 import { StatsComponent } from './../components/stats/stats.component';
 import { EventAdminPage } from './../pages/event-admin/event-admin.page';
@@ -52,6 +53,7 @@ let components:any[] = [
     MapsComponent,
     StatsComponent,
     PresentationsListComponent,
+    PresentationModalComponent,
     // pages
     HomePage,
     EventsPage,
