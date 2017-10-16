@@ -1,5 +1,3 @@
-import { TimeSlot } from './../../models/time-slot.model';
-import { TimeSlotService } from './../../services/time-slot.service';
 import { Event } from '../../models/event.model';
 import { NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
@@ -18,19 +16,17 @@ export class EventAdminPage implements OnInit{
     statistic: Statistic = <Statistic>{};
     presentations: Presentation[] = [];
     selectedEvent: Event;
-    timeSlots: TimeSlot[];
 
-    constructor(private navCtrl: NavController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService,
-        private timeSlot: TimeSlotService, private constants: ConstantsService) {
+    constructor(private navCtrl: NavController, private navParams: NavParams, private statsService: StatsService, private presentationService: PresentationService, public constants: ConstantsService) {
 
         //Getting the selected event
         this.selectedEvent = navParams.get('selectedEvent');
 
         //Getting associated statistic of the selected event
         this.statsService.getStatFromPresentation(this.selectedEvent).subscribe(statistic => this.statistic = statistic);
+
         //Getting the presentation list of the selected event
         this.presentationService.getAllPresentationFromAnEvent(this.selectedEvent).subscribe(presentations => {
-            //this.timeSlots =  this.timeSlot.convertPresentationsTimeSlots(presentations);     
             this.presentations = this.presentations.concat(presentations);
         });
     }

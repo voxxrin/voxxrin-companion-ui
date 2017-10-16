@@ -2,16 +2,16 @@
     <ion-item-divider *virtualHeader="let header">
         <ion-item color="danger">
             <ion-icon name="md-clock"></ion-icon>
-            <ng-template [ngTemplateOutlet]="templateHeader" [ngOutletContext]="{
-                 headerTemplate: header
-                }">
+            <ng-template 
+                [ngTemplateOutlet]="templateHeader" 
+                [ngOutletContext]="{headerTemplate: header}">
             </ng-template>
         </ion-item>
     </ion-item-divider>
     <ion-item *virtualItem="let presentation">
-        <ng-template [ngTemplateOutlet]="templateBody" [ngOutletContext]="{
-                 presentationTemplate: presentation
-                }">
+        <ng-template 
+            [ngTemplateOutlet]="templateBody" 
+            [ngOutletContext]="{presentationTemplate: presentation}">
         </ng-template>
     </ion-item>
 </ion-list>

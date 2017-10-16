@@ -1,3 +1,4 @@
+import { Room } from './room.model';
 import * as moment from 'moment';
 import { Speaker } from './speaker.model';
 
@@ -6,7 +7,7 @@ export interface Presentation {
     title: string;
     summary: string;
     speakers: Speaker[];
-    location: Location;
+    location: Room;
     from: moment.Moment;
     to: moment.Moment;
     kind: string;    

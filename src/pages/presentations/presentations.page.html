@@ -1,4 +1,20 @@
 <ion-content>
     <top-navbar title="Liste des présentations"></top-navbar>
-    <!-- <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)"></presentations-list> -->
+    <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)" >
+        <ng-template #presentationHeader let-header="headerTemplate">
+            {{ header.from.toDate() | date: constants.hourFormat }} 
+            - 
+            {{ header.to.toDate() | date: constants.hourFormat }}
+        </ng-template>
+        <ng-template #presentationBody let-presentation="presentationTemplate">
+            <ion-avatar *ngIf="presentation.speakers && presentation.speakers[0]">
+                <img [src]="presentation.speakers[0].avatarUrl" />
+            </ion-avatar>
+            {{ presentation.title }} {{ presentation.kind }}
+            <ion-icon name="md-pin"></ion-icon>
+            {{ presentation.location.fullname }}
+            <ion-icon name="ios-person"></ion-icon>
+            {{ presentation.speakers | speakerNames}}
+        </ng-template>
+    </presentations-list>
 </ion-content>

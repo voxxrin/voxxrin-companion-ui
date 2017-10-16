@@ -1,3 +1,4 @@
+import { ConstantsService } from './../../services/constants.service';
 import { PresentationService } from './../../services/presentation.service';
 import { Day } from './../../models/day.model';
 import { App, NavParams } from 'ionic-angular';
@@ -10,9 +11,10 @@ import { PresentationPage } from "../presentation/presentation.page";
 })
 export class PresentationsPage implements OnInit {
 
-    public presentations: Presentation[];
+    public presentations: Presentation[] = [];
 
-    constructor(private app: App, private navParams: NavParams, private presentationService: PresentationService) { }
+    constructor(private app: App, private navParams: NavParams, private presentationService: PresentationService, 
+        public constants: ConstantsService) {}
 
     ngOnInit() {
         let day: Day = this.navParams.data.day;
@@ -23,4 +25,4 @@ export class PresentationsPage implements OnInit {
     public navigateToPresentation(presentation: Presentation): void {
         this.app.getRootNav().push(PresentationPage, { presentation: presentation }, { animate: true, direction: 'forward' })
     }
-}6
+}

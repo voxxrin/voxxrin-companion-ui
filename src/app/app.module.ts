@@ -1,4 +1,4 @@
-import { TimeSlotService } from './../services/time-slot.service';
+import { SpeakerNamesPipe } from './../services/speaker-names.pipe';
 import { StatsComponent } from './../components/stats/stats.component';
 import { EventAdminPage } from './../pages/event-admin/event-admin.page';
 import { PresentationPage } from './../pages/presentation/presentation.page';
@@ -38,7 +38,7 @@ import { UtilsService } from '../services/utils.service';
 import { JWTInterceptor } from '../services/jwt.interceptor.service';
 import { StatsService } from './../services/stats.service'; 
 
-const components = [
+let components:any[] = [
     // components
     AppComponent,
     EventsListComponent,
@@ -62,9 +62,10 @@ const components = [
     PresentationsPage,
     PresentationPage
 ];
+let pipes = [SpeakerNamesPipe]
 
 @NgModule({
-    declarations: components,
+    declarations: components.concat(pipes),
     imports: [
         HttpModule,
         HttpClientModule,
@@ -88,8 +89,7 @@ const components = [
         UtilsService,
         PresentationService,
         JWTService,
-        StatsService,
-        TimeSlotService
+        StatsService
     ]
 })
 export class AppModule {
