@@ -5,7 +5,6 @@ import { Event } from './../../models/event.model';
 import { App, NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { TwitterFeedPage } from '../tweet-feed/twitter-feed.page';
-import { Tweet } from '../../models/tweet.model';
 
 @Component({
     templateUrl: 'event.page.html'

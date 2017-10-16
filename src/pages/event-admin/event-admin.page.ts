@@ -1,6 +1,6 @@
 import { PresentationModalComponent } from './../../components/presentation-modal/presentation-modal.component';
 import { Event } from '../../models/event.model';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { ModalController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { PresentationService } from '../../services/presentation.service';
 import { Statistic } from '../../models/stats.model';

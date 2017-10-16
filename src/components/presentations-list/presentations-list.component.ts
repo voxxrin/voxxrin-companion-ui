@@ -1,5 +1,5 @@
 import { Presentation } from '../../models/presentation.model';
-import { Component, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 
 @Component({
     selector: 'presentations-list',
