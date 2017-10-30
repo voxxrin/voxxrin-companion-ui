@@ -1,27 +1,29 @@
 <top-navbar title="Liste des présentations"></top-navbar>
 <ion-content has-header>
-    <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)" >
-        <ng-template #presentationHeader let-header="headerTemplate">
-            {{ header.from.toDate() | date: constants.hourFormat }}
-            -
-            {{ header.to.toDate() | date: constants.hourFormat }}
-        </ng-template>
-        <ng-template #presentationBody let-presentation="presentationTemplate">
-            <ion-item>
-                <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
-                    <img [src]="presentation.speakers[0].avatarUrl" />
-                </ion-avatar>
-                <h2>{{ presentation.title }}</h2>
-                <ion-badge>{{ presentation.kind }}</ion-badge>
-                <div *ngIf="presentation.location">
-                    <ion-icon name="md-pin"></ion-icon>
-                    {{ presentation.location.fullName }}
-                </div>
-                <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
-                    <ion-icon name="ios-person"></ion-icon>
-                    {{ presentation.speakers | speakerNames}}
-                </div>
-            </ion-item>
-        </ng-template>
-    </presentations-list>
+    <div has-footer>
+        <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
+            <ng-template #presentationHeader let-header="headerTemplate">
+                {{ header.from.toDate() | date: constants.hourFormat }}
+                -
+                {{ header.to.toDate() | date: constants.hourFormat }}
+            </ng-template>
+            <ng-template #presentationBody let-presentation="presentationTemplate">
+                <ion-item>
+                    <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
+                        <img [src]="presentation.speakers[0].avatarUrl"/>
+                    </ion-avatar>
+                    <h2>{{ presentation.title }}</h2>
+                    <ion-badge>{{ presentation.kind }}</ion-badge>
+                    <div *ngIf="presentation.location">
+                        <ion-icon name="md-pin"></ion-icon>
+                        {{ presentation.location.fullName }}
+                    </div>
+                    <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
+                        <ion-icon name="ios-person"></ion-icon>
+                        {{ presentation.speakers | speakerNames}}
+                    </div>
+                </ion-item>
+            </ng-template>
+        </presentations-list>
+    </div>
 </ion-content>
