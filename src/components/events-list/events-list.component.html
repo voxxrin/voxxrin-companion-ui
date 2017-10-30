@@ -1,6 +1,6 @@
 <div class="events-list scroll-content ionic-scroll">
-    <ion-list *ngFor="let event of events">
-        <ion-card (click)="onSelectedEvent(event)" class="clickable">
+    <ion-list has-footer>
+        <ion-card (click)="onSelectedEvent(event)" class="clickable" *ngFor="let event of events">
             <ion-card-content>
                 <ion-item>
                     <ion-avatar item-left class="fix-ratio">

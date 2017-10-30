@@ -8,14 +8,6 @@ $header-height: 55px;
 // COMMON
 //////////////////////////////////////////
 
-[has-header] {
-  margin-top: $header-height !important;
-}
-
-[full-height] {
-  height: calc(100% - #{$header-height});
-}
-
 ion-grid, ion-row {
   height: calc(100% - #{$header-height});
 }
@@ -35,6 +27,14 @@ ion-avatar.fix-ratio {
     width: 100px !important;
     height: 100px !important;
   }
+}
+
+[has-header] {
+  margin-top: $header-height;
+}
+
+[has-footer] {
+  padding-bottom: 50px;
 }
 
 [right-border] {

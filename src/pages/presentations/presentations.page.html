@@ -1,5 +1,5 @@
 <top-navbar title="Liste des présentations"></top-navbar>
-<ion-content>
+<ion-content has-header>
     <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)" >
         <ng-template #presentationHeader let-header="headerTemplate">
             {{ header.from.toDate() | date: constants.hourFormat }}
