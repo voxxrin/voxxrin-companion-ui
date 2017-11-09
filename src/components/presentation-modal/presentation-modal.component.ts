@@ -1,3 +1,4 @@
+import { PresentationService } from './../../services/presentation.service';
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 
@@ -6,11 +7,25 @@ import { NavParams, ViewController } from 'ionic-angular';
     templateUrl: 'presentation-modal.component.html'
 })
 export class PresentationModalComponent {
-    
-    myParam: string;
 
-    constructor(private viewCtrl: ViewController, private params: NavParams) {
-            this.myParam = params.get('userId');
+    url: string;
+    description: string;
+    userId: string;
+    mimeType: string;
+    presentationId: string;
+
+    constructor(private viewCtrl: ViewController, private params: NavParams, private presentationService: PresentationService) {
+        this.presentationId = params.get('presentationId');
+    }
+
+    uploadContent() {
+        let attachedContent = {
+            url: this.url, 
+            description: this.description,
+            userId: this.userId,
+            mimeType: this.mimeType
+        };
+        this.presentationService.setUrlContentToAPresentation(attachedContent).subscribe();
     }
 
     dismiss() {
