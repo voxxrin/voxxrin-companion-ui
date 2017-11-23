@@ -12,7 +12,7 @@
                     <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
                         <img [src]="presentation.speakers[0].avatarUrl"/>
                     </ion-avatar>
-                    <h2>{{ presentation.title }}</h2>
+                    <h2 text-wrap>{{ presentation.title }}</h2>
                     <ion-badge>{{ presentation.kind }}</ion-badge>
                     <div *ngIf="presentation.location">
                         <ion-icon name="md-pin"></ion-icon>

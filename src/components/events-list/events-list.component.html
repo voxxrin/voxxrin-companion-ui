@@ -4,7 +4,7 @@
             <ion-avatar item-left class="fix-ratio">
                 <img [src]="event.imageUrl">
             </ion-avatar>
-            <ion-card-title class="wrap">
+            <ion-card-title text-wrap>
                 {{ event.name }}
             </ion-card-title>
             <p>
@@ -13,7 +13,7 @@
             </p>
             <p>
                 <ion-icon name="locate"></ion-icon>
-                {{ event.location }}
+                <span text-wrap>{{ event.location }}</span>
             </p>
         </ion-item>
     </ion-list>
