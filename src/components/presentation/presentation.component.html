@@ -36,9 +36,9 @@
                 <ion-avatar class="fix-ratio" item-left>
                     <img [src]="speaker.avatarUrl"/>
                 </ion-avatar>
-                {{ speaker.name }} - {{ speaker.company }}
+                <b>{{ speaker.name }}</b> - {{ speaker.company }}
                 <div>
-                    {{ speaker.twitterId }}
+                    @{{ speaker.twitterId }}
                 </div>
                 <div>
                     {{ speaker.bio }}
