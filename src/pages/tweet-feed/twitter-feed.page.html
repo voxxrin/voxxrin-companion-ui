@@ -3,6 +3,8 @@
         <ion-icon name="md-arrow-back"></ion-icon>
     </button>
 </top-navbar>
-<ion-content padding has-header>
-    <twitter-feed [tweets]="tweets"></twitter-feed>
+<ion-content has-header>
+    <div has-footer>
+        <twitter-feed [tweets]="tweets"></twitter-feed>
+    </div>
 </ion-content>
