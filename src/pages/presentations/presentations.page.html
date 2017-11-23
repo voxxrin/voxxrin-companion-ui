@@ -3,14 +3,12 @@
     <div has-footer>
         <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
             <ng-template #presentationHeader let-header="headerTemplate">
-                {{ header.from.toDate() | date: constants.hourFormat }}
-                -
-                {{ header.to.toDate() | date: constants.hourFormat }}
+                {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
             </ng-template>
             <ng-template #presentationBody let-presentation="presentationTemplate">
-                <ion-item>
+                <ion-item (click)="navigateToPresentation(presentation)">
                     <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
-                        <img [src]="presentation.speakers[0].avatarUrl"/>
+                        <img [src]="presentation.speakers[0].avatarUrl" />
                     </ion-avatar>
                     <h2 text-wrap>{{ presentation.title }}</h2>
                     <ion-badge>{{ presentation.kind }}</ion-badge>

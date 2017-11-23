@@ -1,3 +1,4 @@
+import { NavParams, App } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component } from '@angular/core';
 
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class PresentationPage {
 
-    public presentations: Presentation[];
+    public presentation: Presentation;
 
+    constructor(private app: App, private navParams: NavParams) { }
+
+    ngOnInit(): void {
+        this.presentation = this.navParams.data.presentation;
+    }
 }

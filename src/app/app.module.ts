@@ -1,3 +1,4 @@
+import { PresentationComponent } from './../components/presentation/presentation.component';
 import 'moment';
 
 import { StatsComponent } from '../components/stats/stats.component';
@@ -61,6 +62,7 @@ let components:any[] = [
     PresentationsListComponent,
     PresentationModalComponent,
     TwitterFeedComponent,
+    PresentationComponent,
     // pages
     HomePage,
     EventsPage,
