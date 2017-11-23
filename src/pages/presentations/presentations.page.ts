@@ -12,14 +12,17 @@ import { ConstantsService } from '../../services/constants.service';
 export class PresentationsPage implements OnInit {
 
     public presentations: Presentation[] = [];
+    private day: Day;
 
-    constructor(private app: App, private navParams: NavParams, private presentationService: PresentationService,
-        public constants: ConstantsService) {}
+    constructor(private app: App,
+                private navParams: NavParams,
+                private presentationService: PresentationService,
+                public constants: ConstantsService) {
+    }
 
     ngOnInit() {
-        let day: Day = this.navParams.data.day;
-        this.presentationService.fetchPresentations(day)
-                                .subscribe(presentations => this.presentations = presentations);
+        this.day = this.navParams.data.day;
+        this.presentationService.fetchPresentations(this.day).subscribe(presentations => this.presentations = presentations);
     }
 
     public navigateToPresentation(presentation: Presentation): void {

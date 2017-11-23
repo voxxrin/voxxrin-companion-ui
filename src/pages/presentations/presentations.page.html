@@ -1,4 +1,4 @@
-<top-navbar title="Liste des présentations"></top-navbar>
+<top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
 <ion-content has-header>
     <div has-footer>
         <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
