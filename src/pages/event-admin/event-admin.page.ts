@@ -35,8 +35,8 @@ export class EventAdminPage implements OnInit{
     public ngOnInit(): void {
     }
 
-    displayPresentationModal(presentationId) {
-        const presentationModal = this.modalCtrl.create(PresentationModalComponent, {presentationId : presentationId});
+    displayPresentationModal() {
+        const presentationModal = this.modalCtrl.create(PresentationModalComponent, {userId : 987651});
         presentationModal.present();
     }
 }

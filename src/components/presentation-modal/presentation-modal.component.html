@@ -7,14 +7,16 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <ion-item>
-        <ion-label>URL</ion-label>
-        <ion-input [(ngModel)]="url"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>DESCRIPTION</ion-label>
-        <ion-input [(ngModel)]="description"></ion-input>
-    </ion-item>
-    <button ion-button color="danger" full (click)="uploadContent()">Ok</button>
-    <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
-</ion-content>
+    <form>
+        <ion-item>
+            <ion-label>URL</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>DESCRIPTION</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+        <button ion-button color="danger" full (click)="dismiss()">Ok</button>
+        <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
+    </form>
+  </ion-content>

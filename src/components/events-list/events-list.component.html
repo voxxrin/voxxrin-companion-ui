@@ -1,24 +1,20 @@
 <div class="events-list scroll-content ionic-scroll">
     <ion-list has-footer>
-        <ion-card (click)="onSelectedEvent(event)" class="clickable" *ngFor="let event of events">
-            <ion-card-content>
-                <ion-item>
-                    <ion-avatar item-left class="fix-ratio">
-                        <img [src]="event.imageUrl">
-                    </ion-avatar>
-                    <ion-card-title class="wrap">
-                        {{ event.name }}
-                    </ion-card-title>
-                </ion-item>
-                <p>
-                    <ion-icon name="calendar"></ion-icon>
-                    {{ event.from.toDate() | date: constants.dateFormat }} - {{ event.to.toDate() | date: constants.dateFormat }}
-                </p>
-                <p>
-                    <ion-icon name="locate"></ion-icon>
-                    {{ event.location }}
-                </p>
-            </ion-card-content>
-        </ion-card>
+        <ion-item (click)="onSelectedEvent(event)" class="clickable" *ngFor="let event of events">
+            <ion-avatar item-left class="fix-ratio">
+                <img [src]="event.imageUrl">
+            </ion-avatar>
+            <ion-card-title class="wrap">
+                {{ event.name }}
+            </ion-card-title>
+            <p>
+                <ion-icon name="calendar"></ion-icon>
+                {{ event.from.toDate() | date: constants.dateFormat }} - {{ event.to.toDate() | date: constants.dateFormat }}
+            </p>
+            <p>
+                <ion-icon name="locate"></ion-icon>
+                {{ event.location }}
+            </p>
+        </ion-item>
     </ion-list>
 </div>

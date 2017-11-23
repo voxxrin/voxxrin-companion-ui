@@ -1,4 +1,3 @@
-import { AttachedContent } from './../models/attached-content';
 import { Event } from './../models/event.model';
 import { Presentation } from './../models/presentation.model';
 import { environment } from './../app/environment';
@@ -32,11 +31,6 @@ export class PresentationService {
                                                     .orderBy('from', 'asc')
                                                     .orderBy('to','asc')
                                                     .value());
-    }
-
-    public setUrlContentToAPresentation(attachedContent) : Observable<AttachedContent>{
-        return this.httpClient.post(`${environment.backendApiBaseUrl}/presentation/{presentationId}/attachedContent`, attachedContent)
-            .map((data: any ) => data as AttachedContent);
     }
 
     private parsePresentations(presentations: Presentation[]) {
