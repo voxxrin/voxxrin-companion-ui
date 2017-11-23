@@ -3,16 +3,13 @@ import { Presentation } from '../../models/presentation.model';
 import { ConstantsService } from '../../services/constants.service';
 
 @Component({
-  selector: 'presentation',
-  templateUrl: './presentation.component.html'
+    selector: 'presentation',
+    templateUrl: './presentation.component.html'
 })
-export class PresentationComponent implements OnInit {
+export class PresentationComponent {
 
     @Input() presentation: Presentation;
 
     constructor(public constants: ConstantsService) { }
-
-    ngOnInit() {
-  }
 
 }
