@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage({
+    segment: 'home'
+})
 @Component({
-    selector: 'page-home',
     templateUrl: './home.page.html'
 })
 export class HomePage {

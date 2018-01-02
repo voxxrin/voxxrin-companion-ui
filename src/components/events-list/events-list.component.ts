@@ -11,10 +11,9 @@ export class EventsListComponent {
     @Input() events: Event[];
     @Output() eventSelected: EventEmitter<Event> = new EventEmitter<Event>();
 
-    constructor(public constants: ConstantsService) {
-    }
+    constructor(public constants: ConstantsService) { }
 
-    onSelectedEvent(event: Event): void {
+    public onSelectedEvent(event: Event): void {
         this.eventSelected.emit(event);
     }
 }

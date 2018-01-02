@@ -12,8 +12,8 @@ export class FeedService {
 
     constructor(private httpClient: HttpClient) { }
 
-    public fetchTwitterFeed(event: Event): Observable<Tweet[]> {
-        const params = new HttpParams().append('eventId', event.eventId);
+    public fetchTwitterFeed(eventId: string): Observable<Tweet[]> {
+        const params = new HttpParams().append('eventId', eventId);
         return this.httpClient.get(`${this.baseUrl}/twitter`, { params: params })
             .map((data: any) => data as Tweet[]);
     }

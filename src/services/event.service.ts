@@ -15,15 +15,17 @@ export class EventService {
     public fetchEvents(): Observable<Event[]> {
         return this.http.get(`${environment.backendApiBaseUrl}/events`)
             .map((data: any) => data as Event[])
-            .map((events: Event[]) => this.parseEvents(events))
-            .map((events: Event[]) => _.chain(events).orderBy('from', 'desc').value());
+            .map((events: Event[]) => _.chain(events).orderBy('from', 'desc').value())
+            .map((events: Event[]) => events.map(event => EventService.prepareEvent(event)));
     }
 
-    private parseEvents(events: Event[]) {
-        return events.map(event => this.parseEvent(event));
+    public fetchEventById(id: string): Observable<Event> {
+        return this.http.get(`${environment.backendApiBaseUrl}/events/${id}`)
+            .map((data: any) => data as Event)
+            .map((event: Event) => EventService.prepareEvent(event));
     }
 
-    private parseEvent(event: Event) {
+    private static prepareEvent(event: Event) {
         event.from = moment(event.from);
         event.to = moment(event.to);
         return event;

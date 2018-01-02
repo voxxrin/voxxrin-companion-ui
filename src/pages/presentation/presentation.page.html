@@ -1,6 +1,6 @@
 <top-navbar title="Presentation"></top-navbar>
 <ion-content has-header>
-    <div has-footer>
+    <div has-footer (swipe)="loadPresentation($event)">
         <presentation [presentation]="presentation"></presentation>
     </div>
 </ion-content>

@@ -4,7 +4,7 @@
     </button>
 </top-navbar>
 <ion-content has-header>
-    <event [event]="event"
+    <event [event]="event" *ngIf="event"
            (daySelected)="navigateToPresentationsPage($event)"
            (adminButtonSelected)="navigateToEventAdminPage()"></event>
 </ion-content>

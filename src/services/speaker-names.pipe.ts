@@ -3,15 +3,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 import * as _ from 'lodash';
 
 @Pipe({
-  name: 'speakerNames'
+    name: 'speakerNames'
 })
 export class SpeakerNamesPipe implements PipeTransform {
 
-  transform(speakers: Speaker[]): any {
-    return _.chain(speakers)
+    public transform(speakers: Speaker[]): any {
+        return _.chain(speakers)
             .map(s => s.name)
-            .join(" - ")
+            .join(' - ')
             .value();
-  }
-
+    }
 }

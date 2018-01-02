@@ -3,7 +3,11 @@ import { Event } from '../../models/event.model';
 import { Component, OnInit } from '@angular/core';
 import { FilteredEventsPage } from '../filtered-events/filtered-events.page';
 import * as moment from 'moment';
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage({
+    segment: 'events'
+})
 @Component({
     templateUrl: 'events.page.html'
 })

@@ -7,19 +7,13 @@ import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } fro
 })
 export class PresentationsListComponent {
 
-    @ContentChild('presentationHeader') templateHeader:TemplateRef<Presentation>;
-    @ContentChild('presentationBody') templateBody:TemplateRef<Presentation>;
+    @ContentChild('presentationHeader') templateHeader: TemplateRef<Presentation>;
+    @ContentChild('presentationBody') templateBody: TemplateRef<Presentation>;
 
     @Input() presentations: Presentation[];
     @Output() presentationSelected: EventEmitter<Presentation> = new EventEmitter<Presentation>();
 
-    constructor() {}
-
-    onSelectedPresentation(presentation: Presentation): void {
-        this.presentationSelected.emit(presentation);
-    }
-
-    getPresentationSlotKey(presentation: Presentation, index: number, list: Presentation[]) {
+    public getPresentationSlotKey(presentation: Presentation, index: number, list: Presentation[]) {
         if (index == 0) {
             return presentation;
         } else if(list[index-1].from.isSame(list[index].from, "minute")
