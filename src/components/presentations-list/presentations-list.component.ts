@@ -16,8 +16,8 @@ export class PresentationsListComponent {
     public getPresentationSlotKey(presentation: Presentation, index: number, list: Presentation[]) {
         if (index == 0) {
             return presentation;
-        } else if(list[index-1].from.isSame(list[index].from, "minute")
-            && list[index-1].to.isSame(list[index].to, "minute")){
+        } else if (list[index - 1].from.isSame(list[index].from, 'minute')
+            && list[index - 1].to.isSame(list[index].to, 'minute')) {
             return null;
         } else {
             return presentation;

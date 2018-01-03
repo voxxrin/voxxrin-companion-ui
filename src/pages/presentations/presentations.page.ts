@@ -28,7 +28,9 @@ export class PresentationsPage implements OnInit {
     ngOnInit() {
         this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
             this.day = day;
-            this.presentationService.fetchPresentations(this.day).subscribe(presentations => this.presentations = presentations);
+            this.presentationService
+                .fetchPresentations(this.day)
+                .subscribe(presentations => presentations.forEach(prez => this.presentations.push(prez)));
         });
     }
 
