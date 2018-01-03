@@ -6,11 +6,11 @@ import { NavParams, ViewController } from 'ionic-angular';
     templateUrl: 'presentation-modal.component.html'
 })
 export class PresentationModalComponent {
-    
+
     myParam: string;
 
     constructor(private viewCtrl: ViewController, private params: NavParams) {
-            this.myParam = params.get('userId');
+        this.myParam = params.get('userId');
     }
 
     dismiss() {

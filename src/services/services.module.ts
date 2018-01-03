@@ -43,7 +43,9 @@ let pipes: any[] = [
         HttpModule,
         HttpClientModule
     ],
-    providers: services.concat(pipes)
+    providers: services.concat(pipes),
+    declarations: pipes,
+    exports: pipes
 })
 export class ServicesModule {
 

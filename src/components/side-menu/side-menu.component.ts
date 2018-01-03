@@ -1,4 +1,4 @@
-import { NavController } from 'ionic-angular';
+import { App } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
@@ -12,15 +12,15 @@ export class SideMenuComponent {
     @Input() content: any;
     user: User;
 
-    constructor(private authService: AuthService) {
+    constructor(private app: App, private authService: AuthService) {
         this.authService.currentUser().subscribe(user => this.user = user);
     }
 
     public goToHome(): void {
-        // this.navController.push('HomePage');
+        this.app.getActiveNav().push('HomePage');
     }
 
     public goToEvents(): void {
-        // this.navController.push('EventsPage');
+        this.app.getActiveNav().push('EventsPage');
     }
 }

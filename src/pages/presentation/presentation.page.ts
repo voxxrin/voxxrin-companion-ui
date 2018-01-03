@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
 
 @IonicPage({
-    segment: ':presentationId',
-    defaultHistory: ['PresentationsPage']
+    segment: 'presentation/:presentationId'
 })
 @Component({
     templateUrl: './presentation.page.html'

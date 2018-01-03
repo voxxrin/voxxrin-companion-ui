@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class StatsService {
 
-    constructor (private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    public getStatFromPresentation(event: Event) : Observable<Statistic> {
-        return this.http.get(`${environment.backendApiBaseUrl}/stats/event/${event._id}`)
+    public getEventStats(eventId: string): Observable<Statistic> {
+        return this.http.get(`${environment.backendApiBaseUrl}/stats/event/${eventId}`)
             .map((data: any) => data as Statistic);
     }
 }

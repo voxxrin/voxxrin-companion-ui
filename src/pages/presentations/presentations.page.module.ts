@@ -3,12 +3,14 @@ import { IonicPageModule } from 'ionic-angular';
 import { PresentationPage } from './presentation.page';
 import { ComponentsModule } from '../../components/components.module';
 import { PresentationsPage } from './presentations.page';
+import { ServicesModule } from '../../services/services.module';
 
 let page: any = PresentationsPage;
 
 @NgModule({
     imports: [
         ComponentsModule,
+        ServicesModule,
         IonicPageModule.forChild(page)
     ],
     declarations: [page],

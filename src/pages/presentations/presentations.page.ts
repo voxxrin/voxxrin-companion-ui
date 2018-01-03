@@ -5,9 +5,10 @@ import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
 import { PresentationPage } from '../presentation/presentation.page';
 import { ConstantsService } from '../../services/constants.service';
+import { DayService } from '../../services/day.service';
 
 @IonicPage({
-    segment: 'presentations'
+    segment: 'event/:eventId/day/:dayId/presentations'
 })
 @Component({
     templateUrl: './presentations.page.html'
@@ -15,17 +16,20 @@ import { ConstantsService } from '../../services/constants.service';
 export class PresentationsPage implements OnInit {
 
     public presentations: Presentation[] = [];
-    private day: Day;
+    public day: Day;
 
     constructor(private navController: NavController,
                 private navParams: NavParams,
+                private dayService: DayService,
                 private presentationService: PresentationService,
                 public constants: ConstantsService) {
     }
 
     ngOnInit() {
-        this.day = this.navParams.data.day;
-        this.presentationService.fetchPresentations(this.day).subscribe(presentations => this.presentations = presentations);
+        this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
+            this.day = day;
+            this.presentationService.fetchPresentations(this.day).subscribe(presentations => this.presentations = presentations);
+        });
     }
 
     public navigateToPresentation(presentation: Presentation): void {

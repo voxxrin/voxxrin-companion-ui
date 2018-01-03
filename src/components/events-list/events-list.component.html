@@ -1,5 +1,5 @@
 <div class="events-list scroll-content ionic-scroll">
-    <ion-list has-footer>
+    <ion-list>
         <ion-item (click)="onSelectedEvent(event)" class="clickable" *ngFor="let event of events">
             <ion-avatar item-left class="fix-ratio">
                 <img [src]="event.imageUrl">

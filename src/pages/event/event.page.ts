@@ -8,8 +8,7 @@ import { TwitterFeedPage } from '../twitter-feed/twitter-feed.page';
 import { EventService } from '../../services/event.service';
 
 @IonicPage({
-    segment: ':eventId',
-    defaultHistory: ['EventsPage']
+    segment: 'event/:eventId'
 })
 @Component({
     templateUrl: 'event.page.html'
@@ -25,14 +24,16 @@ export class EventPage implements OnInit {
     }
 
     public navigateToPresentationsPage(day: Day): void {
-        this.navController.push('PresentationsPage', { day: day }, { animate: true, direction: 'forward' });
+        const dayId = day.externalId || day._id;
+        const params = { eventId: this.event.eventId, dayId: dayId };
+        this.navController.push('PresentationsPage', params, { animate: true, direction: 'forward' });
     }
 
     public navigateToEventAdminPage(): void {
-        this.navController.push('EventAdminPage', { selectedEvent: this.event });
+        this.navController.push('EventAdminPage', { eventId: this.event.eventId });
     }
 
     public displayTwitterFeed(): void {
-        this.navController.push('TwitterFeedPage', { event: this.event });
+        this.navController.push('TwitterFeedPage', { eventId: this.event.eventId });
     }
 }

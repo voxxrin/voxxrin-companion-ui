@@ -3,8 +3,6 @@ import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
-
-import { Event } from '../models/event.model';
 import { Presentation } from '../models/presentation.model';
 import { environment } from '../app/environment';
 import { Day } from '../models/day.model';
@@ -30,8 +28,8 @@ export class PresentationService {
             .map((presentation: Presentation) => PresentationService.preparePresentation(presentation));
     }
 
-    public getAllPresentationFromAnEvent(event: Event): Observable<Presentation[]> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${event._id}/presentations`)
+    public fetchAllPresentationFromAnEvent(eventId: string): Observable<Presentation[]> {
+        return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${eventId}/presentations`)
             .map((data: any) => data as Presentation[])
             .map((presentations: Presentation[]) => PresentationService.preparePresentations(presentations))
             .map((presentations: Presentation[]) => _.chain(presentations)

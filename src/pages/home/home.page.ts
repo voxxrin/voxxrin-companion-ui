@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { IonicPage } from 'ionic-angular';
 
 @IonicPage({
-    segment: 'home'
+    segment: ''
 })
 @Component({
     templateUrl: './home.page.html'

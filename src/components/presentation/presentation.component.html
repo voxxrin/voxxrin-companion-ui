@@ -16,7 +16,7 @@
         <ion-item color="light">
             <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
                 <ion-icon name="ios-person"></ion-icon>
-                <div text-wrap>{{ presentation.speakers }}</div>
+                <div text-wrap>{{ presentation.speakers | speakerNames }}</div>
             </div>
         </ion-item>
     </ion-item>

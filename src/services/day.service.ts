@@ -6,16 +6,21 @@ import { Event } from '../models/event.model';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import * as _ from 'lodash';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DayService {
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     public fetchDays(event: Event): Observable<Day[]> {
         return this.http.get(`${environment.backendApiBaseUrl}/events/${event._id}/days`)
-            .map((response: Response) => response.json())
             .map((data: any) => data as Day[])
             .map((days: Day[]) => _.chain(days).orderBy('date', 'asc').value());
+    }
+
+    public fetchDayById(id: string): Observable<Day> {
+        return this.http.get(`${environment.backendApiBaseUrl}/days/${id}`)
+            .map((data: any) => data as Day);
     }
 }
