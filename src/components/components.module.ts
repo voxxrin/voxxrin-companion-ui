@@ -41,7 +41,7 @@ let components: any[] = [
     ],
     declarations: components,
     entryComponents: components,
-    exports: components
+    exports: [components, ServicesModule]
 })
 export class ComponentsModule {
 

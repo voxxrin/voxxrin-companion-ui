@@ -8,6 +8,7 @@ import { Statistic } from '../../models/stats.model';
 import { StatsService } from '../../services/stats.service';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
+import { ConstantsService } from '../../services/constants.service';
 
 @IonicPage({
     segment: 'event/:eventId/admin'
@@ -21,7 +22,8 @@ export class EventAdminPage {
     presentations: Presentation[] = [];
     selectedEvent: Event;
 
-    constructor(private modalCtrl: ModalController,
+    constructor(public constants: ConstantsService,
+                private modalCtrl: ModalController,
                 private navParams: NavParams,
                 private statsService: StatsService,
                 private eventService: EventService,
@@ -31,7 +33,7 @@ export class EventAdminPage {
         this.statsService.getEventStats(eventId).subscribe(statistic => this.statistic = statistic);
         this.presentationService
             .fetchAllPresentationFromAnEvent(eventId)
-            .subscribe(presentations => this.presentations = presentations);
+            .subscribe(presentations => presentations.forEach(prez => this.presentations.push(prez)));
     }
 
     public displayPresentationModal() {

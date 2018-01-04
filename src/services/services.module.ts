@@ -1,7 +1,7 @@
 import { StatusBar } from '@ionic-native/status-bar';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LocalStorageService } from './local-storage.service';
@@ -16,6 +16,7 @@ import { FeedService } from './feed.service';
 import { UtilsService } from './utils.service';
 import { StatsService } from './stats.service';
 import { PresentationService } from './presentation.service';
+import { JWTInterceptor } from './jwt.interceptor.service';
 
 let services: any[] = [
     LocalStorageService,
@@ -43,7 +44,11 @@ let pipes: any[] = [
         HttpModule,
         HttpClientModule
     ],
-    providers: [services, pipes],
+    providers: [
+        services,
+        pipes,
+        { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
+    ],
     declarations: pipes,
     exports: pipes
 })
