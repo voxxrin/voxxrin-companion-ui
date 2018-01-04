@@ -1,6 +1,16 @@
-<top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
-<ion-content has-header>
-    <div has-footer>
+<ion-header>
+
+    <ion-navbar hideBackButton="true">
+        <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ day?.externalId + ' - ' + day?.name }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div>
         <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
             <ng-template #presentationHeader let-header="headerTemplate">
                 {{ header.from.toDate() | date: constants.hourFormat }}

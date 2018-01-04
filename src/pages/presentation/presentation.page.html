@@ -1,6 +1,16 @@
-<top-navbar title="Presentation"></top-navbar>
-<ion-content has-header>
-    <div has-footer (swipe)="loadPresentation($event)" *ngIf="presentation">
+<ion-header>
+
+    <ion-navbar hideBackButton="true">
+        <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ presentation?.eventId }} - Presentation</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div (swipe)="loadPresentation($event)" *ngIf="presentation">
         <presentation [presentation]="presentation"></presentation>
     </div>
 </ion-content>

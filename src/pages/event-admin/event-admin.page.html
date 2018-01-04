@@ -1,4 +1,14 @@
-<top-navbar title="Administration des Evénements"></top-navbar>
+<ion-header>
+
+    <ion-navbar hideBackButton="true">
+        <button ion-button menuToggle icon-only>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{ selectedEvent?.name + ' - Administration' }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
 <ion-content class="page-stats" *ngIf="statistic && selectedEvent">
     <p padding></p>
     <!-- Page Header -->
