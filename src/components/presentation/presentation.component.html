@@ -4,8 +4,8 @@
             <h2 text-wrap><b>{{ presentation.title }}</b></h2>
             <ion-badge>{{ presentation.kind }}</ion-badge>
         </ion-item>
-        <ion-item color="light">
-            <div *ngIf="presentation.location" text-wrap>
+        <ion-item color="light" *ngIf="presentation.location">
+            <div text-wrap>
                 <ion-icon name="md-pin"></ion-icon>
                 {{ presentation.location.fullName }}
             </div>

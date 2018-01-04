@@ -22,11 +22,13 @@ export class PresentationPage {
     }
 
     public loadPresentation(event) {
-        const prezIndex = this.presentations.findIndex(prez => prez === this.presentation);
-        if (event.direction === 2 && prezIndex > 0) {
-            this.navigateToPrez(prezIndex - 1);
-        } else if (event.direction === 4 && prezIndex < this.presentations.length) {
-            this.navigateToPrez(prezIndex + 1);
+        if (this.presentations) {
+            const prezIndex = this.presentations.findIndex(prez => prez._id === this.presentation._id);
+            if (event.direction === 4 && prezIndex > 0) {
+                this.navigateToPrez(prezIndex - 1);
+            } else if (event.direction === 2 && prezIndex < this.presentations.length) {
+                this.navigateToPrez(prezIndex + 1);
+            }
         }
     }
 
