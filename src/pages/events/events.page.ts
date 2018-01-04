@@ -16,6 +16,8 @@ export class EventsPage implements OnInit {
     futureEvents: Event[];
     pastEvents: Event[];
 
+    eventFilter: string = "futureEvents";
+
     constructor(private navController: NavController, private eventService: EventService) {}
 
     ngOnInit(): void {

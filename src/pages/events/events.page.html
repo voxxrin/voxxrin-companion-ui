@@ -1,7 +1,28 @@
 <top-navbar title="Liste des évènements"></top-navbar>
+
+<ion-toolbar has-header>
+    <ion-segment [(ngModel)]="eventFilter" has-header>
+        <ion-segment-button value="pastEvents">
+            Passés
+        </ion-segment-button>
+        <ion-segment-button value="futureEvents">
+            Futurs
+        </ion-segment-button>
+        <ion-segment-button value="allEvents">
+            Tous
+        </ion-segment-button>
+    </ion-segment>
+</ion-toolbar>
+
 <ion-content>
 
-    <ion-slides pager>
+    <div [ngSwitch]="eventFilter" has-header>
+        <events-list *ngSwitchCase="'futureEvents'" [events]="futureEvents" (eventSelected)="navigateToEvent($event)"></events-list>
+        <events-list *ngSwitchCase="'pastEvents'" [events]="pastEvents" (eventSelected)="navigateToEvent($event)"></events-list>
+        <events-list *ngSwitchCase="'allEvents'" [events]="allEvents" (eventSelected)="navigateToEvent($event)"></events-list>
+    </div>
+
+    <!-- <ion-slides pager>
 
         <ion-slide has-header>
             <events-list [events]="futureEvents" (eventSelected)="navigateToEvent($event)"></events-list>
@@ -15,6 +36,6 @@
             <events-list [events]="allEvents" (eventSelected)="navigateToEvent($event)"></events-list>
         </ion-slide>
 
-    </ion-slides>
+    </ion-slides> -->
 
 </ion-content>
