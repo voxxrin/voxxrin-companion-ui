@@ -1,20 +1,9 @@
-<ion-header>
-
-    <ion-navbar hideBackButton="true">
-        <button ion-button menuToggle icon-only>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>{{ event?.name + ' - Jours' }}</ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only full (click)="displayTwitterFeed()">
-                <ion-icon name="logo-twitter"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-navbar>
-
-</ion-header>
-
-<ion-content>
+<top-navbar title="Jours">
+    <button ion-button icon-only full (click)="displayTwitterFeed()">
+        <ion-icon name="logo-twitter"></ion-icon>
+    </button>
+</top-navbar>
+<ion-content has-header>
     <event [event]="event" *ngIf="event"
            (daySelected)="navigateToPresentationsPage($event)"
            (adminButtonSelected)="navigateToEventAdminPage()"></event>

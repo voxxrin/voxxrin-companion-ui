@@ -9,7 +9,7 @@ $header-height: 55px;
 //////////////////////////////////////////
 
 ion-grid, ion-row {
-  height: calc(100%);
+  height: calc(100% - #{$header-height});
 }
 
 .wrap {
@@ -27,6 +27,14 @@ ion-avatar.fix-ratio {
     width: 100px !important;
     height: 100px !important;
   }
+}
+
+[has-header] {
+  margin-top: $header-height;
+}
+
+[has-footer] {
+  padding-bottom: 50px !important;
 }
 
 [right-border] {
