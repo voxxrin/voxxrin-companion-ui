@@ -1,41 +1,29 @@
-<top-navbar title="Liste des évènements"></top-navbar>
+<ion-header>
 
-<ion-toolbar has-header>
-    <ion-segment [(ngModel)]="eventFilter" has-header>
-        <ion-segment-button value="pastEvents">
-            Passés
-        </ion-segment-button>
-        <ion-segment-button value="futureEvents">
-            Futurs
-        </ion-segment-button>
-        <ion-segment-button value="allEvents">
-            Tous
-        </ion-segment-button>
-    </ion-segment>
-</ion-toolbar>
+    <top-navbar title="Liste des évènements"></top-navbar>
+
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="eventFilter">
+            <ion-segment-button value="pastEvents">
+                Passés
+            </ion-segment-button>
+            <ion-segment-button value="futureEvents">
+                Futurs
+            </ion-segment-button>
+            <ion-segment-button value="allEvents">
+                Tous
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+
+</ion-header>
 
 <ion-content>
 
-    <div [ngSwitch]="eventFilter" has-header>
+    <div [ngSwitch]="eventFilter">
         <events-list *ngSwitchCase="'futureEvents'" [events]="futureEvents" (eventSelected)="navigateToEvent($event)"></events-list>
         <events-list *ngSwitchCase="'pastEvents'" [events]="pastEvents" (eventSelected)="navigateToEvent($event)"></events-list>
         <events-list *ngSwitchCase="'allEvents'" [events]="allEvents" (eventSelected)="navigateToEvent($event)"></events-list>
     </div>
-
-    <!-- <ion-slides pager>
-
-        <ion-slide has-header>
-            <events-list [events]="futureEvents" (eventSelected)="navigateToEvent($event)"></events-list>
-        </ion-slide>
-
-        <ion-slide has-header>
-            <events-list [events]="pastEvents" (eventSelected)="navigateToEvent($event)"></events-list>
-        </ion-slide>
-
-        <ion-slide has-header>
-            <events-list [events]="allEvents" (eventSelected)="navigateToEvent($event)"></events-list>
-        </ion-slide>
-
-    </ion-slides> -->
 
 </ion-content>

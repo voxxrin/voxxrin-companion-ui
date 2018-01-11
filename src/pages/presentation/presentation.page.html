@@ -1,6 +1,9 @@
-<top-navbar title="Presentation"></top-navbar>
-<ion-content has-header>
-    <div has-footer (swipe)="loadPresentation($event)" *ngIf="presentation">
+<ion-header>
+    <top-navbar title="Presentation"></top-navbar>
+</ion-header>
+
+<ion-content>
+    <div (swipe)="loadPresentation($event)" *ngIf="presentation">
         <presentation [presentation]="presentation"></presentation>
     </div>
 </ion-content>

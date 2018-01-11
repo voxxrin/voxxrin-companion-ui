@@ -1,6 +1,9 @@
-<top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
-<ion-content has-header>
-    <div has-footer>
+<ion-header>
+    <top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
+</ion-header>
+
+<ion-content>
+    <div>
         <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
             <ng-template #presentationHeader let-header="headerTemplate">
                 {{ header.from.toDate() | date: constants.hourFormat }}

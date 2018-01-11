@@ -4,6 +4,7 @@ import { Speaker } from './speaker.model';
 
 export interface Presentation {
     _id: string;
+    externalId: string;
     title: string;
     summary: string;
     speakers: Speaker[];

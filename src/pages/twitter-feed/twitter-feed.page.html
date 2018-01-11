@@ -1,10 +1,11 @@
-<top-navbar title="Flux Twitter">
-    <button ion-button icon-only full (click)="goBackToEvent()">
-        <ion-icon name="md-arrow-back"></ion-icon>
-    </button>
-</top-navbar>
-<ion-content has-header>
-    <div has-footer>
-        <twitter-feed [tweets]="tweets"></twitter-feed>
-    </div>
+<ion-header>
+    <top-navbar title="Flux Twitter">
+        <button ion-button icon-only full (click)="goBackToEvent()">
+            <ion-icon name="md-arrow-back"></ion-icon>
+        </button>
+    </top-navbar>
+</ion-header>
+
+<ion-content>
+    <twitter-feed [tweets]="tweets"></twitter-feed>
 </ion-content>
