@@ -1,7 +1,6 @@
 import { IonicPage, ModalController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 
-import { PresentationModalComponent } from '../../components/presentation-modal/presentation-modal.component';
 import { Presentation } from '../../models/presentation.model';
 import { PresentationService } from '../../services/presentation.service';
 import { Statistic } from '../../models/stats.model';
@@ -9,6 +8,7 @@ import { StatsService } from '../../services/stats.service';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 import { ConstantsService } from '../../services/constants.service';
+import { AttachContentModalComponent } from '../../components/attach-content-modal/attach-content-modal.component';
 
 @IonicPage({
     segment: 'event/:eventId/admin'
@@ -36,8 +36,8 @@ export class EventAdminPage {
             .subscribe(presentations => presentations.forEach(prez => this.presentations.push(prez)));
     }
 
-    public displayPresentationModal() {
-        const presentationModal = this.modalCtrl.create(PresentationModalComponent, { userId: 987651 });
-        presentationModal.present();
+    public displayAttachContentModal() {
+        const attachContentModal = this.modalCtrl.create(AttachContentModalComponent, { userId: 987651 });
+        attachContentModal.present();
     }
 }

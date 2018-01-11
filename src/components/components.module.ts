@@ -8,7 +8,6 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import { MapsComponent } from './maps/maps.component';
 import { EventComponent } from './event/event.component';
-import { PresentationModalComponent } from './presentation-modal/presentation-modal.component';
 import { StatsComponent } from './stats/stats.component';
 import { DaysListComponent } from './days-list/days-list.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -16,6 +15,7 @@ import { StatItemComponent } from './stat-item/stat-item.component';
 import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 import { ServicesModule } from '../services/services.module';
 import { HomeActionsComponent } from './home-actions/home-actions.component';
+import { AttachContentModalComponent } from './attach-content-modal/attach-content-modal.component';
 
 let components: any[] = [
     EventsListComponent,
@@ -29,7 +29,7 @@ let components: any[] = [
     MapsComponent,
     StatsComponent,
     PresentationsListComponent,
-    PresentationModalComponent,
+    AttachContentModalComponent,
     TwitterFeedComponent,
     PresentationComponent
 ];
