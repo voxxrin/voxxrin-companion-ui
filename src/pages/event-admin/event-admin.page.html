@@ -1,19 +1,19 @@
 <ion-header>
     <top-navbar title="Administration des Evénements"></top-navbar>
 </ion-header>
-<ion-content class="page-stats" *ngIf="statistic && selectedEvent">
-    <p padding></p>
+<ion-content class="page-stats">
+
     <!-- Page Header -->
     <ion-card>
         <ion-grid>
             <ion-row>
                 <ion-col col-4>
                     <ion-avatar item-left class="fix-ratio">
-                        <img [src]="selectedEvent.imageUrl">
+                        <img [src]="selectedEvent?.imageUrl">
                     </ion-avatar>
                 </ion-col>
                 <ion-col col-8>
-                    <ion-title>{{ selectedEvent.name }}</ion-title>
+                    <ion-title>{{ selectedEvent?.name }}</ion-title>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -27,6 +27,7 @@
             Ajouter du contenu associé à un talk
         </ion-item>
     </ion-card-header>
+
     <!-- Page presentations list  -->
     <presentations-list [presentations]="presentations">
         <ng-template #presentationHeader let-header="headerTemplate">
