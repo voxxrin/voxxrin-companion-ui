@@ -9,6 +9,7 @@ export interface Presentation {
     summary: string;
     speakers: Speaker[];
     location: Room;
+    favorite: boolean;
     from: moment.Moment;
     to: moment.Moment;
     kind: string;    

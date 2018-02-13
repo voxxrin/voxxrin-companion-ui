@@ -15,8 +15,11 @@ import { DayService } from '../../services/day.service';
 })
 export class PresentationsPage implements OnInit {
 
-    public presentations: Presentation[] = [];
+    private presentations: Presentation[] = [];
+
+    public filteredPresentations: Presentation[] = [];
     public day: Day;
+    public presentationsFilter: string = "allPresentations";
 
     constructor(private navController: NavController,
                 private navParams: NavParams,
@@ -30,12 +33,27 @@ export class PresentationsPage implements OnInit {
             this.day = day;
             this.presentationService
                 .fetchPresentations(this.day)
-                .subscribe(presentations => presentations.forEach(prez => this.presentations.push(prez)));
+                .subscribe(presentations => 
+                {
+                    presentations.forEach(prez => this.filteredPresentations.push(prez))
+                    this.presentations = presentations;
+                });
         });
     }
 
     public navigateToPresentation(presentation: Presentation): void {
-        const params = { presentationId: presentation._id, presentations: this.presentations };
+        const params = { presentationId: presentation._id, presentations: this.filteredPresentations };
         this.navController.push('PresentationPage', params, { animate: true, direction: 'forward' })
+    }
+
+    public filterChanged(filterSelected: string){
+        if(filterSelected === "favoritePresentations"){
+            const filteredPresentations = this.filteredPresentations.filter(pres => pres.favorite);                
+            this.filteredPresentations.splice(0, this.filteredPresentations.length);
+            filteredPresentations.forEach((pres) => this.filteredPresentations.push(pres));
+        } else if(filterSelected == "allPresentations") {
+            this.filteredPresentations.splice(0, this.filteredPresentations.length);
+            this.presentations.forEach(pres => this.filteredPresentations.push(pres));
+        }
     }
 }
