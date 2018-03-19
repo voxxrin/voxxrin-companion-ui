@@ -21,6 +21,7 @@ export class EventAdminPage {
     statistic: Statistic = <Statistic>{};
     presentations: Presentation[] = [];
     selectedEvent: Event;
+    componentShown: any = 'talks';
 
     constructor(public constants: ConstantsService,
                 private modalCtrl: ModalController,
@@ -39,5 +40,17 @@ export class EventAdminPage {
     public displayAttachContentModal() {
         const attachContentModal = this.modalCtrl.create(AttachContentModalComponent, { userId: 987651 });
         attachContentModal.present();
+    }
+
+    public toggleComponent(component) {
+        if (this.isComponentShown(component)) {
+            this.componentShown = null;
+        } else {
+            this.componentShown = component;
+        }
+    }
+
+    public isComponentShown (component) {
+        return this.componentShown === component;
     }
 }

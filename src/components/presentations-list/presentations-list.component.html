@@ -1,4 +1,4 @@
-<ion-list [virtualScroll]="presentations" [headerFn]="getPresentationSlotKey">
+<ion-list [virtualScroll]="presentations" [headerFn]="getPresentationSlotKey" approxItemHeight="50px" [bufferRatio]="3.1">
     <ion-item-divider *virtualHeader="let header">
         <ion-item color="danger">
             <ion-icon name="md-clock"></ion-icon>
