@@ -13,7 +13,8 @@
     </ion-item>
     <ion-item color="danger">
         <ion-icon name="md-clock"></ion-icon>
-        {{ presentation.from.toDate() | date: constants.hourFormat }} - {{ presentation.to.toDate() | date: constants.hourFormat }}
+        {{ presentation.from.toDate() | date: constants.hourFormat }} - {{ presentation.to.toDate() | date:
+        constants.hourFormat }}
     </ion-item>
     <ion-item>
         <header><b>Résumé</b></header>
@@ -24,12 +25,12 @@
         <header><b>Speakers</b></header>
         <ion-list>
             <ion-item text-wrap *ngFor="let speaker of presentation.speakers">
-                <ion-avatar class="fix-ratio" item-left>
-                    <img [src]="speaker.avatarUrl"/>
+                <ion-avatar>
+                    <img class="fix-ratio" [src]="speaker.avatarUrl"/>
                 </ion-avatar>
                 <b>{{ speaker.name }}</b> - {{ speaker.company }}
                 <div>
-                    @{{ speaker.twitterId }}
+                    {{ speaker.twitterId | twitterId }}
                 </div>
                 <div>
                     {{ speaker.bio }}
