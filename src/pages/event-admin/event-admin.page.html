@@ -19,6 +19,13 @@
         </ion-grid>
     </ion-card>
 
+    <ion-item color="danger" class="stat-pres-ion-card-header" (click)="toggleComponent('data')">
+        <ion-label>
+            Données de l'évenement
+        </ion-label>
+        <ion-toggle [checked]="isComponentShown('data')" item-end></ion-toggle>
+    </ion-item>
+
     <ion-item color="danger" class="stat-pres-ion-card-header" (click)="toggleComponent('stats')">
         <ion-label>
             Statistiques de l'application
@@ -26,7 +33,12 @@
         <ion-toggle [checked]="isComponentShown('stats')" item-end></ion-toggle>
     </ion-item>
 
-    <!-- Page statistics -->
+    <!--Event Data -->
+    <div *ngIf="isComponentShown('data')">
+        <!--TODO-->
+    </div>
+
+    <!-- Event statistics -->
     <stats *ngIf="isComponentShown('stats')" [statistic]="statistic"></stats>
 
     <ion-item color="danger" class="stat-pres-ion-card-header" (click)="toggleComponent('talks')">
@@ -36,7 +48,7 @@
         <ion-toggle [checked]="isComponentShown('talks')" item-end></ion-toggle>
     </ion-item>
 
-    <!-- Page presentations list  -->
+    <!-- Event presentations list  -->
     <presentations-list *ngIf="isComponentShown('talks')" [presentations]="presentations">
         <ng-template #presentationHeader let-header="headerTemplate">
             {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate()

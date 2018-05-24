@@ -21,7 +21,7 @@ export class EventAdminPage {
     statistic: Statistic = <Statistic>{};
     presentations: Presentation[] = [];
     selectedEvent: Event;
-    componentShown: any = 'talks';
+    componentShown: any = 'data';
 
     constructor(public constants: ConstantsService,
                 private modalCtrl: ModalController,
