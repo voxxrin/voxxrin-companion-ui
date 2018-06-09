@@ -19,6 +19,7 @@ import { PresentationService } from './presentation.service';
 import { JWTInterceptor } from './jwt.interceptor.service';
 import { TwitterIdPipe } from './twitter-id.pipe';
 import { TimeSlotService } from './time-slot.service';
+import { RatingService } from './rating.service';
 
 let services: any[] = [
     LocalStorageService,
@@ -35,6 +36,7 @@ let services: any[] = [
     JWTService,
     StatsService,
     FeedService,
+    RatingService,
     TimeSlotService
 ];
 

@@ -3,26 +3,19 @@
         <ion-buttons start>
             <button ion-button (click)="dismiss()">Fermer</button>
         </ion-buttons>
-        <ion-title color="danger">Attacher un contenu</ion-title>
+        <ion-title color="danger">Voter !</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <form>
-        <ion-item>
-            <ion-label>URL</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>DESCRIPTION</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
+    <div>
+        <bingo-rating-matrix [items]="items" (itemsSelected)="selectedItems = $event"></bingo-rating-matrix>
         <ion-row>
             <ion-col>
-                <button ion-button color="danger" full (click)="dismiss()">Ok</button>
+                <button ion-button color="danger" full (click)="submit()">Ok</button>
             </ion-col>
             <ion-col>
                 <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
             </ion-col>
         </ion-row>
-    </form>
+    </div>
 </ion-content>

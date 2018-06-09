@@ -70,3 +70,28 @@ maps {
     color: red;
   }
 }
+
+.rating-square {
+
+  display: inline-block;
+  width: 100% !important;
+  height: 0 !important;
+  padding: 0 0 100% 0 !important;
+  border: 1px solid black;
+  text-align: center;
+
+  span {
+    vertical-align: middle;
+  }
+
+  &.picked {
+    background-color:red;
+    color:white;
+  }
+}
+
+.presentation-actions {
+  ion-icon {
+    font-size: 30px;
+  }
+}

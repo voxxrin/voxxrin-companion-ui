@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Presentation } from '../../models/presentation.model';
 import { ConstantsService } from '../../services/constants.service';
 

@@ -1,5 +1,18 @@
 <ion-header>
-    <top-navbar title="Presentation"></top-navbar>
+    <top-navbar title="Presentation">
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-only full (click)="rate(presentation)">
+                    <ion-icon name="md-thumbs-up"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-only full>
+                    <ion-icon name="md-star"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </top-navbar>
 </ion-header>
 
 <ion-content>

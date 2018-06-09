@@ -16,6 +16,8 @@ import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 import { ServicesModule } from '../services/services.module';
 import { HomeActionsComponent } from './home-actions/home-actions.component';
 import { AttachContentModalComponent } from './attach-content-modal/attach-content-modal.component';
+import { BingoRatingMatrixComponent } from './bingo-rating-matrix/bingo-rating-matrix.component';
+import { BingoRatingModalComponent } from './bingo-rating-modal/bingo-rating-modal.component';
 import { PresentationsListItemComponent } from "./presentations-list-item/presentations-list-item";
 
 let components: any[] = [
@@ -33,6 +35,8 @@ let components: any[] = [
     AttachContentModalComponent,
     TwitterFeedComponent,
     PresentationComponent,
+    BingoRatingMatrixComponent,
+    BingoRatingModalComponent,
     PresentationsListItemComponent
 ];
 

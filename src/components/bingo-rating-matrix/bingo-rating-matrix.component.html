@@ -1,0 +1,9 @@
+<ion-grid>
+    <ion-row *ngFor="let chunk of chunkedItems">
+        <ion-col *ngFor="let item of chunk">
+            <div class="rating-square" (click)="toggleItem(item)" [class.picked]="item.picked">
+                <span>{{ item.labels['FR'] }}</span>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-grid>
