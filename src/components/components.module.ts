@@ -16,6 +16,7 @@ import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 import { ServicesModule } from '../services/services.module';
 import { HomeActionsComponent } from './home-actions/home-actions.component';
 import { AttachContentModalComponent } from './attach-content-modal/attach-content-modal.component';
+import { PresentationsListItemComponent } from "./presentations-list-item/presentations-list-item";
 
 let components: any[] = [
     EventsListComponent,
@@ -31,7 +32,8 @@ let components: any[] = [
     PresentationsListComponent,
     AttachContentModalComponent,
     TwitterFeedComponent,
-    PresentationComponent
+    PresentationComponent,
+    PresentationsListItemComponent
 ];
 
 @NgModule({
