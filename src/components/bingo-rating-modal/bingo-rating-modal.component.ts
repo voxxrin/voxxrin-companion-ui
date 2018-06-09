@@ -18,7 +18,7 @@ export class BingoRatingModalComponent implements OnInit {
 
     ngOnInit(): void {
         this.presentation = this.params.get('presentation');
-        this.ratingService.fetchPresentationRatings(this.presentation).subscribe(items => this.items = items);
+        this.ratingService.fetchAllItems().subscribe(items => this.items = items);
     }
 
     public submit(): void {
