@@ -6,6 +6,7 @@ export interface User {
     avatarUrl: string;
     login: string;
     displayName: string;
-    socialLogin: true
-    providerInfo: {}
+    socialLogin: true;
+    providerInfo: {};
+    principalRoles: string[];
 }
