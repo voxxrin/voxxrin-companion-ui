@@ -3,7 +3,6 @@ import { Day } from '../../models/day.model';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
-import { PresentationPage } from '../presentation/presentation.page';
 import { ConstantsService } from '../../services/constants.service';
 import { DayService } from '../../services/day.service';
 
@@ -15,9 +14,9 @@ import { DayService } from '../../services/day.service';
 })
 export class PresentationsPage implements OnInit {
 
-    private presentations: Presentation[] = [];
-
+    public presentations: Presentation[] = [];
     public filteredPresentations: Presentation[] = [];
+
     public day: Day;
     public presentationsFilter: string = "allPresentations";
 
@@ -33,10 +32,9 @@ export class PresentationsPage implements OnInit {
             this.day = day;
             this.presentationService
                 .fetchPresentations(this.day)
-                .subscribe(presentations => 
-                {
-                    presentations.forEach(prez => this.filteredPresentations.push(prez))
+                .subscribe(presentations => {
                     this.presentations = presentations;
+                    this.filteredPresentations = presentations.filter(pres => pres.favorite);
                 });
         });
     }
@@ -44,16 +42,5 @@ export class PresentationsPage implements OnInit {
     public navigateToPresentation(presentation: Presentation): void {
         const params = { presentationId: presentation._id, presentations: this.filteredPresentations };
         this.navController.push('PresentationPage', params, { animate: true, direction: 'forward' })
-    }
-
-    public filterChanged(filterSelected: string){
-        if(filterSelected === "favoritePresentations"){
-            const filteredPresentations = this.filteredPresentations.filter(pres => pres.favorite);                
-            this.filteredPresentations.splice(0, this.filteredPresentations.length);
-            filteredPresentations.forEach((pres) => this.filteredPresentations.push(pres));
-        } else if(filterSelected == "allPresentations") {
-            this.filteredPresentations.splice(0, this.filteredPresentations.length);
-            this.presentations.forEach(pres => this.filteredPresentations.push(pres));
-        }
     }
 }

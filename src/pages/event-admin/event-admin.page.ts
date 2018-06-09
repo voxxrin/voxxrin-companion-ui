@@ -34,7 +34,7 @@ export class EventAdminPage {
         this.statsService.getEventStats(eventId).subscribe(statistic => this.statistic = statistic);
         this.presentationService
             .fetchAllPresentationFromAnEvent(eventId)
-            .subscribe(presentations => presentations.forEach(prez => this.presentations.push(prez)));
+            .subscribe(presentations => this.presentations = presentations);
     }
 
     public displayAttachContentModal() {

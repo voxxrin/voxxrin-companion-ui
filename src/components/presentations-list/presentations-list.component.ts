@@ -1,11 +1,14 @@
 import { Presentation } from '../../models/presentation.model';
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import * as _ from 'lodash';
+import { TimeSlot } from "../../models/time-slot.model";
+import { TimeSlotService } from "../../services/time-slot.service";
 
 @Component({
     selector: 'presentations-list',
     templateUrl: 'presentations-list.component.html'
 })
-export class PresentationsListComponent {
+export class PresentationsListComponent implements OnChanges{
 
     @ContentChild('presentationHeader') templateHeader: TemplateRef<Presentation>;
     @ContentChild('presentationBody') templateBody: TemplateRef<Presentation>;
@@ -13,14 +16,13 @@ export class PresentationsListComponent {
     @Input() presentations: Presentation[];
     @Output() presentationSelected: EventEmitter<Presentation> = new EventEmitter<Presentation>();
 
-    public getPresentationSlotKey(presentation: Presentation, index: number, list: Presentation[]) {
-        if (index == 0) {
-            return presentation;
-        } else if (list[index - 1].from.isSame(list[index].from, 'minute')
-            && list[index - 1].to.isSame(list[index].to, 'minute')) {
-            return null;
-        } else {
-            return presentation;
+    public timeSlots: TimeSlot[] = [];
+
+    constructor(private timeslotService: TimeSlotService) {  }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.presentations) {
+            this.timeSlots = this.timeslotService.convertPresentationsTimeSlots(this.presentations);
         }
     }
 }

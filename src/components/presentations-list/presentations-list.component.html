@@ -1,17 +1,17 @@
-<ion-list [virtualScroll]="presentations" [headerFn]="getPresentationSlotKey" approxItemHeight="50px" [bufferRatio]="3.1">
-    <ion-item-divider *virtualHeader="let header">
+<ion-item-group *ngFor="let timeslot of timeSlots">
+
+    <ion-item-divider>
         <ion-item color="danger">
             <ion-icon name="md-clock"></ion-icon>
-            <ng-template 
-                [ngTemplateOutlet]="templateHeader" 
-                [ngOutletContext]="{headerTemplate: header}">
-            </ng-template>
+            <ng-template [ngTemplateOutlet]="templateHeader" [ngOutletContext]="{headerTemplate: timeslot}"></ng-template>
         </ion-item>
     </ion-item-divider>
-    <ion-item *virtualItem="let presentation">
-        <ng-template 
-            [ngTemplateOutlet]="templateBody" 
-            [ngOutletContext]="{presentationTemplate: presentation}">
-        </ng-template>
-    </ion-item>
-</ion-list>
+
+    <ion-item-sliding *ngFor="let presentation of timeslot.presentations">
+        <ion-item>
+            <ng-template [ngTemplateOutlet]="templateBody" [ngOutletContext]="{presentationTemplate: presentation}">
+            </ng-template>
+        </ion-item>
+    </ion-item-sliding>
+
+</ion-item-group>
