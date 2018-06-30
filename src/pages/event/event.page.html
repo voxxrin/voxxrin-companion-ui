@@ -1,6 +1,6 @@
 <ion-header>
     <top-navbar title="Jours">
-        <button ion-button icon-only full (click)="displayTwitterFeed()">
+        <button ion-button icon-only full (click)="displayTwitterFeed()" *ngIf="event && event.hashTag">
             <ion-icon name="logo-twitter"></ion-icon>
         </button>
     </top-navbar>
