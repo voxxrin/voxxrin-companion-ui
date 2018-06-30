@@ -21,6 +21,6 @@ export class BingoRatingMatrixComponent implements OnChanges {
 
     public toggleItem(item: RatingItem): void {
         item.picked = !item.picked;
-        this.itemsSelected.emit(this.items);
+        this.itemsSelected.emit(this.items.filter(item => item.picked === true));
     }
 }

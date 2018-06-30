@@ -11,10 +11,10 @@
         <bingo-rating-matrix [items]="items" (itemsSelected)="selectedItems = $event"></bingo-rating-matrix>
         <ion-row>
             <ion-col>
-                <button ion-button color="danger" full (click)="submit()">Ok</button>
+                <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
             </ion-col>
             <ion-col>
-                <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
+                <button ion-button color="danger" full (click)="submit()">Ok</button>
             </ion-col>
         </ion-row>
     </div>
