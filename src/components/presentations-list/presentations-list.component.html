@@ -8,7 +8,7 @@
     </ion-item-divider>
 
     <ion-item-sliding *ngFor="let presentation of timeslot.presentations">
-        <ion-item>
+        <ion-item (click)="presentationSelected.emit(presentation)">
             <ng-template [ngTemplateOutlet]="templateBody" [ngOutletContext]="{presentationTemplate: presentation}">
             </ng-template>
         </ion-item>

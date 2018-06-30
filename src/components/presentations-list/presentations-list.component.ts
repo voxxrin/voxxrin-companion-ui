@@ -1,8 +1,16 @@
 import { Presentation } from '../../models/presentation.model';
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import * as _ from 'lodash';
-import { TimeSlot } from "../../models/time-slot.model";
-import { TimeSlotService } from "../../services/time-slot.service";
+import {
+    Component,
+    ContentChild,
+    EventEmitter,
+    Input,
+    OnChanges,
+    Output,
+    SimpleChanges,
+    TemplateRef
+} from '@angular/core';
+import { TimeSlot } from '../../models/time-slot.model';
+import { TimeSlotService } from '../../services/time-slot.service';
 
 @Component({
     selector: 'presentations-list',
