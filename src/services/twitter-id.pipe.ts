@@ -6,6 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TwitterIdPipe implements PipeTransform {
 
     public transform(twitterId: string): any {
-        return twitterId !== null && twitterId !== undefined ? `@${twitterId}` : '';
+        return twitterId !== null && twitterId !== undefined ? `@${twitterId.replace('@', '')}` : '';
     }
 }
