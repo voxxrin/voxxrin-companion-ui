@@ -1,5 +1,5 @@
-import { App } from 'ionic-angular';
-import { Component, Input } from '@angular/core';
+import { App, Nav } from 'ionic-angular';
+import { Component, Input, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 

@@ -1,7 +1,7 @@
 import { AdminPresentationsPage } from './../admin-presentations/admin-presentations';
 import { AdminStatisticsPage } from './../admin-statistics/admin-statistics';
 import { AdminEventDataPage } from './../admin-event-data/admin-event-data';
-import { IonicPage, ModalController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, NavParams, MenuController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 import { Presentation } from '../../models/presentation.model';
@@ -28,15 +28,24 @@ export class EventAdminPage {
 
     dataPage = AdminEventDataPage;
     statPage = AdminStatisticsPage;
-    presPage = AdminPresentationsPage;    
+    presPage = AdminPresentationsPage;
 
     constructor(public constants: ConstantsService,
-                private modalCtrl: ModalController,
-                private navParams: NavParams,
-                private statsService: StatsService,
-                private eventService: EventService,
-                private presentationService: PresentationService) {
+        private modalCtrl: ModalController,
+        private navParams: NavParams,
+        private statsService: StatsService,
+        private eventService: EventService,
+        private presentationService: PresentationService,
+        private menuCtrl: MenuController) {
         this.eventId = this.navParams.data.eventId;
         this.eventService.fetchEventById(this.eventId).subscribe(event => this.selectedEvent = event);
+    }
+
+    ionViewDidEnter() {
+        this.menuCtrl.enable(false);
+    }
+
+    ionViewDidLeave() {
+        this.menuCtrl.enable(true);
     }
 }

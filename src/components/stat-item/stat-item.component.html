@@ -1,14 +1,16 @@
-<ion-card>
-  <ion-item color="secondary" class="stat-ion-item">
-    <ion-icon [name]="iconName" class="stat-ion-item-icon" color="light"></ion-icon>
-  </ion-item>
-  <ion-card-content class="stat-ion-card-content">
-    <ng-content></ng-content>
-  </ion-card-content>
-  <ion-item color="light" class="stat-ion-item">
-    {{ titleName }}
-    <div *ngIf="titleInfoCount || titleInfoName">
-      ({{ titleInfoCount }} {{ titleInfoName }})
+<ion-item>
+  <ion-icon [name]="iconName" color="secondary" item-start></ion-icon>
+  <h2>
+    <div text-wrap>
+      <ng-content></ng-content>
     </div>
-  </ion-item>
-</ion-card>
+  </h2>
+  <p>
+    {{ titleName }}
+  </p>
+  <div *ngIf="titleInfoCount || titleInfoName">
+    <p>
+      ({{ titleInfoCount }} {{ titleInfoName }})
+    </p>
+  </div>
+</ion-item>

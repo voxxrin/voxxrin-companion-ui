@@ -1,27 +1,9 @@
 <ion-header>
     <top-navbar title="Administration des Evénements"></top-navbar>
 </ion-header>
-<ion-content class="page-stats">
-
-    <!-- Page Header -->
-    <ion-card>
-        <ion-grid>
-            <ion-row>
-                <ion-col col-4>
-                    <ion-avatar item-left class="fix-ratio">
-                        <img [src]="selectedEvent?.imageUrl">
-                    </ion-avatar>
-                </ion-col>
-                <ion-col col-8>
-                    <ion-title>{{ selectedEvent?.name }}</ion-title>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-card>
-
-    <ion-tabs color="primary">
-        <ion-tab tabTitle="Données Evénements" [root]="dataPage" ></ion-tab>
-        <ion-tab tabTitle="Statistiques" [root]="statPage" [rootParams]="eventId"></ion-tab>
-        <ion-tab tabTitle="Presentations" [root]="presPage" [rootParams]="eventId"></ion-tab>
-    </ion-tabs>
-</ion-content>
+<!-- Page Header -->
+<ion-tabs color="primary">
+    <ion-tab tabTitle="Données Evénements" [root]="dataPage"></ion-tab>
+    <ion-tab tabTitle="Statistiques" [root]="statPage" [rootParams]="eventId"></ion-tab>
+    <ion-tab tabTitle="Presentations" [root]="presPage" [rootParams]="eventId"></ion-tab>
+</ion-tabs>
