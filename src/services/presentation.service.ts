@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { Presentation } from '../models/presentation.model';
 import { environment } from '../app/environment';
 import { Day } from '../models/day.model';
+import { Subscription } from '../models/subscription.model';
 
 @Injectable()
 export class PresentationService {
@@ -36,6 +37,18 @@ export class PresentationService {
                 .orderBy('from', 'asc')
                 .orderBy('to', 'asc')
                 .value());
+    }
+
+    public bookmarkPresentation(presentationId: string): Observable<Subscription>{
+        return this.httpClient
+            .post(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}`, {})
+            .map((data: any) => data as Subscription);
+    }
+
+    public removeBookmarkPresentation(presentationId: string): Observable<Subscription>{
+        return this.httpClient
+            .delete(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}`)
+            .map((data: any) => data as Subscription);
     }
 
     private static preparePresentations(presentations: Presentation[]) {

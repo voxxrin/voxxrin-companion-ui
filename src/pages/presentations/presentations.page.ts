@@ -2,7 +2,7 @@ import { PresentationService } from '../../services/presentation.service';
 import { Day } from '../../models/day.model';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ConstantsService } from '../../services/constants.service';
 import { DayService } from '../../services/day.service';
 
@@ -12,7 +12,7 @@ import { DayService } from '../../services/day.service';
 @Component({
     templateUrl: './presentations.page.html'
 })
-export class PresentationsPage implements OnInit {
+export class PresentationsPage {
 
     public presentations: Presentation[] = [];
     public filteredPresentations: Presentation[] = [];
@@ -27,7 +27,7 @@ export class PresentationsPage implements OnInit {
                 public constants: ConstantsService) {
     }
 
-    ngOnInit() {
+    ionViewDidEnter(){
         this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
             this.day = day;
             this.presentationService

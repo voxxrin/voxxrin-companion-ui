@@ -1,6 +1,6 @@
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
 import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/bingo-rating-modal.component';
 
@@ -8,9 +8,10 @@ import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/b
     segment: 'presentation/:presentationId'
 })
 @Component({
+    selector: "presentation-page",
     templateUrl: './presentation.page.html'
 })
-export class PresentationPage {
+export class PresentationPage implements OnInit {
 
     public presentation: Presentation;
     public presentations: Presentation[];
@@ -23,10 +24,10 @@ export class PresentationPage {
 
     ngOnInit(): void {
         this.presentations = this.navParams.data.presentations;
-        this.presentationService.fetchPresentationById(this.navParams.data.presentationId).subscribe(presentation => this.presentation = presentation);
+        this.loadPresentation(this.navParams.data.presentationId);
     }
 
-    public loadPresentation(swipeEvent: any) {
+    public swipePresentation(swipeEvent: any) {
         if (this.presentations) {
             const prezIndex = this.presentations.findIndex(prez => prez._id === this.presentation._id);
             if (swipeEvent.direction === 4 && prezIndex > 0) {
@@ -51,5 +52,22 @@ export class PresentationPage {
     public rate(presentation: Presentation) {
         const attachContentModal = this.modalCtrl.create(BingoRatingModalComponent, {presentation: presentation});
         attachContentModal.present();
+    }
+
+    public bookmark(presentation: Presentation) {
+        this.presentationService
+            .bookmarkPresentation(presentation._id)
+            .subscribe( s => this.loadPresentation(presentation._id));
+
+        //     let bookmarkFunction = presentation.favorite 
+        //     ? this.presentationService.bookmarkPresentation
+        //     : this.presentationService.removeBookmarkPresentation;
+        // bookmarkFunction(presentation._id)
+        //     .subscribe( s => this.loadPresentation(presentation._id));
+    }
+
+    private loadPresentation(id: string) {
+        this.presentationService.fetchPresentationById(id)
+                                .subscribe(presentation => this.presentation = presentation);
     }
 }
