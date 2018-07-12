@@ -17,7 +17,6 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
 
     public presentation: Presentation;
     public presentations: Presentation[];
-    public isAuthenticated: boolean;
 
     constructor(private navController: NavController,
                 private navParams: NavParams,
