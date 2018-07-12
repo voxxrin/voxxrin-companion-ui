@@ -27,7 +27,7 @@ export class PresentationsPage {
                 public constants: ConstantsService) {
     }
 
-    ionViewDidEnter(){
+    ionViewWillEnter(){
         this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
             this.day = day;
             this.presentationService

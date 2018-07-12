@@ -55,15 +55,11 @@ export class PresentationPage implements OnInit {
     }
 
     public bookmark(presentation: Presentation) {
-        this.presentationService
-            .bookmarkPresentation(presentation._id)
+        let bookmarkFunction = (id) => presentation.favorite
+            ? this.presentationService.removeBookmarkPresentation(id)
+            : this.presentationService.bookmarkPresentation(id);
+        bookmarkFunction(presentation._id)
             .subscribe( s => this.loadPresentation(presentation._id));
-
-        //     let bookmarkFunction = presentation.favorite 
-        //     ? this.presentationService.bookmarkPresentation
-        //     : this.presentationService.removeBookmarkPresentation;
-        // bookmarkFunction(presentation._id)
-        //     .subscribe( s => this.loadPresentation(presentation._id));
     }
 
     private loadPresentation(id: string) {
