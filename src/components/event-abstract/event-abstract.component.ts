@@ -1,7 +1,7 @@
 import { Event } from './../../models/event.model';
 import { User } from './../../models/user.model';
 import { AuthService } from './../../services/auth.service';
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import * as _ from 'lodash';
 
 @Component({
@@ -15,24 +15,23 @@ export class EventAbstractComponent implements OnInit {
 
     public isAdmin: boolean;
 
-    constructor(private authService: AuthService) {
-    }
+    constructor(private authService: AuthService) { }
 
     ngOnInit() {
-        this.authService.currentUser().filter(res => res != null).subscribe(user => this.setUserRights(user)); //this.setUserRights(currentUser));
+        this.authService.currentUser().subscribe(user => this.setUserRights(user));
     }
 
     goToEventAdministration(): void {
         this.adminButtonSelected.emit();
     }
 
-    setUserRights(currentUser: User) {
-        let adminEventRole = _.find(currentUser.principalRoles, (obj) => {
-            return obj.indexOf(this.event.eventId) >= 0;
-        });
-        this.isAdmin = false;
-        if (adminEventRole) {
-            this.isAdmin = true;
+    setUserRights(currentUser?: User) {
+        if (currentUser) {
+            this.isAdmin = _.find(currentUser.principalRoles, (obj) => {
+                return obj.indexOf(this.event.eventId) >= 0;
+            });
+        } else {
+            this.isAdmin = false;
         }
     }
 }
