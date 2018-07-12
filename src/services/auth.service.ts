@@ -11,7 +11,7 @@ export type OAuthProvider = 'twitter' | 'linkedin' | 'facebook';
 export class AuthService {
 
     private subscription: Subscription;
-    private currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
+    public static currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 
     constructor(private jwtService: JWTService, private httpClient: HttpClient) {
         this.validateTokenAndFetchCurrentUser();
@@ -28,12 +28,12 @@ export class AuthService {
     }
 
     public currentUser(): Observable<User> {
-        return this.currentUserSubject.asObservable().map(user => this.transformOAuthUser(user));
+        return AuthService.currentUserSubject.asObservable().map(user => this.transformOAuthUser(user));
     }
 
     public logout() {
         this.jwtService.clearToken();
-        this.currentUserSubject.next(null);
+        AuthService.currentUserSubject.next(null);
     }
 
     private transformOAuthUser(user) {
@@ -49,7 +49,7 @@ export class AuthService {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
                 .get(`${environment.backendApiBaseUrl}/auth/validate`)
-                .subscribe((user: User) => this.currentUserSubject.next(user));
+                .subscribe((user: User) => AuthService.currentUserSubject.next(user));
         }
     }
 
