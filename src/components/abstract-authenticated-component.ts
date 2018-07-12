@@ -6,7 +6,7 @@ export abstract class AbstractAuthenticatedComponent {
     public isAuthenticated: boolean;
     public authenticatedUser: User;
 
-    constructor(authService: AuthService) {
+    protected constructor(authService: AuthService) {
         authService.currentUser()
             .subscribe(u => {
                 this.isAuthenticated = u != null;
