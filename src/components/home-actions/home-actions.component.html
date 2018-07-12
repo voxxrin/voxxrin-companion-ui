@@ -1,24 +1,24 @@
 <div>
     <ion-buttons end>
         <div *ngIf="!authenticatedUser">
-            <button ion-button icon-only full (click)="auth('twitter')">
+            <button color="secondary" ion-button icon-only full (click)="auth('twitter')">
                 <ion-icon name="logo-twitter"></ion-icon>
             </button>
-            <button ion-button icon-only full (click)="auth('facebook')">
+            <button  color="secondary" ion-button icon-only full (click)="auth('facebook')">
                 <ion-icon name="logo-facebook"></ion-icon>
             </button>
-            <button ion-button icon-only full (click)="auth('linkedin')">
+            <button color="secondary" ion-button icon-only full (click)="auth('linkedin')">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </button>
-            <button ion-button full (click)="goToEvents()">
+            <button color="secondary" ion-button full (click)="goToEvents()">
                 Continuer en tant qu'invité
             </button>
         </div>
         <div *ngIf="authenticatedUser">
-            <button ion-button icon-only full (click)="logout()">
+            <button color="secondary" ion-button icon-only full (click)="logout()">
                 <ion-icon name="power"></ion-icon>
             </button>
-            <button ion-button full (click)="goToEvents()">
+            <button color="secondary" ion-button full (click)="goToEvents()">
                 Liste des évènements
             </button>
         </div>
