@@ -28,7 +28,7 @@ export class AuthService {
     }
 
     public currentUser(): Observable<User> {
-        return this.currentUserSubject.map(user => this.transformOAuthUser(user));
+        return this.currentUserSubject.asObservable().map(user => this.transformOAuthUser(user));
     }
 
     public logout() {
