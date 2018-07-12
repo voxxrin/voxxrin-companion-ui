@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { IonicPage } from 'ionic-angular';
+import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 
 @IonicPage({
     segment: ''
@@ -8,9 +9,10 @@ import { IonicPage } from 'ionic-angular';
 @Component({
     templateUrl: './home.page.html'
 })
-export class HomePage {
+export class HomePage extends AbstractAuthenticatedComponent{
 
-    constructor(private authService: AuthService) {
-        this.authService.currentUser().subscribe(user => console.log('connected user : ', user));
+    constructor(authService: AuthService) {
+        super(authService);
+        console.log('connected user : ', this.authenticatedUser);
     }
 }

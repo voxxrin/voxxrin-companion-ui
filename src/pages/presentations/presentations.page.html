@@ -1,6 +1,6 @@
 <ion-header>
     <top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
-    <ion-toolbar>
+    <ion-toolbar *ngIf="isAuthenticated">
         <ion-segment [(ngModel)]="presentationsFilter">
             <ion-segment-button value="allPresentations">
                 All

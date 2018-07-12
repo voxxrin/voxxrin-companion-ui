@@ -5,6 +5,8 @@ import { Presentation } from '../../models/presentation.model';
 import { Component } from '@angular/core';
 import { ConstantsService } from '../../services/constants.service';
 import { DayService } from '../../services/day.service';
+import { AuthService } from '../../services/auth.service';
+import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 
 @IonicPage({
     segment: 'event/:eventId/day/:dayId/presentations'
@@ -12,7 +14,7 @@ import { DayService } from '../../services/day.service';
 @Component({
     templateUrl: './presentations.page.html'
 })
-export class PresentationsPage {
+export class PresentationsPage extends AbstractAuthenticatedComponent{
 
     public presentations: Presentation[] = [];
     public filteredPresentations: Presentation[] = [];
@@ -24,7 +26,9 @@ export class PresentationsPage {
                 private navParams: NavParams,
                 private dayService: DayService,
                 private presentationService: PresentationService,
-                public constants: ConstantsService) {
+                public constants: ConstantsService,
+                authService: AuthService) {
+        super(authService);
     }
 
     ionViewWillEnter(){

@@ -3,6 +3,8 @@ import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
 import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/bingo-rating-modal.component';
+import { AuthService } from '../../services/auth.service';
+import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 
 @IonicPage({
     segment: 'presentation/:presentationId'
@@ -11,15 +13,18 @@ import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/b
     selector: "presentation-page",
     templateUrl: './presentation.page.html'
 })
-export class PresentationPage implements OnInit {
+export class PresentationPage extends AbstractAuthenticatedComponent implements OnInit {
 
     public presentation: Presentation;
     public presentations: Presentation[];
+    public isAuthenticated: boolean;
 
     constructor(private navController: NavController,
                 private navParams: NavParams,
                 private modalCtrl: ModalController,
-                private presentationService: PresentationService) {
+                private presentationService: PresentationService,
+                authService: AuthService){
+        super(authService)
     }
 
     ngOnInit(): void {
