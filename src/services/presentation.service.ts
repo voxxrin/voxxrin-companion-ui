@@ -45,7 +45,7 @@ export class PresentationService {
             .map((data: any) => data as Subscription);
     }
 
-    public removeBookmarkPresentation(presentationId: string): Observable<Subscription>{
+    public removePresentationBookmark(presentationId: string): Observable<Subscription>{
         return this.httpClient
             .delete(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}`)
             .map((data: any) => data as Subscription);

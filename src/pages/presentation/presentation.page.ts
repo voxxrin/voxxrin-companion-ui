@@ -5,12 +5,13 @@ import { PresentationService } from '../../services/presentation.service';
 import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/bingo-rating-modal.component';
 import { AuthService } from '../../services/auth.service';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
+import { RatingService } from '../../services/rating.service';
 
 @IonicPage({
     segment: 'presentation/:presentationId'
 })
 @Component({
-    selector: "presentation-page",
+    selector: 'presentation-page',
     templateUrl: './presentation.page.html'
 })
 export class PresentationPage extends AbstractAuthenticatedComponent implements OnInit {
@@ -22,7 +23,8 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
                 private navParams: NavParams,
                 private modalCtrl: ModalController,
                 private presentationService: PresentationService,
-                authService: AuthService){
+                private ratingService: RatingService,
+                authService: AuthService) {
         super(authService)
     }
 
@@ -56,18 +58,31 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
     public rate(presentation: Presentation) {
         const attachContentModal = this.modalCtrl.create(BingoRatingModalComponent, {presentation: presentation});
         attachContentModal.present();
+        attachContentModal.onDidDismiss(subscription => {
+            if (subscription) {
+                this.loadPresentation(this.navParams.data.presentationId);
+            }
+        });
     }
 
     public bookmark(presentation: Presentation) {
         let bookmarkFunction = (id) => presentation.favorite
-            ? this.presentationService.removeBookmarkPresentation(id)
+            ? this.presentationService.removePresentationBookmark(id)
             : this.presentationService.bookmarkPresentation(id);
         bookmarkFunction(presentation._id)
-            .subscribe( s => this.loadPresentation(presentation._id));
+            .subscribe(s => this.loadPresentation(presentation._id));
     }
 
     private loadPresentation(id: string) {
-        this.presentationService.fetchPresentationById(id)
-                                .subscribe(presentation => this.presentation = presentation);
+        this.presentationService
+            .fetchPresentationById(id)
+            .map(presentation => {
+                this.ratingService
+                    .fetchPresentationRatings(presentation)
+                    .filter(subs => subs.length > 0)
+                    .subscribe(rating => presentation.rated = true);
+                return presentation;
+            })
+            .subscribe(presentation => this.presentation = presentation);
     }
 }

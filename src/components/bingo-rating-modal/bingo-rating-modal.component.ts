@@ -29,10 +29,10 @@ export class BingoRatingModalComponent implements OnInit {
     }
 
     public submit(): void {
-        this.ratingService.rate(this.presentation, this.selectedItems).subscribe(prez => this.dismiss());
+        this.ratingService.rate(this.presentation, this.selectedItems).subscribe(prez => this.dismiss(prez));
     }
 
-    public dismiss(): void {
-        this.viewCtrl.dismiss();
+    public dismiss(data?: Presentation): void {
+        this.viewCtrl.dismiss(data);
     }
 }

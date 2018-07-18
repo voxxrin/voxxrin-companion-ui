@@ -16,4 +16,5 @@ export interface Presentation {
     eventId: string;
     favoriteCount: number;
     remindMeCount: number;
+    rated: boolean;
 }
