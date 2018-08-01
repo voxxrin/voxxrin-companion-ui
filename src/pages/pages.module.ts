@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { AdminStatisticsPageModule } from './admin-statistics/admin-statistics.module';
-import { AdminPresentationsPageModule } from './admin-presentations/admin-presentations.module';
 import { PresentationPageModule } from './presentation/presentation.page.module';
 import { HomePageModule } from './home/home.page.module';
 import { EventPageModule } from './event/event.page.module';
@@ -12,6 +10,7 @@ import { TwitterFeedPageModule } from './twitter-feed/twitter-feed.page.module';
 import { EventPresentationsAdminPageModule } from './event-presentations-admin/event-presentations-admin.page.module';
 import { EventDataAdminPageModule } from './event-data-admin/event-data-admin.page.module';
 import { EventStatisticsAdminPageModule } from './event-statistics-admin/event-statistics-admin.page.module';
+import { FavoritesPageModule } from './favorites/favorites.page.module';
 
 @NgModule({
     imports: [
@@ -24,7 +23,8 @@ import { EventStatisticsAdminPageModule } from './event-statistics-admin/event-s
         EventPresentationsAdminPageModule,
         PresentationsPageModule,
         PresentationPageModule,
-        TwitterFeedPageModule
+        TwitterFeedPageModule,
+        FavoritesPageModule
     ]
 })
 export class PagesModule {

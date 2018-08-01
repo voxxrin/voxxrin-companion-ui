@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -51,6 +51,16 @@ export class PresentationService {
             .map((data: any) => data as Subscription);
     }
 
+    public fetchAllPresentations(): Observable<Presentation[]> {
+        return this.httpClient.get(`${environment.backendApiBaseUrl}/presentations`)
+            .map((data: any) => data as Presentation[])
+            .map((presentations: Presentation[]) => PresentationService.preparePresentations(presentations))
+            .map((presentations: Presentation[]) => _.chain(presentations)
+                .orderBy('from', 'asc')
+                .orderBy('to', 'asc')
+                .value());
+    }
+    
     private static preparePresentations(presentations: Presentation[]) {
         return presentations.map(presentation => PresentationService.preparePresentation(presentation));
     }
