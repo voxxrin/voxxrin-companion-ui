@@ -10,6 +10,4 @@ export class AdminEventDataPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }
-
-
 }
