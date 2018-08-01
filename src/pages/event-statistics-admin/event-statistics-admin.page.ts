@@ -5,10 +5,9 @@ import { IonicPage, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-admin-statistics',
-    templateUrl: 'admin-statistics.html',
+    templateUrl: 'event-statistics-admin.page.html',
 })
-export class AdminStatisticsPage {
+export class EventStatisticsAdminPage {
 
     statistic: Statistic = <Statistic>{};
     eventId: string;

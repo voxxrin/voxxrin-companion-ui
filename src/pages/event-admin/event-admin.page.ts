@@ -1,6 +1,3 @@
-import { AdminPresentationsPage } from './../admin-presentations/admin-presentations';
-import { AdminStatisticsPage } from './../admin-statistics/admin-statistics';
-import { AdminEventDataPage } from './../admin-event-data/admin-event-data';
 import { IonicPage, MenuController, ModalController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
@@ -8,6 +5,9 @@ import { StatsService } from '../../services/stats.service';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 import { ConstantsService } from '../../services/constants.service';
+import { EventDataAdminPage } from '../event-data-admin/event-data-admin.page';
+import { EventStatisticsAdminPage } from '../event-statistics-admin/event-statistics-admin.page';
+import { EventPresentationsAdminPage } from '../event-presentations-admin/event-presentations-admin.page';
 
 @IonicPage({
     segment: 'event/:eventId/admin'
@@ -22,9 +22,9 @@ export class EventAdminPage {
 
     eventId: string;
 
-    dataPage = AdminEventDataPage;
-    statPage = AdminStatisticsPage;
-    presPage = AdminPresentationsPage;
+    dataPage = EventDataAdminPage;
+    statPage = EventStatisticsAdminPage;
+    presPage = EventPresentationsAdminPage;
 
     constructor(public constants: ConstantsService,
                 private modalCtrl: ModalController,

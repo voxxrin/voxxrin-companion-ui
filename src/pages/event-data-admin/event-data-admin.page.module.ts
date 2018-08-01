@@ -1,9 +1,9 @@
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AdminEventDataPage } from './admin-event-data';
+import { EventDataAdminPage } from './event-data-admin.page';
 
-let page: any = AdminEventDataPage;
+let page: any = EventDataAdminPage;
 
 @NgModule({
   imports: [
@@ -14,4 +14,4 @@ let page: any = AdminEventDataPage;
   entryComponents: [page],
   exports: [page]
 })
-export class AdminEventDataPageModule { }
+export class EventDataAdminPageModule { }

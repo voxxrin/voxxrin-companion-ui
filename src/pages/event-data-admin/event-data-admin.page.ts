@@ -3,10 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-admin-event-data',
-    templateUrl: 'admin-event-data.html',
+    templateUrl: 'event-data-admin.page.html',
 })
-export class AdminEventDataPage {
+export class EventDataAdminPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
     }

@@ -49,7 +49,7 @@ export class AuthService {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
                 .get(`${environment.backendApiBaseUrl}/auth/validate`)
-                .subscribe((user: User) => AuthService.currentUserSubject.next(user));
+                .subscribe((user: User) => AuthService.currentUserSubject.next(user), () => this.jwtService.clearToken());
         }
     }
 

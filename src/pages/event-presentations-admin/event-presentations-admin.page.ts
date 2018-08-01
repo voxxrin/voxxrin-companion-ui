@@ -7,10 +7,9 @@ import { IonicPage, ModalController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-    selector: 'page-admin-presentations',
-    templateUrl: 'admin-presentations.html',
+    templateUrl: 'event-presentations-admin.page.html',
 })
-export class AdminPresentationsPage {
+export class EventPresentationsAdminPage {
 
     presentations: Presentation[] = [];
     eventId: string;
