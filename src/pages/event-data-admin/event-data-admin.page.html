@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-    <!--<event-data [event]="event"></event-data>-->
+    <form (ngSubmit)="updateEventData()">
+        <ion-item>
+            <ion-label>HashTag (Twitter)</ion-label>
+            <ion-input type="text" [(ngModel)]="event.hashTag" name="hashTag"></ion-input>
+        </ion-item>
+        <div padding></div>
+        <button ion-button type="submit" block>Valider</button>
+    </form>
 </ion-content>

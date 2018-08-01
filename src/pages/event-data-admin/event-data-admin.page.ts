@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
+import { EventService } from '../../services/event.service';
+import { Event } from '../../models/event.model';
 
 @IonicPage()
 @Component({
@@ -7,6 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EventDataAdminPage {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    public event: Event;
+
+    constructor(private navParams: NavParams, private eventService: EventService) {
+        this.event = this.navParams.data;
+    }
+
+    public updateEventData() {
+        this.eventService.updateData(this.event).subscribe(event => {});
     }
 }

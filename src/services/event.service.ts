@@ -12,6 +12,12 @@ export class EventService {
 
     constructor(private http: HttpClient) { }
 
+    private static prepareEvent(event: Event) {
+        event.from = moment(event.from);
+        event.to = moment(event.to);
+        return event;
+    }
+
     public fetchEvents(): Observable<Event[]> {
         return this.http.get(`${environment.backendApiBaseUrl}/events`)
             .map((data: any) => data as Event[])
@@ -25,9 +31,9 @@ export class EventService {
             .map((event: Event) => EventService.prepareEvent(event));
     }
 
-    private static prepareEvent(event: Event) {
-        event.from = moment(event.from);
-        event.to = moment(event.to);
-        return event;
+    public updateData(event: Event): Observable<Event> {
+        return this.http.put(`${environment.backendApiBaseUrl}/events/${event._id}`, event)
+            .map((data: any) => data as Event)
+            .map((event: Event) => EventService.prepareEvent(event));
     }
 }
