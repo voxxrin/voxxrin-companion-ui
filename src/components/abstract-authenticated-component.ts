@@ -1,5 +1,5 @@
-import { AuthService } from "../services/auth.service";
-import { User } from "../models/user.model";
+import { AuthService } from '../services/auth.service';
+import { User } from '../models/user.model';
 
 export abstract class AbstractAuthenticatedComponent {
 
@@ -7,10 +7,12 @@ export abstract class AbstractAuthenticatedComponent {
     public authenticatedUser: User;
 
     protected constructor(authService: AuthService) {
-        authService.currentUser()
+        authService
+            .currentUser()
             .subscribe(u => {
                 this.isAuthenticated = u != null;
                 this.authenticatedUser = u;
+                console.log(this, this.isAuthenticated);
             });
     }
 }
