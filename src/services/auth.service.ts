@@ -18,12 +18,17 @@ export class AuthService {
     }
 
     public auth(provider: OAuthProvider): void {
-        const authWindow = window.open(`${environment.backendApiBaseUrl}/auth/redirect/${provider}`, '_blank');
-        if (window.addEventListener) {
-            window.addEventListener('message', (event) => this.retrieveCredentials(event), false);
+        const authWindow: any = window.open(`${environment.backendApiBaseUrl}/auth/redirect/${provider}`, '_blank');
+        if (window['cordova']) {
+            authWindow.addEventListener('loadstop', () => {
+                authWindow.executeScript({code: 'requestCredentials()'}, response => {
+                    authWindow.close();
+                    this.retrieveCredentialsByScriptExecution(response);
+                });
+            });
+        } else {
+            window.addEventListener('message', (event) => this.retrieveCredentialsByPostMessage(event), false);
             this.subscription = Observable.timer(0, 1000).subscribe(() => authWindow.postMessage('requestCredentials', '*'));
-        } else if (window['cordova']) {
-            // TODO
         }
     }
 
@@ -53,13 +58,23 @@ export class AuthService {
         }
     }
 
-    private retrieveCredentials(event) {
+    private retrieveCredentialsByScriptExecution(response) {
+        if (response && response[0] && response[0].auth_token) {
+            this.storeToken(response[0].auth_token);
+        }
+    }
+
+    private retrieveCredentialsByPostMessage(event) {
         if (event.data.message === 'deliverCredentials') {
             this.subscription.unsubscribe();
             if (event.data.auth_token) {
-                this.jwtService.storeToken(event.data.auth_token);
-                this.validateTokenAndFetchCurrentUser();
+                this.storeToken(event.data.auth_token);
             }
         }
+    }
+
+    private storeToken(token) {
+        this.jwtService.storeToken(token);
+        this.validateTokenAndFetchCurrentUser();
     }
 }
