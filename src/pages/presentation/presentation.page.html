@@ -2,12 +2,12 @@
     <top-navbar title="Presentation">
         <ion-row>
             <ion-col>
-                <button ion-button icon-only full (click)="rate(presentation)">
+                <button ion-button icon-only full color="secondary" (click)="rate(presentation)">
                     <ion-icon name="md-thumbs-up" [class.rated]="presentation?.rated"></ion-icon>
                 </button>
             </ion-col>
             <ion-col *ngIf="isAuthenticated">
-                <button ion-button icon-only full (click)="bookmark(presentation)">
+                <button ion-button icon-only full color="secondary" (click)="bookmark(presentation)">
                     <ion-icon name="md-star" [class.favorite]="presentation?.favorite"></ion-icon>
                 </button>
             </ion-col>
@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content>
-    <div (swipe)="loadPresentation($event)" *ngIf="presentation">
+        <div (swipe)="loadPresentation($event)" *ngIf="presentation">
         <presentation [presentation]="presentation"></presentation>
     </div>
 </ion-content>
