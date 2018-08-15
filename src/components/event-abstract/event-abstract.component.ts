@@ -17,21 +17,5 @@ export class EventAbstractComponent implements OnInit {
 
     constructor(private authService: AuthService) { }
 
-    ngOnInit() {
-        this.authService.currentUser().subscribe(user => this.setUserRights(user));
-    }
-
-    goToEventAdministration(): void {
-        this.adminButtonSelected.emit();
-    }
-
-    setUserRights(currentUser?: User) {
-        if (currentUser) {
-            this.isAdmin = _.find(currentUser.principalRoles, (obj) => {
-                return obj.indexOf(this.event.eventId) >= 0;
-            });
-        } else {
-            this.isAdmin = false;
-        }
-    }
+    ngOnInit() {}
 }

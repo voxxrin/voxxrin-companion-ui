@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { User } from './../../models/user.model';
 import { EventAdminPage } from '../event-admin/event-admin.page';
 import { Day } from '../../models/day.model';
 import { PresentationsPage } from '../presentations/presentations.page';
@@ -6,6 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { TwitterFeedPage } from '../twitter-feed/twitter-feed.page';
 import { EventService } from '../../services/event.service';
+import * as _ from 'lodash';
 
 @IonicPage({
     segment: 'event/:eventId'
@@ -17,11 +20,36 @@ export class EventPage implements OnInit {
 
     event: Event;
 
-    constructor(private navController: NavController, private navParams: NavParams, private eventService: EventService) { }
+    public isAdmin: boolean;
+
+    constructor(private navController: NavController, private navParams: NavParams, private eventService: EventService, private authService: AuthService) { }
 
     ngOnInit(): void {
-        this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => this.event = event);
+        this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => {
+            this.event = event;
+            console.log(event);
+            //Check admin rights
+            this.authService.currentUser().subscribe(user => this.setUserRights(user));
+        });
     }
+
+    /**
+     * Admin part
+     */
+    setUserRights(currentUser?: User) {
+        console.log(currentUser)
+        if (currentUser) {
+            this.isAdmin = _.find(currentUser.principalRoles, (obj) => {
+                return obj.indexOf(this.event.eventId) >= 0;
+            });
+        } else {
+            this.isAdmin = false;
+        }
+    }
+
+    /**
+     * Navigation
+     */
 
     public navigateToPresentationsPage(day: Day): void {
         const dayId = day.externalId || day._id;
