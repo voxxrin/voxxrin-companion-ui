@@ -31,6 +31,7 @@
         "cordova-android": "7.1.1",
         "cordova-plugin-console": "^1.1.0",
         "cordova-plugin-device": "^2.0.2",
+        "cordova-plugin-firebase": "^1.0.5",
         "cordova-plugin-inappbrowser": "https://github.com/apache/cordova-plugin-inappbrowser.git#de86501026cbef4dfba5f962d32f893bbb8a4729",
         "cordova-plugin-splashscreen": "^5.0.2",
         "cordova-plugin-statusbar": "^2.4.2",
@@ -60,7 +61,8 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-inappbrowser": {}
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-firebase": {}
         },
         "platforms": [
             "android"
