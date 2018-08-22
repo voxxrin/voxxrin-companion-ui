@@ -11,7 +11,7 @@ export class SideMenuComponent extends AbstractAuthenticatedComponent {
 
     @Input() content: any;
 
-    constructor(private app: App, authService: AuthService) {
+    constructor(private app: App, private authService: AuthService) {
         super(authService);
     }
 
@@ -21,5 +21,13 @@ export class SideMenuComponent extends AbstractAuthenticatedComponent {
 
     public goToEvents(): void {
         this.app.getActiveNav().push('EventsPage');
+    }
+
+    public goToFavorites(): void {
+        this.app.getActiveNav().push('FavoritesPage');
+    }
+
+    public logout() {
+        this.authService.logout();
     }
 }
