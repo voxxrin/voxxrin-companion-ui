@@ -27,6 +27,10 @@ export class SideMenuComponent extends AbstractAuthenticatedComponent {
         this.app.getActiveNav().push('FavoritesPage');
     }
 
+    public auth(provider): void {
+        this.authService.auth(provider);
+    }
+    
     public logout() {
         this.authService.logout();
     }
