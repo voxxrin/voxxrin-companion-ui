@@ -39,7 +39,7 @@ export class EventPage implements OnInit {
     setUserRights(currentUser?: User) {
         console.log(currentUser)
         if (currentUser) {
-            this.isAdmin = _.find(currentUser.principalRoles, (obj) => {
+            this.isAdmin = _.some(currentUser.principalRoles, (obj) => {
                 return obj.indexOf(this.event.eventId) >= 0;
             });
         } else {

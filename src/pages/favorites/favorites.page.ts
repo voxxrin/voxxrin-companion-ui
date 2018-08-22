@@ -31,8 +31,6 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
     }
 
     ionViewWillEnter() {
-        console.log('ionViewDidLoad FavoritesPage');
-
         this.eventService.fetchEvents()
                          .subscribe( events => this.getPresentationsByEvent(events));
     }
@@ -45,7 +43,11 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
                     eventPresentation.event  = events.find(e => e.eventId == eventPresentation.eventId);
                 });
                 this.favoritePresentations = eventPresentations;
-                console.log(this.favoritePresentations);
             });
+    }
+
+    public navigateToPresentation(presentation: Presentation): void {
+        const params = { presentationId: presentation._id, presentations: _.flatMap(this.favoritePresentations, e => e.presentations) };
+        this.navController.push('PresentationPage', params, { animate: true, direction: 'forward' })
     }
 }
