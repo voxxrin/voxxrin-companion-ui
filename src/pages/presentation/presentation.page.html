@@ -11,6 +11,11 @@
                     <ion-icon name="md-star" [class.favorite]="presentation?.favorite"></ion-icon>
                 </button>
             </ion-col>
+            <ion-col *ngIf="isAuthenticated">
+                <button ion-button icon-only full color="secondary" (click)="subscribeToContent(presentation)">
+                    <ion-icon name="md-videocam" [class.reminded]="presentation?.reminded"></ion-icon>
+                </button>
+            </ion-col>
         </ion-row>
     </top-navbar>
 </ion-header>

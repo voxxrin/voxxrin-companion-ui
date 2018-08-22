@@ -10,6 +10,7 @@ export interface Presentation {
     speakers: Speaker[];
     location: Room;
     favorite: boolean;
+    reminded: boolean;
     from: moment.Moment;
     to: moment.Moment;
     kind: string;    

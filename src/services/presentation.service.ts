@@ -62,6 +62,18 @@ export class PresentationService {
             .map((data: any) => data as Subscription);
     }
 
+    public subscribeToPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
+        return this.httpClient
+            .post(`${environment.backendApiBaseUrl}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
+            .map((data: any) => data as Subscription);
+    }
+
+    public unsubscribeFromPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
+        return this.httpClient
+            .delete(`${environment.backendApiBaseUrl}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`)
+            .map((data: any) => data as Subscription);
+    }
+
     private static preparePresentations(presentations: Presentation[]) {
         return presentations.map(presentation => PresentationService.preparePresentation(presentation));
     }

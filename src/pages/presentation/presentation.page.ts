@@ -76,6 +76,15 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
             .subscribe(s => this.loadPresentation(presentation._id));
     }
 
+    public subscribeToContent(presentation: Presentation) {
+        const deviceToken = this.pushService.getToken();
+        let contentSubscriptionFunction = (id) => presentation.reminded
+            ? this.presentationService.unsubscribeFromPresentationContent(id, deviceToken)
+            : this.presentationService.subscribeToPresentationContent(id, deviceToken);
+        contentSubscriptionFunction(presentation._id)
+            .subscribe(s => this.loadPresentation(presentation._id));
+    }
+
     private loadPresentation(id: string) {
         this.presentationService
             .fetchPresentationById(id)
