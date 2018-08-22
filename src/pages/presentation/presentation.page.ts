@@ -6,6 +6,7 @@ import { BingoRatingModalComponent } from '../../components/bingo-rating-modal/b
 import { AuthService } from '../../services/auth.service';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 import { RatingService } from '../../services/rating.service';
+import { PushService } from '../../services/push.service';
 
 @IonicPage({
     segment: 'presentation/:presentationId'
@@ -24,6 +25,7 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
                 private modalCtrl: ModalController,
                 private presentationService: PresentationService,
                 private ratingService: RatingService,
+                private pushService: PushService,
                 authService: AuthService) {
         super(authService)
     }
@@ -66,9 +68,10 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
     }
 
     public bookmark(presentation: Presentation) {
+        const deviceToken = this.pushService.getToken();
         let bookmarkFunction = (id) => presentation.favorite
-            ? this.presentationService.removePresentationBookmark(id)
-            : this.presentationService.bookmarkPresentation(id);
+            ? this.presentationService.removePresentationBookmark(id, deviceToken)
+            : this.presentationService.bookmarkPresentation(id, deviceToken);
         bookmarkFunction(presentation._id)
             .subscribe(s => this.loadPresentation(presentation._id));
     }

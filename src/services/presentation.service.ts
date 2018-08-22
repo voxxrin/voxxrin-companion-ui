@@ -43,35 +43,25 @@ export class PresentationService {
     public getFavoritePresentations(): Observable<EventPresentations[]>{
         return this.httpClient.get(`${environment.backendApiBaseUrl}/favorite`)
             .map((data: any) => data as EventPresentations[])
-            .map((eventPresentations: EventPresentations[]) => 
+            .map((eventPresentations: EventPresentations[]) =>
                     eventPresentations.map( ep => {
                         ep.presentations = PresentationService.preparePresentations(ep.presentations);
                         return ep;
                     }));
     }
 
-    public bookmarkPresentation(presentationId: string): Observable<Subscription>{
+    public bookmarkPresentation(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .post(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}`, {})
+            .post(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
             .map((data: any) => data as Subscription);
     }
 
-    public removePresentationBookmark(presentationId: string): Observable<Subscription>{
+    public removePresentationBookmark(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .delete(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}`)
+            .delete(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`)
             .map((data: any) => data as Subscription);
     }
 
-    public fetchAllPresentations(): Observable<Presentation[]> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/presentations`)
-            .map((data: any) => data as Presentation[])
-            .map((presentations: Presentation[]) => PresentationService.preparePresentations(presentations))
-            .map((presentations: Presentation[]) => _.chain(presentations)
-                .orderBy('from', 'asc')
-                .orderBy('to', 'asc')
-                .value());
-    }
-    
     private static preparePresentations(presentations: Presentation[]) {
         return presentations.map(presentation => PresentationService.preparePresentation(presentation));
     }
