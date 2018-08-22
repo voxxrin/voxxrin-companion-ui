@@ -8,6 +8,7 @@ import { Presentation } from '../../models/presentation.model';
 import { Event } from '../../models/event.model';
 import * as _ from 'lodash';
 import { EventPresentations } from '../../models/event-presentations.model';
+import { ConstantsService } from '../../services/constants.service';
 
 @IonicPage({
     segment: 'favorites'
@@ -23,6 +24,7 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
                 private navParams: NavParams,
                 private eventService: EventService,
                 private presentationService: PresentationService,
+                public constants: ConstantsService,
                 authService: AuthService
             ) {
         super(authService);
@@ -37,14 +39,12 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
 
     private getPresentationsByEvent(events: Event[]) {
         this.presentationService
-            .fetchAllPresentations()
-            .subscribe(presentations => {
-                console.log(presentations.filter(p => p.favorite));
-                this.favoritePresentations = _.chain(presentations)
-                    .filter(p => p.favorite)
-                    .groupBy(p => p.eventId)
-                    .map((presentations, eventId) => new EventPresentations(events.find(e => e._id == eventId), presentations))
-                    .value();
+            .getFavoritePresentations()
+            .subscribe(eventPresentations => {
+                eventPresentations.forEach(eventPresentation => {
+                    eventPresentation.event  = events.find(e => e.eventId == eventPresentation.eventId);
+                });
+                this.favoritePresentations = eventPresentations;
                 console.log(this.favoritePresentations);
             });
     }

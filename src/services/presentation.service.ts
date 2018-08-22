@@ -7,6 +7,7 @@ import { Presentation } from '../models/presentation.model';
 import { environment } from '../app/environment';
 import { Day } from '../models/day.model';
 import { Subscription } from '../models/subscription.model';
+import { EventPresentations } from '../models/event-presentations.model';
 
 @Injectable()
 export class PresentationService {
@@ -37,6 +38,16 @@ export class PresentationService {
                 .orderBy('from', 'asc')
                 .orderBy('to', 'asc')
                 .value());
+    }
+
+    public getFavoritePresentations(): Observable<EventPresentations[]>{
+        return this.httpClient.get(`${environment.backendApiBaseUrl}/favorite`)
+            .map((data: any) => data as EventPresentations[])
+            .map((eventPresentations: EventPresentations[]) => 
+                    eventPresentations.map( ep => {
+                        ep.presentations = PresentationService.preparePresentations(ep.presentations);
+                        return ep;
+                    }));
     }
 
     public bookmarkPresentation(presentationId: string): Observable<Subscription>{

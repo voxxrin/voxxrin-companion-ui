@@ -3,6 +3,7 @@ import { Event } from "./event.model";
 
 export class EventPresentations {
 
+    eventId: String;
     event: Event;
     presentations: Presentation[];
 

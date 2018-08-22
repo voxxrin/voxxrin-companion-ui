@@ -3,9 +3,9 @@
 </ion-header>
 
 <ion-content>
-    <div *ngFor="let eventPresentations of favoritePresentations">
-        <h1>eventPresentation.event.name</h1>
-        <presentations-list [presentations]="eventPresentations.presentations" (presentationSelected)="navigateToPresentation($event)">
+    <div *ngFor="let eventPresentation of favoritePresentations">
+        <h1 padding-left>{{eventPresentation.event.name}}</h1>
+        <presentations-list [presentations]="eventPresentation.presentations" (presentationSelected)="navigateToPresentation($event)">
             <ng-template #presentationHeader let-header="headerTemplate">
                 {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
             </ng-template>
