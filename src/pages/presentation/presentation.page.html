@@ -21,7 +21,7 @@
 </ion-header>
 
 <ion-content>
-        <div (swipe)="swipePresentation($event)" *ngIf="presentation">
+    <div (swipe)="swipePresentation($event)" *ngIf="presentation">
         <presentation [presentation]="presentation"></presentation>
     </div>
 </ion-content>
