@@ -12,7 +12,6 @@ export abstract class AbstractAuthenticatedComponent {
             .subscribe(u => {
                 this.isAuthenticated = u != null;
                 this.authenticatedUser = u;
-                console.log(this, this.isAuthenticated);
             });
     }
 }
