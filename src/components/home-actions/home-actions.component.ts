@@ -1,4 +1,4 @@
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
@@ -10,7 +10,7 @@ import { AbstractAuthenticatedComponent } from '../abstract-authenticated-compon
 })
 export class HomeActionsComponent extends AbstractAuthenticatedComponent {
 
-    constructor(public navController: NavController, private authService: AuthService) {
+    constructor(public navController: NavController, private app: App, private authService: AuthService) {
         super(authService);
     }
 
@@ -24,5 +24,9 @@ export class HomeActionsComponent extends AbstractAuthenticatedComponent {
 
     public logout() {
         this.authService.logout();
+    }
+
+    public goToFavorites(): void {
+        this.app.getActiveNav().push('FavoritesPage');
     }
 }

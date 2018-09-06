@@ -14,4 +14,9 @@
             </ng-template>
         </presentations-list>
     </div>
+    <div *ngIf="favoritePresentations?.length == 0">
+        <ion-item>
+            <p>Vous n'avez pas encore enregistré de présentation favorite.</p>
+        </ion-item>
+    </div>
 </ion-content>
