@@ -1,13 +1,13 @@
 <ion-header>
     <top-navbar title="Jours">
-        <ion-row>
+        <ion-row style="width:100%">
             <ion-col>
                 <button ion-button icon-only *ngIf="isAdmin" color="sun" (click)="navigateToEventAdminPage()">
                     <ion-icon name="md-settings" color="light"></ion-icon>
                 </button>
             </ion-col>
             <ion-col>
-                <button color="secondary" ion-button icon-only full (click)="displayTwitterFeed()" *ngIf="event && event.hashTag">
+                <button color="secondary" ion-button icon-only (click)="displayTwitterFeed()" *ngIf="event && event.hashTag">
                     <ion-icon name="logo-twitter"></ion-icon>
                 </button>
             </ion-col>
