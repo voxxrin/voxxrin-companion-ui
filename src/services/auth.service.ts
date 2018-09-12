@@ -24,6 +24,7 @@ export class AuthService {
                 authWindow.executeScript({code: 'requestCredentials()'}, response => {
                     authWindow.close();
                     this.retrieveCredentialsByScriptExecution(response);
+                    window.location.reload();
                 });
             });
         } else {
