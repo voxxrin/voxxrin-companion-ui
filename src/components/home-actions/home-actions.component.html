@@ -15,15 +15,15 @@
             </button>
         </div>
         <div *ngIf="authenticatedUser">
-            <button color="secondary" ion-button icon-only full (click)="logout()">
-                <ion-icon name="power"></ion-icon>
-            </button>
             <button color="secondary" ion-button full (click)="goToEvents()">
                 Liste des évènements
             </button>
             <button color="secondary" ion-button full icon-start (click)="goToFavorites()">
                 <ion-icon name="md-star" color="sun"></ion-icon>
                 Favoris
+            </button>
+            <button color="sun" ion-button icon-only full (click)="logout()" class="logout-button">
+                <ion-icon name="power"></ion-icon>
             </button>
         </div>
     </ion-buttons>

@@ -11,6 +11,7 @@ export class AttachContentModalComponent {
 
     constructor(private viewCtrl: ViewController, private params: NavParams) {
         this.myParam = params.get('userId');
+        console.log(this.myParam);
     }
 
     dismiss() {
