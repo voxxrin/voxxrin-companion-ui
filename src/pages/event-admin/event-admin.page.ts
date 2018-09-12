@@ -1,4 +1,4 @@
-import { IonicPage, MenuController, ModalController, NavParams } from 'ionic-angular';
+import { IonicPage, MenuController, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
 import { StatsService } from '../../services/stats.service';
@@ -18,8 +18,6 @@ import { EventPresentationsAdminPage } from '../event-presentations-admin/event-
 export class EventAdminPage {
 
     selectedEvent: Event;
-    componentShown: any = 'data';
-
     eventId: string;
 
     dataPage = EventDataAdminPage;
@@ -27,6 +25,7 @@ export class EventAdminPage {
     presPage = EventPresentationsAdminPage;
 
     constructor(public constants: ConstantsService,
+                private navController: NavController,
                 private modalCtrl: ModalController,
                 private navParams: NavParams,
                 private statsService: StatsService,
@@ -37,11 +36,15 @@ export class EventAdminPage {
         this.eventService.fetchEventById(this.eventId).subscribe(event => this.selectedEvent = event);
     }
 
-    ionViewDidEnter() {
+    public ionViewDidEnter() {
         this.menuCtrl.enable(false);
     }
 
-    ionViewDidLeave() {
+    public ionViewDidLeave() {
         this.menuCtrl.enable(true);
+    }
+
+    public goBackToEvent() {
+        this.navController.setRoot('EventPage', {eventId: this.eventId})
     }
 }
