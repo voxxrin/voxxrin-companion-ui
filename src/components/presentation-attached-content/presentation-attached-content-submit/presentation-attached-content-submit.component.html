@@ -1,0 +1,22 @@
+<form *ngIf="presentation">
+    <ion-item no-lines>
+        <ion-label>URL</ion-label>
+        <ion-input name="url" [(ngModel)]="attachedContent.url"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+        <ion-label>Description</ion-label>
+        <ion-input name="description" [(ngModel)]="attachedContent.description"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+        <ion-label>Type</ion-label>
+        <ion-input name="mimeType" [(ngModel)]="attachedContent.mimeType"></ion-input>
+    </ion-item>
+    <ion-row>
+        <ion-col>
+            <button ion-button color="danger" full (click)="submit()" [disabled]="!isValid()">Ok</button>
+        </ion-col>
+        <ion-col>
+            <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
+        </ion-col>
+    </ion-row>
+</form>

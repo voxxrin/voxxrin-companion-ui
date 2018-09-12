@@ -1,0 +1,6 @@
+<ion-list *ngIf="presentation.releasedContents">
+    <ion-item *ngFor="let content of presentation.releasedContents">
+        <h3>{{ content.description }}</h3>
+        <p><a [href]="content.url">Lien</a></p>
+    </ion-item>
+</ion-list>

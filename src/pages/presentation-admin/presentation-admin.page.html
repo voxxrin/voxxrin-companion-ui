@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">Fermer</button>
+        </ion-buttons>
+        <ion-title color="danger">Administration Présentation</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item no-lines color="light">
+        <h2 text-wrap><b>{{ presentation.title }}</b></h2>
+        <ion-badge>{{ presentation.kind }}</ion-badge>
+        <p *ngIf="presentation.speakers && presentation.speakers.length > 0">
+            <ion-icon name="ios-person"></ion-icon>
+            {{ presentation.speakers | speakerNames }}
+        </p>
+    </ion-item>
+
+    <div>&nbsp;</div>
+
+    <h3>Contenus</h3>
+    <p>({{ presentation.remindMeCount }} utilisateurs inscrits)</p>
+    <button color="secondary" ion-button icon-only (click)="toggleAttachedContentSubmit()">
+        <ion-icon name="add" *ngIf="!submitFormOpened"></ion-icon>
+        <ion-icon name="remove" *ngIf="submitFormOpened"></ion-icon>
+    </button>
+
+    <p></p>
+    <presentation-attached-content-submit *ngIf="submitFormOpened"
+                                          [presentation]="presentation"
+                                          (dismissed)="submitFormOpened = false"
+                                          (attachedContentSubmitted)="submitContent($event)"></presentation-attached-content-submit>
+    <p></p>
+    <presentation-attached-content-list [presentation]="presentation"></presentation-attached-content-list>
+
+</ion-content>

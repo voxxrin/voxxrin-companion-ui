@@ -11,6 +11,7 @@ import { EventPresentationsAdminPageModule } from './event-presentations-admin/e
 import { EventDataAdminPageModule } from './event-data-admin/event-data-admin.page.module';
 import { EventStatisticsAdminPageModule } from './event-statistics-admin/event-statistics-admin.page.module';
 import { FavoritesPageModule } from './favorites/favorites.page.module';
+import { PresentationAdminPageModule } from './presentation-admin/presentation-admin.page.module';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { FavoritesPageModule } from './favorites/favorites.page.module';
         EventPresentationsAdminPageModule,
         PresentationsPageModule,
         PresentationPageModule,
+        PresentationAdminPageModule,
         TwitterFeedPageModule,
         FavoritesPageModule
     ]

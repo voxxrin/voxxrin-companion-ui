@@ -1,14 +1,14 @@
 <ion-item-group *ngFor="let timeslot of timeSlots">
 
     <ion-item-divider>
-        <ion-item color="secondary">
+        <ion-item no-lines color="secondary">
             <ion-icon name="md-clock"></ion-icon>
             <ng-template [ngTemplateOutlet]="templateHeader" [ngOutletContext]="{headerTemplate: timeslot}"></ng-template>
         </ion-item>
     </ion-item-divider>
 
     <ion-item-sliding *ngFor="let presentation of timeslot.presentations">
-        <ion-item (click)="presentationSelected.emit(presentation)">
+        <ion-item no-lines (click)="presentationSelected.emit(presentation)">
             <ng-template [ngTemplateOutlet]="templateBody" [ngOutletContext]="{presentationTemplate: presentation}">
             </ng-template>
         </ion-item>

@@ -1,6 +1,7 @@
 import { Room } from './room.model';
 import * as moment from 'moment';
 import { Speaker } from './speaker.model';
+import { AttachedContent } from './attached-content.model';
 
 export interface Presentation {
     _id: string;
@@ -18,4 +19,5 @@ export interface Presentation {
     favoriteCount: number;
     remindMeCount: number;
     rated: boolean;
+    releasedContents: AttachedContent[];
 }

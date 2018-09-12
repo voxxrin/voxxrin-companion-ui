@@ -1,9 +1,10 @@
 import { AttachContentModalComponent } from './../../components/attach-content-modal/attach-content-modal.component';
-import { ConstantsService } from './../../services/constants.service';
-import { PresentationService } from './../../services/presentation.service';
-import { Presentation } from './../../models/presentation.model';
+import { ConstantsService } from '../../services/constants.service';
+import { PresentationService } from '../../services/presentation.service';
+import { Presentation } from '../../models/presentation.model';
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PresentationAdminPage } from '../presentation-admin/presentation-admin.page';
 
 @IonicPage()
 @Component({
@@ -15,15 +16,14 @@ export class EventPresentationsAdminPage {
     eventId: string;
 
     constructor(public navParams: NavParams,
-                private modalCtrl: ModalController,
+                private navController: NavController,
                 private presentationService: PresentationService,
                 public constants: ConstantsService) {
         this.eventId = this.navParams.data;
     }
 
-    public displayAttachContentModal() {
-        const attachContentModal = this.modalCtrl.create(AttachContentModalComponent, {userId: 987651});
-        attachContentModal.present();
+    public goToPresentationAdmin(presentation: Presentation) {
+        this.navController.push(PresentationAdminPage, {presentation: presentation});
     }
 
     ionViewDidLoad() {

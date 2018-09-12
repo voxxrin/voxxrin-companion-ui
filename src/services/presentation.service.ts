@@ -8,6 +8,7 @@ import { environment } from '../app/environment';
 import { Day } from '../models/day.model';
 import { Subscription } from '../models/subscription.model';
 import { EventPresentations } from '../models/event-presentations.model';
+import { AttachedContent } from '../models/attached-content.model';
 
 @Injectable()
 export class PresentationService {
@@ -72,6 +73,12 @@ export class PresentationService {
         return this.httpClient
             .delete(`${environment.backendApiBaseUrl}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`)
             .map((data: any) => data as Subscription);
+    }
+
+    public attachContent(presentationId: string, content: AttachedContent): Observable<AttachedContent> {
+        return this.httpClient
+            .post(`${environment.backendApiBaseUrl}/presentation/${presentationId}/attachedContent`, content)
+            .map((data: any) => data as AttachedContent);
     }
 
     private static preparePresentations(presentations: Presentation[]) {

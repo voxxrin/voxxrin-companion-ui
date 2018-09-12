@@ -15,10 +15,11 @@ import { StatItemComponent } from './stat-item/stat-item.component';
 import { TwitterFeedComponent } from './twitter-feed/twitter-feed.component';
 import { ServicesModule } from '../services/services.module';
 import { HomeActionsComponent } from './home-actions/home-actions.component';
-import { AttachContentModalComponent } from './attach-content-modal/attach-content-modal.component';
 import { BingoRatingMatrixComponent } from './bingo-rating-matrix/bingo-rating-matrix.component';
 import { BingoRatingModalComponent } from './bingo-rating-modal/bingo-rating-modal.component';
-import { PresentationsListItemComponent } from "./presentations-list-item/presentations-list-item";
+import { PresentationsListItemComponent } from './presentations-list-item/presentations-list-item';
+import { PresentationAttachedContentListComponent } from './presentation-attached-content/presentation-attached-content-list/presentation-attached-content-list.component';
+import { PresentationAttachedContentSubmitComponent } from './presentation-attached-content/presentation-attached-content-submit/presentation-attached-content-submit.component';
 
 let components: any[] = [
     EventsListComponent,
@@ -32,12 +33,13 @@ let components: any[] = [
     MapsComponent,
     StatsComponent,
     PresentationsListComponent,
-    AttachContentModalComponent,
     TwitterFeedComponent,
     PresentationComponent,
     BingoRatingMatrixComponent,
     BingoRatingModalComponent,
-    PresentationsListItemComponent
+    PresentationsListItemComponent,
+    PresentationAttachedContentListComponent,
+    PresentationAttachedContentSubmitComponent,
 ];
 
 @NgModule({
