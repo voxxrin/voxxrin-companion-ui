@@ -27,8 +27,6 @@ export class EventPage implements OnInit {
     ngOnInit(): void {
         this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => {
             this.event = event;
-            console.log(event);
-            //Check admin rights
             this.authService.currentUser().subscribe(user => this.setUserRights(user));
         });
     }
@@ -37,7 +35,6 @@ export class EventPage implements OnInit {
      * Admin part
      */
     setUserRights(currentUser?: User) {
-        console.log(currentUser)
         if (currentUser) {
             this.isAdmin = _.some(currentUser.principalRoles, (obj) => {
                 return obj.indexOf(this.event.eventId) >= 0;
