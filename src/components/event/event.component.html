@@ -1,11 +1,15 @@
 <ion-grid>
     <ion-row>
-        <ion-col col-10 right-border>
+        <ion-col col-9 right-border>
             <event-abstract [event]="event" (adminButtonSelected)="onSelectedAdminButton()"></event-abstract>
-            <maps [location]="location" *ngIf="location"></maps>
         </ion-col>
-        <ion-col col-2>
+        <ion-col col-3>
             <days-list [days]="days" (daySelected)="onSelectedDay($event)"></days-list>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12>
+            <maps [location]="location" *ngIf="location"></maps>
         </ion-col>
     </ion-row>
 </ion-grid>
