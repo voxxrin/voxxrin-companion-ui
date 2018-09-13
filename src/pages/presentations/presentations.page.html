@@ -1,12 +1,12 @@
 <ion-header>
     <top-navbar [title]="day?.name + ' - Présentations'"></top-navbar>
-    <ion-toolbar *ngIf="isAuthenticated">
+    <ion-toolbar>
         <ion-segment [(ngModel)]="presentationsFilter">
             <ion-segment-button value="allPresentations">
-                All
+                Toutes
             </ion-segment-button>
-            <ion-segment-button value="favoritePresentations">
-                Favorites
+            <ion-segment-button value="favoritePresentations" [disabled]="!isAuthenticated">
+                Favoris
             </ion-segment-button>
         </ion-segment>
     </ion-toolbar>
@@ -14,7 +14,7 @@
 
 <ion-content>
     <div style="height:100%">
-        <div *ngIf="presentationsFilter == 'allPresentations' && presentations">
+        <div *ngIf="presentationsFilter === 'allPresentations' && presentations">
             <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
                 <ng-template #presentationHeader let-header="headerTemplate">
                     {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
@@ -24,7 +24,7 @@
                 </ng-template>
             </presentations-list>
         </div>
-        <div *ngIf="presentationsFilter == 'favoritePresentations' && filteredPresentations">
+        <div *ngIf="presentationsFilter === 'favoritePresentations' && filteredPresentations">
             <presentations-list [presentations]="filteredPresentations" (presentationSelected)="navigateToPresentation($event)">
                 <ng-template #presentationHeader let-header="headerTemplate">
                     {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}

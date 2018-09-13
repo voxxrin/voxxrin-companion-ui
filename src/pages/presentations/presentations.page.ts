@@ -20,7 +20,7 @@ export class PresentationsPage extends AbstractAuthenticatedComponent{
     public filteredPresentations: Presentation[] = [];
 
     public day: Day;
-    public presentationsFilter: string = "allPresentations";
+    public presentationsFilter: 'allPresentations' | 'favoritePresentations' = 'allPresentations';
 
     constructor(private navController: NavController,
                 private navParams: NavParams,
@@ -29,6 +29,9 @@ export class PresentationsPage extends AbstractAuthenticatedComponent{
                 public constants: ConstantsService,
                 authService: AuthService) {
         super(authService);
+        authService.currentUser()
+            .filter(u => u === undefined || u === null)
+            .subscribe(u => this.presentationsFilter = 'allPresentations');
     }
 
     ionViewWillEnter(){
