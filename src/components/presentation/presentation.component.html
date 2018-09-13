@@ -27,11 +27,13 @@
                 <ion-avatar>
                     <img class="fix-ratio" [src]="speaker.avatarUrl"/>
                 </ion-avatar>
-                <b>{{ speaker.name }}</b> {{ speaker.company ? '-' + speaker.company : ''}}
-                <br><br>
+                <b>{{ speaker.name }}</b> {{ speaker.company ? '- ' + speaker.company : ''}}
                 <div>
-                    {{ speaker.twitterId | twitterId }}
+                    <a (click)="openTwitterUrl(speaker.twitterId)">
+                        {{ speaker.twitterId | twitterId }}
+                    </a> 
                 </div>
+                <br>
                 <div [innerHTML]="speaker.bio"></div>
             </ion-item>
         </ion-list>

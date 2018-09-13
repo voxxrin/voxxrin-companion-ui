@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { AppComponent } from './app.component';
 import { AbstractEventComponent } from './../components/abstract-event/abstract-event.component';
@@ -31,7 +32,8 @@ import { DirectivesModule } from '../directives/directives.module';
     declarations: [AppComponent],
     entryComponents: [AppComponent],
     providers: [
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        { provide: InAppBrowser, useClass: InAppBrowser }
     ]
 })
 export class AppModule {
