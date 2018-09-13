@@ -1,12 +1,12 @@
 <div>
     <ion-grid>
         <ion-row>
-            <ion-col col-4>
+            <ion-col>
                 <ion-avatar item-left class="fix-ratio">
-                    <img [src]="event.imageUrl">
+                    <img [src]="event.imageUrl" [style.border]="'1px solid lightgrey'">
                 </ion-avatar>
             </ion-col>
-            <ion-col col-8>
+            <ion-col>
                 <ion-title>{{ event.name }}</ion-title>
             </ion-col>
         </ion-row>
