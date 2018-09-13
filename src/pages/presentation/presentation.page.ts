@@ -26,13 +26,16 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
                 private presentationService: PresentationService,
                 private ratingService: RatingService,
                 private pushService: PushService,
-                authService: AuthService) {
-        super(authService)
+                private authService: AuthService) {
+        super(authService);
     }
 
     ngOnInit(): void {
         this.presentations = this.navParams.data.presentations;
         this.loadPresentation(this.navParams.data.presentationId);
+        this.authService.currentUser()
+            .filter(u => u !== null && u !== undefined)
+            .subscribe(u => this.loadPresentation(this.navParams.data.presentationId));
     }
 
     public swipePresentation(swipeEvent: any) {
