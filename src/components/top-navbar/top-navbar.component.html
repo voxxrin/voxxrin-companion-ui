@@ -1,7 +1,12 @@
 <ion-navbar color="primary" hideBackButton="true">
-    <button ion-button menuToggle icon-only>
-        <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-buttons start>
+        <button ion-button navPop icon-only *ngIf="deviceService.isIOS()">
+            <ion-icon ios="ios-arrow-back" md="nbsons-arrow-back"></ion-icon>
+        </button>
+        <button ion-button menuToggle icon-only *ngIf="!deviceService.isIOS()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
     <ion-title>{{ title }}</ion-title>
     <ion-buttons end>
         <ng-content></ng-content>

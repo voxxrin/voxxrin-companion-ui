@@ -1,3 +1,4 @@
+import { DeviceService } from './../../services/device.service';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -6,4 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class TopNavbarComponent {
     @Input() title: string;
+
+    constructor(public deviceService: DeviceService) {
+        console.log(deviceService.isIOS());
+    }
+
+
 }
