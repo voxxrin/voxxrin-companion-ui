@@ -1,14 +1,16 @@
 <div>
     <ion-grid>
         <ion-row>
-            <ion-col>
-                <ion-avatar item-left class="fix-ratio">
-                    <img [src]="event.imageUrl" [style.border]="'1px solid lightgrey'">
-                </ion-avatar>
-            </ion-col>
-            <ion-col>
-                <ion-title>{{ event.name }}</ion-title>
-            </ion-col>
+            <ion-avatar item-left class="fix-ratio">
+                <img [src]="event.imageUrl" [style.border]="'1px solid lightgrey'">
+            </ion-avatar>
+        </ion-row>
+        <ion-row>&nbsp;</ion-row>
+        <ion-row>
+            <ion-title><span class="primary-text">{{ event.name }}</span></ion-title>
+        </ion-row>
+        <ion-row>
+            <p><ion-icon name="pin"></ion-icon> {{ event.location }}</p>
         </ion-row>
     </ion-grid>
     <br>

@@ -1,3 +1,5 @@
+@import "../theme/variables";
+
 //////////////////////////////////////////
 // VARIABLES
 //////////////////////////////////////////
@@ -30,7 +32,7 @@ ion-avatar.fix-ratio {
 }
 
 [right-border] {
-  border-right: 2px solid darkgray;
+  border-right: 2px solid color($colors, primary, base);
 }
 
 //////////////////////////////////////////
@@ -136,9 +138,13 @@ presentations-list {
 
 // ===== Typo Color
 
-.primary-text {color: #f53d3d;}
-.white-text { color: white}
+.primary-text {
+  color: #f53d3d !important;
+}
 
+.white-text {
+  color: white
+}
 
 
 //////////////////////////////////////////
