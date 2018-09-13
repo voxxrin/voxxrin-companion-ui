@@ -20,6 +20,7 @@ import { BingoRatingModalComponent } from './bingo-rating-modal/bingo-rating-mod
 import { PresentationsListItemComponent } from './presentations-list-item/presentations-list-item';
 import { PresentationAttachedContentListComponent } from './presentation-attached-content/presentation-attached-content-list/presentation-attached-content-list.component';
 import { PresentationAttachedContentSubmitComponent } from './presentation-attached-content/presentation-attached-content-submit/presentation-attached-content-submit.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 let components: any[] = [
     EventsListComponent,
@@ -39,13 +40,14 @@ let components: any[] = [
     BingoRatingModalComponent,
     PresentationsListItemComponent,
     PresentationAttachedContentListComponent,
-    PresentationAttachedContentSubmitComponent,
+    PresentationAttachedContentSubmitComponent
 ];
 
 @NgModule({
     imports: [
         IonicModule,
-        ServicesModule
+        ServicesModule,
+        DirectivesModule
     ],
     declarations: components,
     entryComponents: components,

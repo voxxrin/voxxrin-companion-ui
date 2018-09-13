@@ -11,6 +11,7 @@ import { StatPresentationListComponent } from './../components/stat-presentation
 import { PagesModule } from '../pages/pages.module';
 import { ComponentsModule } from '../components/components.module';
 import { ServicesModule } from '../services/services.module';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import { ServicesModule } from '../services/services.module';
         // app modules
         PagesModule,
         ComponentsModule,
+        DirectivesModule,
         ServicesModule
     ],
     bootstrap: [IonicApp],
