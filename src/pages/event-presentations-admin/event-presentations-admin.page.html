@@ -14,10 +14,12 @@
                 <ion-row>
                     <ion-col class="stat-pres-ion-col" text-wrap col-9>
                         {{ presentation.title }}
-                        <p *ngIf="presentation.speakers && presentation.speakers.length > 0">
-                            <ion-icon name="ios-person"></ion-icon>
-                            {{ presentation.speakers | speakerNames }}
-                        </p>
+                        <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
+                            <p *ngFor="let speaker of presentation.speakers">
+                                <ion-icon name="ios-person"></ion-icon>
+                                {{ speaker?.name }}
+                            </p>
+                        </div>
                     </ion-col>
                     <ion-col class="stat-pres-ion-col-button">
                         <button ion-button icon-only color="sun" (click)="goToPresentationAdmin(presentation)">
