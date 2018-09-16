@@ -1,73 +1,74 @@
 {
-    "name": "voxxrin-companion-ui",
-    "version": "0.0.1",
-    "author": "Alexandre NEDELEC & Elian ORIOU & Thomas VALLI",
-    "private": true,
-    "scripts": {
-        "clean": "ionic-app-scripts clean",
-        "build": "ionic-app-scripts build",
-        "prebuildtosrv": "npm run build",
-        "buildtosrv": "cp -r www/* ../voxxrin-companion-srv/srv/src/main/webapp",
-        "lint": "ionic-app-scripts lint",
-        "serve": "ionic-app-scripts serve",
-        "start": "ionic-app-scripts serve",
-        "run:android": "ionic cordova run android",
-        "deploy:alpha:android": "fastlane android alpha"
+  "name": "voxxrin-companion-ui",
+  "version": "0.0.1",
+  "author": "Alexandre NEDELEC & Elian ORIOU & Thomas VALLI",
+  "private": true,
+  "scripts": {
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "prebuildtosrv": "npm run build",
+    "buildtosrv": "cp -r www/* ../voxxrin-companion-srv/srv/src/main/webapp",
+    "lint": "ionic-app-scripts lint",
+    "serve": "ionic-app-scripts serve",
+    "start": "ionic-app-scripts serve",
+    "run:android": "ionic cordova run android",
+    "deploy:alpha:android": "fastlane android alpha"
+  },
+  "config": {
+    "ionic_source_map_type": "source-map"
+  },
+  "dependencies": {
+    "@angular/common": "4.4.6",
+    "@angular/compiler": "4.4.6",
+    "@angular/compiler-cli": "4.4.6",
+    "@angular/core": "4.4.6",
+    "@angular/forms": "4.4.6",
+    "@angular/http": "4.4.6",
+    "@angular/platform-browser": "4.4.6",
+    "@angular/platform-browser-dynamic": "4.4.6",
+    "@ionic-native/core": "4.11.0",
+    "@ionic-native/in-app-browser": "^4.12.2",
+    "@ionic-native/splash-screen": "4.11.0",
+    "@ionic-native/status-bar": "4.11.0",
+    "@ionic/storage": "2.0.1",
+    "cordova-android": "7.1.1",
+    "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-firebase": "^1.0.5",
+    "cordova-plugin-inappbrowser": "https://github.com/apache/cordova-plugin-inappbrowser.git#de86501026cbef4dfba5f962d32f893bbb8a4729",
+    "cordova-plugin-splashscreen": "^5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "ionic": "3.19.0",
+    "ionic-angular": "3.7.0",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "ionicons": "3.0.0",
+    "lodash": "4.17.4",
+    "moment": "2.18.1",
+    "rxjs": "5.4.0",
+    "sw-toolbox": "3.4.0",
+    "zone.js": "0.8.12"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "3.1.11",
+    "@ionic/cli-plugin-cordova": "1.6.2",
+    "@ionic/cli-plugin-ionic-angular": "1.4.1",
+    "cordova": "8.0.0",
+    "typescript": "2.2.1"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-firebase": {}
     },
-    "config": {
-        "ionic_source_map_type": "source-map"
-    },
-    "dependencies": {
-        "@angular/common": "4.4.6",
-        "@angular/compiler": "4.4.6",
-        "@angular/compiler-cli": "4.4.6",
-        "@angular/core": "4.4.6",
-        "@angular/forms": "4.4.6",
-        "@angular/http": "4.4.6",
-        "@angular/platform-browser": "4.4.6",
-        "@angular/platform-browser-dynamic": "4.4.6",
-        "@ionic-native/core": "4.11.0",
-        "@ionic-native/splash-screen": "4.11.0",
-        "@ionic-native/status-bar": "4.11.0",
-        "@ionic/storage": "2.0.1",
-        "cordova-android": "7.1.1",
-        "cordova-plugin-console": "^1.1.0",
-        "cordova-plugin-device": "^2.0.2",
-        "cordova-plugin-firebase": "^1.0.5",
-        "cordova-plugin-inappbrowser": "https://github.com/apache/cordova-plugin-inappbrowser.git#de86501026cbef4dfba5f962d32f893bbb8a4729",
-        "cordova-plugin-splashscreen": "^5.0.2",
-        "cordova-plugin-statusbar": "^2.4.2",
-        "cordova-plugin-whitelist": "^1.3.3",
-        "ionic": "3.19.0",
-        "ionic-angular": "3.7.0",
-        "ionic-plugin-keyboard": "^2.2.1",
-        "ionicons": "3.0.0",
-        "lodash": "4.17.4",
-        "moment": "2.18.1",
-        "rxjs": "5.4.0",
-        "sw-toolbox": "3.4.0",
-        "zone.js": "0.8.12"
-    },
-    "devDependencies": {
-        "@ionic/app-scripts": "3.1.11",
-        "@ionic/cli-plugin-cordova": "1.6.2",
-        "@ionic/cli-plugin-ionic-angular": "1.4.1",
-        "cordova": "8.0.0",
-        "typescript": "2.2.1"
-    },
-    "cordova": {
-        "plugins": {
-            "cordova-plugin-console": {},
-            "cordova-plugin-device": {},
-            "cordova-plugin-splashscreen": {},
-            "cordova-plugin-statusbar": {},
-            "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {},
-            "cordova-plugin-inappbrowser": {},
-            "cordova-plugin-firebase": {}
-        },
-        "platforms": [
-            "android"
-        ]
-    }
+    "platforms": [
+      "android"
+    ]
+  }
 }
