@@ -1,5 +1,5 @@
-import { Presentation } from "./presentation.model";
-import { Event } from "./event.model";
+import { Presentation } from './presentation.model';
+import { Event } from './event.model';
 
 export class EventPresentations {
 

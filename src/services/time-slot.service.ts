@@ -1,10 +1,7 @@
-import { TimeSlot } from './../models/time-slot.model';
-import { Moment } from 'moment/moment';
-import { Presentation } from './../models/presentation.model';
-import { Observable } from 'rxjs/Rx';
+import { TimeSlot } from '../models/time-slot.model';
+import { Presentation } from '../models/presentation.model';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 
 @Injectable()
 export class TimeSlotService {

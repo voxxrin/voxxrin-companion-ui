@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Presentation } from "../../models/presentation.model";
+import { Presentation } from '../../models/presentation.model';
 
 @Component({
     selector: 'presentations-list-item',

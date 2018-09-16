@@ -1,6 +1,5 @@
-import { NavController, App } from 'ionic-angular';
+import { App, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { User } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 import { AbstractAuthenticatedComponent } from '../abstract-authenticated-component';
 
