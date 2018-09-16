@@ -1,28 +1,29 @@
 <div>
     <ion-buttons end>
         <div *ngIf="!authenticatedUser">
-            <button color="secondary" ion-button icon-only full (click)="auth('twitter')">
+            <button color="secondary" ion-button icon-only full round (click)="auth('twitter')">
                 <ion-icon name="logo-twitter"></ion-icon>
             </button>
-            <button  color="secondary" ion-button icon-only full (click)="auth('facebook')">
+            <button  color="secondary" ion-button icon-only full round (click)="auth('facebook')">
                 <ion-icon name="logo-facebook"></ion-icon>
             </button>
-            <button color="secondary" ion-button icon-only full (click)="auth('linkedin')">
+            <button color="secondary" ion-button icon-only full round (click)="auth('linkedin')">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </button>
-            <button color="secondary" ion-button full (click)="goToEvents()">
+            <button color="secondary" ion-button full round (click)="goToEvents()">
                 Continuer en tant qu'invité
             </button>
         </div>
         <div *ngIf="authenticatedUser">
-            <button color="secondary" ion-button full (click)="goToEvents()">
+            <button color="secondary" ion-button full round icon-start (click)="goToEvents()">
+                <ion-icon name="calendar"></ion-icon>
                 Liste des évènements
             </button>
-            <button color="secondary" ion-button full icon-start (click)="goToFavorites()">
+            <button color="secondary" ion-button full round icon-start (click)="goToFavorites()">
                 <ion-icon name="md-star" color="sun"></ion-icon>
                 Favoris
             </button>
-            <button color="sun" ion-button icon-only full (click)="logout()" class="logout-button">
+            <button color="light" ion-button icon-only full round (click)="logout()" class="logout-button">
                 <ion-icon name="power"></ion-icon>
             </button>
         </div>
