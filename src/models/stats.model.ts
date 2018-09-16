@@ -10,7 +10,8 @@ export interface Statistic {
     remindersCount: number;
     usersWithRemindersCount: number;
     topFavoritedPresentation: Presentation;
-    topRemindedPresentaion: Presentation;
+    topRemindedPresentation: Presentation;
+    topRatings: { [ratingItemKey: string]: Presentation };
     ratingsCount: number;
     ratingsAvg:	number;
     topRatedPresentation: Presentation;

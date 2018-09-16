@@ -1,3 +1,4 @@
+<h3>Statistiques générales</h3>
 <stat-item iconName="ios-microphone" titleName="Nombre de talks">
     {{ statistic.talksCount }}
 </stat-item>
@@ -10,12 +11,15 @@
 <stat-item iconName="ios-videocam" titleName="Souscription PUSH" titleInfoName="utilisateurs" [titleInfoCount]="statistic.usersWithRemindersCount">
     {{ statistic.remindersCount }}
 </stat-item>
-<stat-item iconName="ios-speedometer" titleName="Note moyenne" titleInfoName="notes" [titleInfoCount]="statistic.ratingsCount">
-    {{ statistic.ratingsAvg}}
-</stat-item>
 <stat-item iconName="ios-podium" titleName="Talk le plus favorisé" titleInfoName="notes" [titleInfoCount]="statistic.topFavoritedPresentation?.favoriteCount">
     {{ statistic.topFavoritedPresentation?.title}}
 </stat-item>
-<stat-item iconName="ios-podium" titleName="Talk le mieux noté">
-    {{ statistic.topRatedPresentation?.title}}
+<stat-item iconName="ios-podium" titleName="Talk avec le plus de souscription PUSH" titleInfoName="notes" [titleInfoCount]="statistic.topRemindedPresentation?.favoriteCount">
+    {{ statistic.topRemindedPresentation?.title}}
+</stat-item>
+
+
+<h3>BINGO</h3>
+<stat-item iconName="ios-grid" [titleName]="bingoResult.presentation?.title || '?'" *ngFor="let bingoResult of bingoResults">
+    {{ bingoResult.ratingItem?.labels['FR'] }}
 </stat-item>
