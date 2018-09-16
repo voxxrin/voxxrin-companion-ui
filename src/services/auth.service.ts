@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { JWTService } from './jwt.service';
-import { environment } from '../app/environment';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs/Rx';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { EnvironmentService } from './environment.service';
 
 export type OAuthProvider = 'twitter' | 'linkedin' | 'facebook';
 
@@ -13,12 +13,12 @@ export class AuthService {
     private subscription: Subscription;
     public static currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 
-    constructor(private jwtService: JWTService, private httpClient: HttpClient) {
+    constructor(private jwtService: JWTService, private httpClient: HttpClient, private envService: EnvironmentService) {
         this.validateTokenAndFetchCurrentUser();
     }
 
     public auth(provider: OAuthProvider): void {
-        const authWindow: any = window.open(`${environment.backendApiBaseUrl}/auth/redirect/${provider}`, '_blank');
+        const authWindow: any = window.open(`${this.envService.getBackendUrl()}/auth/redirect/${provider}`, '_blank');
         if (window['cordova']) {
             authWindow.addEventListener('loadstop', () => {
                 authWindow.executeScript({code: 'requestCredentials()'}, response => {
@@ -54,7 +54,7 @@ export class AuthService {
     private validateTokenAndFetchCurrentUser() {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
-                .get(`${environment.backendApiBaseUrl}/auth/validate`)
+                .get(`${this.envService.getBackendUrl()}/auth/validate`)
                 .subscribe((user: User) => AuthService.currentUserSubject.next(user), () => this.jwtService.clearToken());
         }
     }

@@ -22,6 +22,7 @@ import { TwitterIdPipe } from './twitter-id.pipe';
 import { TimeSlotService } from './time-slot.service';
 import { RatingService } from './rating.service';
 import { PushService } from './push.service';
+import { EnvironmentService } from './environment.service';
 
 let services: any[] = [
     LocalStorageService,
@@ -41,7 +42,8 @@ let services: any[] = [
     RatingService,
     TimeSlotService,
     PushService,
-    DeviceService
+    DeviceService,
+    EnvironmentService
 ];
 
 let pipes: any[] = [

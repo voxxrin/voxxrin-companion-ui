@@ -21,6 +21,7 @@ import { PresentationsListItemComponent } from './presentations-list-item/presen
 import { PresentationAttachedContentListComponent } from './presentation-attached-content/presentation-attached-content-list/presentation-attached-content-list.component';
 import { PresentationAttachedContentSubmitComponent } from './presentation-attached-content/presentation-attached-content-submit/presentation-attached-content-submit.component';
 import { DirectivesModule } from '../directives/directives.module';
+import { EnvironmentSwitcherModalComponent } from './environment-switcher-modal/environment-switcher-modal.component';
 
 let components: any[] = [
     EventsListComponent,
@@ -40,7 +41,8 @@ let components: any[] = [
     BingoRatingModalComponent,
     PresentationsListItemComponent,
     PresentationAttachedContentListComponent,
-    PresentationAttachedContentSubmitComponent
+    PresentationAttachedContentSubmitComponent,
+    EnvironmentSwitcherModalComponent,
 ];
 
 @NgModule({

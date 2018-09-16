@@ -4,19 +4,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { Presentation } from '../models/presentation.model';
-import { environment } from '../app/environment';
 import { Day } from '../models/day.model';
 import { Subscription } from '../models/subscription.model';
 import { EventPresentations } from '../models/event-presentations.model';
 import { AttachedContent } from '../models/attached-content.model';
+import { EnvironmentService } from './environment.service';
 
 @Injectable()
 export class PresentationService {
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient, private envService: EnvironmentService) {}
 
     public fetchPresentations(day: Day): Observable<Presentation[]> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/days/${day._id}/presentations`)
+        return this.httpClient.get(`${this.envService.getBackendUrl()}/days/${day._id}/presentations`)
             .map((data: any) => data as Presentation[])
             .map((presentations: Presentation[]) => PresentationService.preparePresentations(presentations))
             .map((presentations: Presentation[]) => _.chain(presentations)
@@ -26,13 +26,13 @@ export class PresentationService {
     }
 
     public fetchPresentationById(id: string): Observable<Presentation> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/presentations/${id}`)
+        return this.httpClient.get(`${this.envService.getBackendUrl()}/presentations/${id}`)
             .map((data: any) => data as Presentation)
             .map((presentation: Presentation) => PresentationService.preparePresentation(presentation));
     }
 
     public fetchAllPresentationFromAnEvent(eventId: string): Observable<Presentation[]> {
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/events/${eventId}/presentations`)
+        return this.httpClient.get(`${this.envService.getBackendUrl()}/events/${eventId}/presentations`)
             .map((data: any) => data as Presentation[])
             .map((presentations: Presentation[]) => PresentationService.preparePresentations(presentations))
             .map((presentations: Presentation[]) => _.chain(presentations)
@@ -42,7 +42,7 @@ export class PresentationService {
     }
 
     public getFavoritePresentations(): Observable<EventPresentations[]>{
-        return this.httpClient.get(`${environment.backendApiBaseUrl}/favorite`)
+        return this.httpClient.get(`${this.envService.getBackendUrl()}/favorite`)
             .map((data: any) => data as EventPresentations[])
             .map((eventPresentations: EventPresentations[]) =>
                     eventPresentations.map( ep => {
@@ -53,31 +53,31 @@ export class PresentationService {
 
     public bookmarkPresentation(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .post(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
+            .post(`${this.envService.getBackendUrl()}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
             .map((data: any) => data as Subscription);
     }
 
     public removePresentationBookmark(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .delete(`${environment.backendApiBaseUrl}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`)
+            .delete(`${this.envService.getBackendUrl()}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`)
             .map((data: any) => data as Subscription);
     }
 
     public subscribeToPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .post(`${environment.backendApiBaseUrl}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
+            .post(`${this.envService.getBackendUrl()}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
             .map((data: any) => data as Subscription);
     }
 
     public unsubscribeFromPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .delete(`${environment.backendApiBaseUrl}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`)
+            .delete(`${this.envService.getBackendUrl()}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`)
             .map((data: any) => data as Subscription);
     }
 
     public attachContent(presentationId: string, content: AttachedContent): Observable<AttachedContent> {
         return this.httpClient
-            .post(`${environment.backendApiBaseUrl}/presentation/${presentationId}/attachedContent`, content)
+            .post(`${this.envService.getBackendUrl()}/presentation/${presentationId}/attachedContent`, content)
             .map((data: any) => data as AttachedContent);
     }
 
