@@ -4,6 +4,28 @@ $font-path: "../assets/fonts";
 $img-path: "../assets/img";
 $icon-path: "../assets/icon";
 
+$font-family-base:                                     "Brandon Text", sans-serif !default;
+
+$primary-light :                                       #db2d5e !default;
+$primary :                                             #e1223e !default;
+$primary-gradient : linear-gradient(135deg,  $primary-light 0%, $primary 100%) !default;
+
+$twitter :                                             #1da1f2 !default;
+$facebook :                                            #3b5998 !default;
+$linkedin :                                            #0077b5 !default;
+
+$white :                                               #FFFFFF !default;
+$black :                                               #333333 !default;
+
+
+// COLORS COMPONENTS
+$toolbar-background:                                    transparent !default;
+
+// METRICS COMPONENTS
+
+$header-height: 55px;
+
+
 @import "ionic.globals";
 
 
@@ -26,7 +48,7 @@ $icon-path: "../assets/icon";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #f53d3d,
+  primary:    $primary,
   secondary:  #488aff,
   danger:     #32db64,
   light:      #f4f4f4,
@@ -77,5 +99,4 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+@import "../app/styles/vendors/font-brandon";

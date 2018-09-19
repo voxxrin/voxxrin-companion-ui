@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the BUTTONS components.
+// -----------------------------------------------------------------------------
+
+
+.button {
+  font-weight: 500;
+  border-radius: 50px !important;
+
+  // ==== Colors
+
+  &.primary {
+    background: $primary-gradient;
+    color: $white;
+  }
+
+  &.white {
+    background: $white;
+    color: $primary;
+  }
+
+  &.btn-twitter { background: $twitter;}
+  &.btn-fb { background: $facebook;}
+  &.btn-linkedin { background: $linkedin;}
+}

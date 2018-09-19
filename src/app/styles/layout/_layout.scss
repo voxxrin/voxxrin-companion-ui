@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the GLOBAL layout.
+// -----------------------------------------------------------------------------
+
+
+ion-grid, ion-row {
+  height: calc(100%);
+}
+
+.wrap {
+  white-space: normal;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+ion-avatar.fix-ratio {
+  img {
+    border-radius: 50px;
+    object-fit: scale-down;
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+[right-border] {
+  border-right: 2px solid darkgray;
+}

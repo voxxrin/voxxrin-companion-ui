@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the HEADER layout.
+// -----------------------------------------------------------------------------
+
+// Custom Toolbar
+
+top-navbar {
+  .toolbar-background {
+    background: $primary-gradient !important;
+    border-bottom: 0 !important;
+  }
+}
