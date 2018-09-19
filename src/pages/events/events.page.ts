@@ -1,3 +1,4 @@
+import { LoadingService } from './../../services/loading.service';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 import { Component, OnInit } from '@angular/core';
@@ -18,18 +19,22 @@ export class EventsPage implements OnInit {
 
     eventFilter: string = "futureEvents";
 
-    constructor(private navController: NavController, private eventService: EventService) {}
+    constructor(private navController: NavController, private eventService: EventService, private loadingService: LoadingService) { }
 
     ngOnInit(): void {
-        this.eventService.fetchEvents().subscribe(events => {
-            this.allEvents = events;
-            const now = moment();
-            this.futureEvents = events.filter(event => event.from.isAfter(now));
-            this.pastEvents = events.filter(event => event.from.isSameOrBefore(now));
+
+        this.loadingService.launchLoader().then(() => {
+            this.eventService.fetchEvents().subscribe(events => {
+                this.allEvents = events;
+                const now = moment();
+                this.futureEvents = events.filter(event => event.from.isAfter(now));
+                this.pastEvents = events.filter(event => event.from.isSameOrBefore(now));
+                this.loadingService.stopLoader()
+            });
         });
     }
 
-    public navigateToEvent(event:Event){
+    public navigateToEvent(event: Event) {
         this.navController.push('EventPage', { eventId: event.eventId }, { animate: true, direction: 'forward' });
     }
 }

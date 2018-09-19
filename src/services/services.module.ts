@@ -1,3 +1,4 @@
+import { LoadingService } from './loading.service';
 import { DeviceService } from './device.service';
 import { StatusBar } from '@ionic-native/status-bar';
 import { NgModule } from '@angular/core';
@@ -43,7 +44,8 @@ let services: any[] = [
     TimeSlotService,
     PushService,
     DeviceService,
-    EnvironmentService
+    EnvironmentService,
+    LoadingService
 ];
 
 let pipes: any[] = [

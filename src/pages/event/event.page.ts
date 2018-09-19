@@ -1,3 +1,4 @@
+import { LoadingService } from './../../services/loading.service';
 import { AuthService } from './../../services/auth.service';
 import { User } from './../../models/user.model';
 import { EventAdminPage } from '../event-admin/event-admin.page';
@@ -6,7 +7,6 @@ import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from '../../models/event.model';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
-import { TwitterFeedPage } from '../twitter-feed/twitter-feed.page';
 import { EventService } from '../../services/event.service';
 import * as _ from 'lodash';
 
@@ -22,12 +22,15 @@ export class EventPage implements OnInit {
 
     public isAdmin: boolean;
 
-    constructor(private navController: NavController, private navParams: NavParams, private eventService: EventService, private authService: AuthService) { }
+    constructor(private navController: NavController, private navParams: NavParams, private eventService: EventService, private authService: AuthService, private loadingService: LoadingService) { }
 
     ngOnInit(): void {
-        this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => {
-            this.event = event;
-            this.authService.currentUser().subscribe(user => this.setUserRights(user));
+        this.loadingService.launchLoader().then(() => {
+            this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => {
+                this.event = event;
+                this.authService.currentUser().subscribe(user => this.setUserRights(user));
+                this.loadingService.stopLoader();
+            });
         });
     }
 

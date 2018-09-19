@@ -1,3 +1,4 @@
+import { LoadingService } from './loading.service';
 import { Injectable } from '@angular/core';
 import { JWTService } from './jwt.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs/Rx';
@@ -18,19 +19,21 @@ export class AuthService {
     }
 
     public auth(provider: OAuthProvider): void {
-        const authWindow: any = window.open(`${this.envService.getBackendUrl()}/auth/redirect/${provider}`, '_blank');
-        if (window['cordova']) {
-            authWindow.addEventListener('loadstop', () => {
-                authWindow.executeScript({code: 'requestCredentials()'}, response => {
-                    authWindow.close();
-                    this.retrieveCredentialsByScriptExecution(response);
-                    window.location.reload();
+            const authWindow: any = window.open(`${this.envService.getBackendUrl()}/auth/redirect/${provider}`, '_blank');
+            if (window['cordova']) {
+                authWindow.addEventListener('loadstop', () => {
+                    authWindow.executeScript({ code: 'requestCredentials()' }, response => {
+                        authWindow.close();
+                        this.retrieveCredentialsByScriptExecution(response);
+                        window.location.reload();
+                    });
                 });
-            });
-        } else {
-            window.addEventListener('message', (event) => this.retrieveCredentialsByPostMessage(event), false);
-            this.subscription = Observable.timer(0, 1000).subscribe(() => authWindow.postMessage('requestCredentials', '*'));
-        }
+            } else {
+                window.addEventListener('message', (event) => this.retrieveCredentialsByPostMessage(event), false);
+                this.subscription = Observable.timer(0, 1000).subscribe(() => {
+                    authWindow.postMessage('requestCredentials', '*')
+                });
+            }
     }
 
     public currentUser(): Observable<User> {

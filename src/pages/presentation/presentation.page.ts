@@ -1,3 +1,4 @@
+import { LoadingService } from './../../services/loading.service';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
@@ -21,12 +22,13 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
     public presentations: Presentation[];
 
     constructor(private navController: NavController,
-                private navParams: NavParams,
-                private modalCtrl: ModalController,
-                private presentationService: PresentationService,
-                private ratingService: RatingService,
-                private pushService: PushService,
-                private authService: AuthService) {
+        private navParams: NavParams,
+        private modalCtrl: ModalController,
+        private presentationService: PresentationService,
+        private ratingService: RatingService,
+        private pushService: PushService,
+        private authService: AuthService,
+        private loadingService: LoadingService) {
         super(authService);
     }
 
@@ -35,7 +37,9 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
         this.loadPresentation(this.navParams.data.presentationId);
         this.authService.currentUser()
             .filter(u => u !== null && u !== undefined)
-            .subscribe(u => this.loadPresentation(this.navParams.data.presentationId));
+            .subscribe(u => {
+                this.loadPresentation(this.navParams.data.presentationId)
+            });
     }
 
     public swipePresentation(swipeEvent: any) {
@@ -56,12 +60,12 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
             presentation: presentation,
             presentations: this.presentations
         };
-        this.navController.pop({animate: false});
-        this.navController.push('PresentationPage', params, {animate: false});
+        this.navController.pop({ animate: false });
+        this.navController.push('PresentationPage', params, { animate: false });
     }
 
     public rate(presentation: Presentation) {
-        const attachContentModal = this.modalCtrl.create(BingoRatingModalComponent, {presentation: presentation});
+        const attachContentModal = this.modalCtrl.create(BingoRatingModalComponent, { presentation: presentation });
         attachContentModal.present();
         attachContentModal.onDidDismiss(subscription => {
             if (subscription) {
@@ -98,6 +102,8 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
                     .subscribe(rating => presentation.rated = true);
                 return presentation;
             })
-            .subscribe(presentation => this.presentation = presentation);
-    }
+            .subscribe(presentation => {
+                this.presentation = presentation
+            });
+   }
 }

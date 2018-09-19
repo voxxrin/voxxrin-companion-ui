@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular'
+import { IonicPage, NavController } from 'ionic-angular'
 import { EventService } from '../../services/event.service';
 import { AuthService } from '../../services/auth.service';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
@@ -21,7 +21,6 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
     public favoritePresentations: EventPresentations[];
 
     constructor(private navController:NavController,
-                private navParams: NavParams,
                 private eventService: EventService,
                 private presentationService: PresentationService,
                 public constants: ConstantsService,

@@ -7,8 +7,6 @@ import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { AppComponent } from './app.component';
-import { AbstractEventComponent } from './../components/abstract-event/abstract-event.component';
-import { StatPresentationListComponent } from './../components/stat-presentation-list/stat-presentation-list.component';
 import { PagesModule } from '../pages/pages.module';
 import { ComponentsModule } from '../components/components.module';
 import { ServicesModule } from '../services/services.module';
