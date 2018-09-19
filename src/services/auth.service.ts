@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from './environment.service';
 
-export type OAuthProvider = 'twitter' | 'linkedin' | 'facebook';
+export type OAuthProvider = 'twitter' | 'linkedin' | 'facebook' | 'github';
 
 @Injectable()
 export class AuthService {
