@@ -14,7 +14,7 @@ export class PresentationComponent {
     constructor(public constants: ConstantsService, private iab: InAppBrowser) { }
 
     public openTwitterUrl(twitterId: string): void {
-        const url = "https://twitter.com/" + twitterId.substr(1);
-        this.iab.create(url, "_system");
+        const url = `https://twitter.com/${twitterId.substr(1)}`;
+        this.iab.create(url, '_system');
     }
 }

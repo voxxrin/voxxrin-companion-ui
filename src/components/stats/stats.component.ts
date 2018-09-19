@@ -30,7 +30,6 @@ export class StatsComponent implements OnChanges {
     public computeBingoResults(ratingItems: { [key: string]: RatingItem }): { ratingItem: RatingItem, presentation: Presentation }[] {
         if (this.statistic && this.statistic.topRatings) {
             return _.keys(this.statistic.topRatings).map(key => {
-                console.log(key, ratingItems);
                 return {ratingItem: ratingItems[key], presentation: this.statistic.topRatings[key]};
             });
         }

@@ -18,4 +18,14 @@ export class EventDataAdminPage {
     public updateEventData() {
         this.eventService.updateData(this.event).subscribe(event => {});
     }
+
+    public isValid(): boolean {
+        return this.checkUrl(this.event.links.websiteUrl)
+            && this.checkUrl(this.event.links.twitterProfileUrl)
+            && this.checkUrl(this.event.links.facebookProfileUrl);
+    }
+
+    private checkUrl(url: string): boolean {
+        return !url || url.indexOf('http://') >= 0 || url.indexOf('https://') >= 0;
+    }
 }

@@ -7,10 +7,22 @@
 <ion-content padding>
     <form (ngSubmit)="updateEventData()">
         <ion-item>
-            <ion-label>HashTag (Twitter)</ion-label>
-            <ion-input type="text" [(ngModel)]="event.hashTag" name="hashTag"></ion-input>
+            <ion-label>Site Web</ion-label>
+            <ion-input type="text" [(ngModel)]="event.links.websiteUrl" name="websiteUrl"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>HashTag Twitter</ion-label>
+            <ion-input type="text" [(ngModel)]="event.links.hashTag" name="twitterHashTag"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Profil Twitter</ion-label>
+            <ion-input type="text" [(ngModel)]="event.links.twitterProfileUrl" name="twitterProfile"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Profil Facebook</ion-label>
+            <ion-input type="text" [(ngModel)]="event.links.facebookProfileUrl" name="facebookProfile"></ion-input>
         </ion-item>
         <div padding></div>
-        <button ion-button type="submit" block>Valider</button>
+        <button ion-button type="submit" [disabled]="!isValid()" block>Valider</button>
     </form>
 </ion-content>

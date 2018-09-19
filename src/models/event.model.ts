@@ -11,5 +11,12 @@ export interface Event {
     to: moment.Moment;
     days: Day[];
     imageUrl: string;
+    links: EventLinks;
+}
+
+export interface EventLinks {
     hashTag: string;
+    twitterProfileUrl: string;
+    facebookProfileUrl: string;
+    websiteUrl: string;
 }

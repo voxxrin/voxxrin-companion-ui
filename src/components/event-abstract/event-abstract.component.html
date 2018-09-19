@@ -9,9 +9,28 @@
                 </ion-avatar>
             </ion-col>
             <ion-col col-6>
-              <h5 class="primary-text space-top-0 space-bottom-0">{{ event.name }}</h5>
+                <h5 class="primary-text space-top-0 space-bottom-0">{{ event.name }}</h5>
             </ion-col>
         </ion-row>
+        <ion-row>&nbsp;</ion-row>
+        <ion-row>
+            <p class="space-top-0 inner-space-left-10" [innerHTML]="event.description"></p>
+        </ion-row>
+        <ion-row>&nbsp;</ion-row>
+        <ion-row align-items-center="true">
+            <a class="button btn-fb" ion-button icon-start full *ngIf="event.links.facebookProfileUrl" (click)="openUrl(event.links.facebookProfileUrl)">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Profil
+            </a>
+            <a class="button btn-twitter" ion-button icon-start full *ngIf="event.links.twitterProfileUrl" (click)="openUrl(event.links.twitterProfileUrl)">
+                <ion-icon name="logo-twitter"></ion-icon>
+                Profil
+            </a>
+            <a class="button" ion-button icon-start full *ngIf="event.links.websiteUrl" (click)="openUrl(event.links.websiteUrl)">
+                <ion-icon name="link"></ion-icon>
+                Site Web
+            </a>
+        </ion-row>
+        <ion-row>&nbsp;</ion-row>
     </ion-grid>
-    <p class="space-top-0 inner-space-left-10" [innerHTML]="event.description"></p>
 </div>
