@@ -1,14 +1,16 @@
 <ion-header>
     <top-navbar title="Jours">
-      <button icon-only *ngIf="isAdmin" color="sun" (click)="navigateToEventAdminPage()">
-        <ion-icon name="md-settings" color="light"></ion-icon>
-      </button>
-      <button  class="button round medium transparent" icon-only (click)="displayTwitterFeed()" *ngIf="event && event.hashTag">
-        <ion-icon name="logo-twitter" color="light"></ion-icon>
-      </button>
+        <button class="button round medium transparent" icon-only *ngIf="isAdmin" (click)="navigateToEventAdminPage()">
+            <ion-icon name="md-settings" color="sun"></ion-icon>
+        </button>
+        <button class="button round medium transparent" icon-only (click)="displayTwitterFeed()"
+                *ngIf="event && event.hashTag">
+            <ion-icon name="logo-twitter" color="light"></ion-icon>
+        </button>
     </top-navbar>
 </ion-header>
 
 <ion-content>
-    <event [event]="event" *ngIf="event" (daySelected)="navigateToPresentationsPage($event)" (adminButtonSelected)="navigateToEventAdminPage()"></event>
+    <event [event]="event" *ngIf="event" (daySelected)="navigateToPresentationsPage($event)"
+           (adminButtonSelected)="navigateToEventAdminPage()"></event>
 </ion-content>
