@@ -2,7 +2,7 @@
     <top-navbar title="Presentation">
         <ion-row>
             <button class="button round medium transparent" ion-button icon-only full color="secondary"
-                    (click)="rate(presentation)">
+                    (click)="rate(presentation)" *ngIf="isAuthenticated">
                 <ion-icon name="md-thumbs-up" [class.rated]="presentation?.rated"></ion-icon>
             </button>
             <button class="button round medium transparent" ion-button icon-only full color="secondary"
