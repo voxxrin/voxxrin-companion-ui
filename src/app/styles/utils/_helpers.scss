@@ -151,6 +151,22 @@
   transform: translateZ(0);
 }
 
+.sep-right {
+  position: relative;
+  padding-right: 16px;
+
+  &:after {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    height: 80%;
+    width: 1px;
+    background: $grey-line;
+    content: '';
+  }
+}
+
 // ~ Margin helper
 $spacing-value : 0, 1, 2, 3, 4, 5, 8, 10, 15, 16, 20, 24, 25, 28, 30, 34, 35, 40, 45, 50, 55, 60;
 
