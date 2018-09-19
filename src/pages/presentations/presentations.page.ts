@@ -1,4 +1,4 @@
-import { LoadingService } from './../../services/loading.service';
+import { LoadingService } from '../../services/loading.service';
 import { PresentationService } from '../../services/presentation.service';
 import { Day } from '../../models/day.model';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -17,6 +17,8 @@ import { AbstractAuthenticatedComponent } from '../../components/abstract-authen
 })
 export class PresentationsPage extends AbstractAuthenticatedComponent {
 
+    public static presentationHasChanged: boolean = false;
+
     public presentations: Presentation[] = [];
     public filteredPresentations: Presentation[] = [];
 
@@ -24,19 +26,19 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
     public presentationsFilter: 'allPresentations' | 'favoritePresentations' = 'allPresentations';
 
     constructor(private navController: NavController,
-        private navParams: NavParams,
-        private dayService: DayService,
-        private presentationService: PresentationService,
-        public constants: ConstantsService,
-        public authService: AuthService,
-        private loadingService: LoadingService) {
+                private navParams: NavParams,
+                private dayService: DayService,
+                private presentationService: PresentationService,
+                public constants: ConstantsService,
+                public authService: AuthService,
+                private loadingService: LoadingService) {
         super(authService);
         authService.currentUser()
             .filter(u => u === undefined || u === null)
             .subscribe(u => this.presentationsFilter = 'allPresentations');
     }
 
-    ionViewWillEnter() {
+    ionViewDidLoad() {
         this.loadingService.launchLoader().then(() => {
             this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
                 this.day = day;
@@ -49,6 +51,13 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
                     });
             });
         });
+    }
+
+    ionViewWillEnter() {
+        if (PresentationsPage.presentationHasChanged) {
+            PresentationsPage.presentationHasChanged = false;
+            this.ionViewDidLoad();
+        }
     }
 
     public navigateToPresentation(presentation: Presentation): void {

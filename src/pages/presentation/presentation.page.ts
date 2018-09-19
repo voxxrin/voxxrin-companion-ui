@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 import { RatingService } from '../../services/rating.service';
 import { PushService } from '../../services/push.service';
+import { PresentationsPage } from '../presentations/presentations.page';
 
 @IonicPage({
     segment: 'presentation/:presentationId'
@@ -22,13 +23,13 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
     public presentations: Presentation[];
 
     constructor(private navController: NavController,
-        private navParams: NavParams,
-        private modalCtrl: ModalController,
-        private presentationService: PresentationService,
-        private ratingService: RatingService,
-        private pushService: PushService,
-        private authService: AuthService,
-        private loadingService: LoadingService) {
+                private navParams: NavParams,
+                private modalCtrl: ModalController,
+                private presentationService: PresentationService,
+                private ratingService: RatingService,
+                private pushService: PushService,
+                private authService: AuthService,
+                private loadingService: LoadingService) {
         super(authService);
     }
 
@@ -69,6 +70,7 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
         attachContentModal.present();
         attachContentModal.onDidDismiss(subscription => {
             if (subscription) {
+                PresentationsPage.presentationHasChanged = true;
                 this.loadPresentation(this.navParams.data.presentationId);
             }
         });
@@ -80,7 +82,10 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
             ? this.presentationService.removePresentationBookmark(id, deviceToken)
             : this.presentationService.bookmarkPresentation(id, deviceToken);
         bookmarkFunction(presentation._id)
-            .subscribe(s => this.loadPresentation(presentation._id));
+            .subscribe(s => {
+                PresentationsPage.presentationHasChanged = true;
+                this.loadPresentation(presentation._id);
+            });
     }
 
     public subscribeToContent(presentation: Presentation) {
@@ -89,7 +94,10 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
             ? this.presentationService.unsubscribeFromPresentationContent(id, deviceToken)
             : this.presentationService.subscribeToPresentationContent(id, deviceToken);
         contentSubscriptionFunction(presentation._id)
-            .subscribe(s => this.loadPresentation(presentation._id));
+            .subscribe(s => {
+                PresentationsPage.presentationHasChanged = true;
+                this.loadPresentation(presentation._id);
+            });
     }
 
     private loadPresentation(id: string) {
