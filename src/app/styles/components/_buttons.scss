@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the BUTTONS components.
+// -----------------------------------------------------------------------------
+
+
+.button {
+  font-weight: 500;
+  border-radius: 50px !important;
+  text-transform: inherit !important;
+
+  // ==== Colors
+
+  &.primary {
+    background: $primary-gradient;
+    color: $white;
+  }
+
+  &.white {
+    background: $white;
+    color: $primary;
+  }
+
+  &.transparent {
+    background: transparent;
+  }
+
+  &.btn-twitter { background: $twitter;}
+  &.btn-fb { background: $facebook;}
+  &.btn-linkedin { background: $linkedin;}
+
+
+  &.round {
+
+    &.medium {
+      height: 34px;
+      width: 34px;
+
+
+      ion-icon {
+        padding: 0;
+        font-size: 24px;
+      }
+    }
+  }
+}

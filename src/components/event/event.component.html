@@ -1,14 +1,14 @@
-<ion-grid>
+<ion-grid class="no-padding">
     <ion-row>
-        <ion-col col-9 right-border>
+        <ion-col col-9 right-border class="view-content inner-space-bottom-0">
             <event-abstract [event]="event" (adminButtonSelected)="onSelectedAdminButton()"></event-abstract>
         </ion-col>
-        <ion-col col-3>
+        <ion-col col-3 class="no-padding">
             <days-list [days]="days" (daySelected)="onSelectedDay($event)"></days-list>
         </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col col-12>
+        <ion-col col-12 class="no-padding">
             <maps [location]="location" *ngIf="location"></maps>
         </ion-col>
     </ion-row>

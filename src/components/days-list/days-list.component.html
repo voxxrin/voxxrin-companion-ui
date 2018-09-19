@@ -1,6 +1,6 @@
-<ion-list *ngFor="let day of days">
-    <ion-item no-lines (click)="onSelectedDay(day)" class="no-scroll">
-        <p style="font-size: 30px" class="primary-text"><b>{{ day.date | date: 'dd' }}</b></p>
-        <p class="primary-text">{{ day.date | date: 'MMM' }}</p>
+<ion-list class="list-day" *ngFor="let day of days">
+    <ion-item class="list-day-item" (click)="onSelectedDay(day)">
+        <span class="list-day-item-nb"><b>{{ day.date | date: 'dd' }}</b></span>
+        <p>{{ day.date | date: 'MMM' }}</p>
     </ion-item>
 </ion-list>

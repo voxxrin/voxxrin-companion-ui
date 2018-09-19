@@ -1,21 +1,18 @@
 <ion-header>
     <top-navbar title="Presentation">
-        <ion-row *ngIf="isAuthenticated">
-            <ion-col>
-                <button ion-button icon-only color="secondary" (click)="rate(presentation)">
-                    <ion-icon name="md-thumbs-up" [class.rated]="presentation?.rated"></ion-icon>
-                </button>
-            </ion-col>
-            <ion-col>
-                <button ion-button icon-only color="secondary" (click)="bookmark(presentation)">
-                    <ion-icon name="md-star" [class.favorite]="presentation?.favorite"></ion-icon>
-                </button>
-            </ion-col>
-            <ion-col>
-                <button ion-button icon-only color="secondary" (click)="subscribeToContent(presentation)">
-                    <ion-icon name="md-videocam" [class.reminded]="presentation?.reminded"></ion-icon>
-                </button>
-            </ion-col>
+        <ion-row>
+            <button class="button round medium transparent" ion-button icon-only full color="secondary"
+                    (click)="rate(presentation)">
+                <ion-icon name="md-thumbs-up" [class.rated]="presentation?.rated"></ion-icon>
+            </button>
+            <button class="button round medium transparent" ion-button icon-only full color="secondary"
+                    (click)="bookmark(presentation)" *ngIf="isAuthenticated">
+                <ion-icon name="md-star" [class.favorite]="presentation?.favorite"></ion-icon>
+            </button>
+            <button class="button round medium transparent" ion-button icon-only full color="secondary"
+                    (click)="subscribeToContent(presentation)" *ngIf="isAuthenticated">
+                <ion-icon name="md-videocam" [class.reminded]="presentation?.reminded"></ion-icon>
+            </button>
         </ion-row>
     </top-navbar>
 </ion-header>

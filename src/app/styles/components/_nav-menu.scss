@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the NAV MENU components.
+// -----------------------------------------------------------------------------
+
+
+.menu-inner {
+
+  .header {
+    .toolbar { background: $black !important;}
+  }
+
+  .content {
+    background: $primary-gradient !important;
+  }
+
+  .list {
+    .item {
+      padding-left: 16px;
+      background: $primary-gradient !important;
+      color: $white;
+
+      .item-inner {
+        border-bottom: 1px solid darken($primary, 5%) !important;
+      }
+
+      &.item-block:first-child {
+        border-top: none;
+      }
+
+      &.item-block:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+// ==== User Infos
+
+.user {
+  display: block;
+  text-align: center;
+}
+
+.user-infos {
+  background: $primary-gradient-dark;
+  border-bottom: 0 !important;
+
+  .user-name {
+    font-weight: bold;
+    color: $white;
+  }
+
+  .user-id {
+    color: $white;
+    opacity: 0.8;
+    font-size: 12px;
+    display: block;
+  }
+}

@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the LOGIN page.
+// -----------------------------------------------------------------------------
+
+.home-page {
+  background: url($img-path + '/bg-login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  .app-logo {
+    display: block;
+    height: calc(74px + 40 * (100vw - 320px) / 1120);
+    margin-bottom: 12px !important;
+    background: url($icon-path + '/logo.svg') no-repeat;
+    background-position: center left;
+  }
+
+  .part-bottom-login {
+    height: 45%;
+    margin-bottom: 0;
+  }
+
+  .scroll-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 14px 24px;
+
+    .home-part-top {
+      height: 50%;
+
+      .title {
+        line-height: 1;
+        font-weight: lighter;
+        font-size: calc(34px + 30 * (100vw - 320px) / 1120);
+      }
+    }
+
+    .home-actions {
+      display: block;
+      height: 50%;
+    }
+  }
+
+  .login-btn {
+    .login-btn-list {
+      button {
+        margin: 8px 0;
+      }
+    }
+  }
+}

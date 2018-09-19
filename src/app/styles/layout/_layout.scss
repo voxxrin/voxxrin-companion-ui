@@ -1,0 +1,120 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the GLOBAL layout.
+// -----------------------------------------------------------------------------
+
+
+ion-grid, ion-row {
+  height: calc(100%);
+}
+
+.wrap {
+  white-space: normal;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+ion-avatar.fix-ratio {
+  img {
+    border-radius: 50px;
+    object-fit: scale-down;
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+
+[right-border] {
+  border-right: 1px solid $grey-line;
+}
+
+.view-content {
+  padding: 14px;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: $grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ==== Events List
+
+.events-list {
+  .events-date {
+    font-size: 12px;
+  }
+
+  .events-location {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// ==== Events Details
+
+event-abstract {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+}
+
+// ==== List Day
+
+days-list {
+  display: block;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.list-day {
+  margin-bottom: 0;
+
+  .list-day-item {
+    color: $primary;
+    text-align: center;
+    padding: 0;
+
+    &:first-child { border-bottom: 1px solid $grey-line !important;}
+    &:last-child { border: none;}
+
+    .list-day-item-nb {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .item-inner {
+      padding: 0;
+
+      .input-wrapper {
+        .label {
+          margin: 8px 0 !important;
+        }
+      }
+    }
+  }
+}
+
+
+// ==== Items Divider
+
+.item-divider {
+  padding: 0;
+
+  .label {
+    margin: 0 !important;
+  }
+
+  .item-block {
+    background: $primary-gradient-dark !important;
+  }
+}
+
+
+

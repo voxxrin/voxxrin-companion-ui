@@ -1,78 +1,27 @@
-@import "../theme/variables";
+// ===== Import VENDORS
 
-//////////////////////////////////////////
-// VARIABLES
-//////////////////////////////////////////
 
-$header-height: 55px;
+// ===== Import BASE
+@import "styles/base/base";
+@import "styles/base/typography";
 
-//////////////////////////////////////////
-// COMMON
-//////////////////////////////////////////
+// ===== Import COMPONENTS
+@import "styles/components/avatar";
+@import "styles/components/buttons";
+@import "styles/components/nav-menu";
+@import "styles/components/tabs";
+@import "styles/components/card-presa";
 
-ion-grid, ion-row {
-  height: calc(100%);
-}
+// ===== Import LAYOUT
+@import "styles/layout/layout";
+@import "styles/layout/header";
 
-.wrap {
-  white-space: normal;
-}
+// ===== Import UTILS
+@import "styles/utils/helpers";
 
-.clickable {
-  cursor: pointer;
-}
+// ===== Import PAGES
+@import "styles/pages/login";
 
-ion-avatar.fix-ratio {
-  img {
-    border-radius: 50px;
-    object-fit: scale-down;
-    width: 100px !important;
-    height: 100px !important;
-  }
-}
-
-[right-border] {
-  border-right: 2px solid color($colors, primary, base);
-}
-
-//////////////////////////////////////////
-// PAGES
-//////////////////////////////////////////
-
-.home-page {
-  background: url($img-path + '/bg-login.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-
-  .app-logo {
-    display: block;
-    height: 74px;
-    margin-bottom: 12px !important;
-    background: url($icon-path + '/logo.svg') no-repeat;
-    background-position: center left;
-  }
-
-  .part-bottom-login {
-    height: 45%;
-    margin-bottom: 0;
-  }
-
-  .scroll-content {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    padding: 16px 34px;
-
-    .home-part-top { height: 50%;}
-    .home-actions { display: block; height: 50%;}
-  }
-
-  .logout-button {
-    margin-top: 30px;
-  }
-}
 
 //////////////////////////////////////////
 // COMPONENTS
@@ -120,62 +69,4 @@ maps {
   ion-icon {
     font-size: 30px;
   }
-}
-
-presentations-list {
-  ion-label {
-    margin: 0 !important;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-}
-
-
-//////////////////////////////////////////
-// UTILS
-//////////////////////////////////////////
-
-
-// ===== Typo Color
-
-.primary-text {
-  color: #f53d3d !important;
-}
-
-.white-text {
-  color: white
-}
-
-
-//////////////////////////////////////////
-// IMPORT
-//////////////////////////////////////////
-
-/* ======== IMPORTS FONTS ======== */
-
-/* === Import Brandon Text  === */
-
-@font-face {
-  font-family: "Brandon Text";
-  src: url('../assets/Brandon%20Text%20Regular.otf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Brandon Text";
-  src: url('../assets/Brandon%20Text%20Bold.otf') format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Brandon Text Lighter";
-  src: url('../assets/fonts/Brandon%20Text%20Light.otf') format("truetype");
-  font-weight: lighter;
-  font-style: normal;
-}
-
-.back-button-md {
-  display: none!important;
 }

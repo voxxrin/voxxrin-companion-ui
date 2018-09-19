@@ -1,0 +1,106 @@
+ion-item-sliding {
+  overflow: inherit !important;
+}
+
+.card-presa {
+  overflow: inherit !important;
+
+  .label, .input-wrapper, .item-inner {
+    overflow: inherit !important;
+  }
+
+  .label {
+    margin-bottom: 12px  !important;
+    margin-top: 12px  !important;
+  }
+
+  .item {
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 8px;
+    transition: 140ms;
+
+    &:active {
+      transition: 140ms;
+      transform: scale(0.98);
+    }
+  }
+
+
+  .card-presa-list-item {
+    padding-bottom: 84px;
+    background: $grey-special-gradient;
+
+    ion-avatar {
+      position: absolute;
+      bottom: -26px;
+      left: -18px;
+      z-index: 1;
+    }
+  }
+
+  .title-presa {
+    font-weight: bolder;
+    color: $primary;
+    font-size: 22px;
+  }
+
+  .card-presa-name {
+    position: absolute;
+    bottom: 34px;
+    right: 0;
+    height: auto;
+    width: 100%;
+    padding-left: 64px;
+    font-size: 14px;
+
+    .name-container {
+      overflow: hidden !important;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .name {
+      display: inline-block;
+      vertical-align: middle;
+      max-width: 140px;
+      overflow: hidden !important;
+      white-space: normal;
+      margin: 0 0 0 4px !important;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      font-weight: bold;
+    }
+
+    ion-icon {
+      display: inline-block;
+      vertical-align: middle;
+      color: $grey;
+    }
+  }
+
+  .card-presa-indicators {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding-left: 80px;
+    font-size: 14px;
+    background: $black;
+
+     .grid {
+       padding: 0;
+     }
+
+    .label {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 !important;
+      color: $white;
+    }
+
+    ion-icon {
+      display: inline-block;
+      vertical-align: middle;
+      color: $white;
+    }
+  }
+}

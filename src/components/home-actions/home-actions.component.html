@@ -1,31 +1,32 @@
-<div>
+<div class="login-btn">
     <ion-buttons end>
-        <div *ngIf="!authenticatedUser">
-            <button color="secondary" ion-button icon-only full round (click)="auth('twitter')">
+        <div *ngIf="!authenticatedUser" class="login-btn-list">
+            <button class="button btn-twitter" ion-button icon-start full (click)="auth('twitter')">
                 <ion-icon name="logo-twitter"></ion-icon>
+                Se connecter avec Twitter
             </button>
-            <button  color="secondary" ion-button icon-only full round (click)="auth('facebook')">
+            <button class="button btn-fb" ion-button icon-start full (click)="auth('facebook')">
                 <ion-icon name="logo-facebook"></ion-icon>
+                Se connecter avec Facebook
             </button>
-            <button color="secondary" ion-button icon-only full round (click)="auth('linkedin')">
+            <button class="button btn-linkedin force-space-bottom-34" ion-button icon-start full (click)="auth('linkedin')">
                 <ion-icon name="logo-linkedin"></ion-icon>
+                Se connecter avec Linkedin
             </button>
-            <button color="secondary" ion-button full round (click)="goToEvents()">
+            <button class="button white" ion-button icon-start full (click)="goToEvents()">
+              <ion-icon name="person"></ion-icon>
                 Continuer en tant qu'invité
             </button>
         </div>
         <div *ngIf="authenticatedUser">
-            <button color="secondary" ion-button full round icon-start (click)="goToEvents()">
-                <ion-icon name="calendar"></ion-icon>
-                Liste des évènements
-            </button>
-            <button color="secondary" ion-button full round icon-start (click)="goToFavorites()">
-                <ion-icon name="md-star" color="sun"></ion-icon>
-                Favoris
-            </button>
-            <button color="light" ion-button icon-only full round (click)="logout()" class="logout-button">
-                <ion-icon name="power"></ion-icon>
-            </button>
+          <button  class="button white" ion-button icon-end full (click)="goToEvents()">
+            Liste des évènements
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+          <button class="button transparent" ion-button icon-start full (click)="logout()">
+              <ion-icon name="power"></ion-icon>
+              Se deconnecter
+          </button>
         </div>
     </ion-buttons>
 </div>

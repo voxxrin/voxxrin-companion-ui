@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// ~ This file contains all styles related to the TYPOGRAPHY components.
+// -----------------------------------------------------------------------------
+
+// ===== Typo Color
+
+.primary-text {color: $primary;}
+.white-text { color: $white;}
+
+ion-card-title { color: $primary !important; font-size: 20px !important;}
+
+
+.align-icon {
+  min-width: 24px;
+  text-align: left;
+}

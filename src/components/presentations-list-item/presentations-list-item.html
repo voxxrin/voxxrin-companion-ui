@@ -1,21 +1,49 @@
-<ion-item>
+<ion-item class="card-presa-list-item">
     <ion-avatar item-left *ngIf="presentation.speakers && presentation.speakers[0]">
-        <img [src]="presentation.speakers[0].avatarUrl"/>
+          <span class="avatar-container large">
+            <img [src]="presentation.speakers[0].avatarUrl"/>
+          </span>
     </ion-avatar>
-    <h2 text-wrap>{{ presentation.title }}</h2>
-    <ion-badge>{{ presentation.kind }}</ion-badge>
-    <div *ngIf="presentation.location">
-        <ion-icon name="md-pin"></ion-icon>
-        {{ presentation.location.fullName }}
-    </div>
-    <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
-        <div *ngFor="let speaker of presentation.speakers">
-            <ion-icon name="ios-person"></ion-icon>
-            {{ speaker?.name }}
-        </div>
-    </div>
-    <div>
-        <ion-icon name="star"></ion-icon>
-        {{ presentation.favoriteCount }}
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <h2 text-wrap class="title-presa">{{ presentation.title }}</h2>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid class="card-presa-name">
+        <ion-row nowrap="" align-items-center>
+            <ion-col col-6>
+                <div *ngIf="presentation.speakers && presentation.speakers.length > 0" class="name-container">
+                    <ion-icon name="ios-person"></ion-icon>
+                    <span class="label name">{{ presentation.speakers | speakerNames }}</span>
+                </div>
+            </ion-col>
+            <ion-col class="text-right">
+                <ion-badge>{{ presentation.kind }}</ion-badge>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="card-presa-indicators">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-8>
+                    <div *ngIf="presentation.location">
+                        <ion-icon name="md-pin"></ion-icon>
+                        <span class="label">{{ presentation.location.fullName }}</span>
+                    </div>
+                </ion-col>
+
+                <ion-col col-4 class="text-right inner-space-right-16">
+                    <div>
+                        <ion-icon name="star"></ion-icon>
+                        <span class="label">{{ presentation.favoriteCount }}</span>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
 </ion-item>
