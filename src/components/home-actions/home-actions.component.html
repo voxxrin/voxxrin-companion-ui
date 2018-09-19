@@ -19,12 +19,14 @@
             </button>
         </div>
         <div *ngIf="authenticatedUser">
-            <button color="secondary" ion-button icon-only full (click)="logout()">
-                <ion-icon name="power"></ion-icon>
-            </button>
-            <button color="secondary" ion-button full (click)="goToEvents()">
-                Liste des évènements
-            </button>
+          <button  class="button white" ion-button icon-end full (click)="goToEvents()">
+            Liste des évènements
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+          <button class="button transparent" ion-button icon-start full (click)="logout()">
+              <ion-icon name="power"></ion-icon>
+              Se deconnecter
+          </button>
         </div>
     </ion-buttons>
 </div>

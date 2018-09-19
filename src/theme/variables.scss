@@ -10,15 +10,20 @@ $font-family-md-base:                                     "Brandon Text", sans-s
 
 $primary-light :                                       #db2d5e !default;
 $primary :                                             #e1223e !default;
-$primary-gradient : linear-gradient(135deg,  $primary-light 0%, $primary 100%) !default;
+$primary-gradient : linear-gradient(135deg, $primary-light 0%, $primary 100%) !default;
+$primary-gradient-dark : linear-gradient(135deg, darken($primary-light, 16%) 0%, darken($primary, 16%) 100%) !default;
 
 $twitter :                                             #1da1f2 !default;
 $facebook :                                            #3b5998 !default;
 $linkedin :                                            #0077b5 !default;
 
 $white :                                               #FFFFFF !default;
-$grey-line :                                           #c8c7cc !default;
+$grey-special :                                        #e3e8f1 !default;
+$grey-special-gradient :                               linear-gradient(135deg, $grey-special 0%, $white 100%) !default;
+$grey :                                                #95989A !default;
 $black :                                               #333333 !default;
+
+$grey-line :                                           rgba($black, 0.2) !default;
 
 
 // COLORS COMPONENTS

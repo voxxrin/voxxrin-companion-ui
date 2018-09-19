@@ -32,7 +32,32 @@ ion-avatar.fix-ratio {
   padding: 14px;
 }
 
-// ==== Events
+.label-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: $grey;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ==== Events List
+
+.events-list {
+  .events-date {
+    font-size: 12px;
+  }
+
+  .events-location {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// ==== Events Details
 
 event-abstract {
   display: block;
@@ -75,3 +100,21 @@ days-list {
     }
   }
 }
+
+
+// ==== Items Divider
+
+.item-divider {
+  padding: 0;
+
+  .label {
+    margin: 0 !important;
+  }
+
+  .item-block {
+    background: $primary-gradient-dark !important;
+  }
+}
+
+
+

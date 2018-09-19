@@ -9,14 +9,14 @@
             <ion-card-title text-wrap class="inner-space-top-0">
                 {{ event.name }}
             </ion-card-title>
-            <p>
+            <span class="label-container">
                 <ion-icon name="calendar" class="align-icon"></ion-icon>
-                {{ event.from.toDate() | date: constants.dateFormat }} - {{ event.to.toDate() | date: constants.dateFormat }}
-            </p>
-            <p>
-                <ion-icon name="pin" class="align-icon"></ion-icon>
-                <strong text-wrap>{{ event.location }}</strong>
-            </p>
+                <strong class="events-date">{{ event.from.toDate() | date: constants.dateFormat }} - {{ event.to.toDate() | date: constants.dateFormat }}</strong>
+            </span>
+            <span class="label-container">
+                <ion-icon name="pin" class="align-icon inner-space-left-2"></ion-icon>
+                <span class="events-location">{{ event.location }}</span>
+            </span>
         </ion-item>
     </ion-list>
 </div>
