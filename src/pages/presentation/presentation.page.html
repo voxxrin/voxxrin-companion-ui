@@ -19,6 +19,6 @@
 
 <ion-content>
     <div (swipe)="swipePresentation($event)" *ngIf="presentation">
-        <presentation [presentation]="presentation"></presentation>
+        <presentation [presentation]="presentation" (ratePresentation)="rate($event)"></presentation>
     </div>
 </ion-content>
