@@ -16,4 +16,8 @@
     border-radius: 50px;
     color: $white;
   }
+
+  &.segment-button-disabled {
+    border-color: rgba(225, 34, 62, 0.3)  !important;
+  }
 }

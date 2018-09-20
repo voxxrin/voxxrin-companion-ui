@@ -1,3 +1,28 @@
-page-admin-statistics {
+.stats-nb {
+  font-size: 34px;
+  font-weight: bold;
+  color: $primary;
+  background: $primary-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: $primary-gradient;
 
+  &.small {
+    font-size: 16px;
+  }
 }
+
+stat-item {
+  .item {
+    background: linear-gradient(to bottom, rgba(247,251,255,1) 0%,rgb(240, 244, 255) 100%);
+  }
+
+  ion-icon {
+    color: $primary !important;
+    font-size: 44px !important;
+  }
+
+  .item-inner {
+    border-bottom: 0 !important;
+  }
+}
+

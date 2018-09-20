@@ -117,4 +117,27 @@ days-list {
 }
 
 
+// ==== Bingo list
 
+.bingo-list {
+  .bingo-list-item {
+    .rating-square {
+      border-radius: 8px;
+      border-color: $primary !important;
+      font-weight: 500;
+      color: $primary;
+      font-size: 16px;
+      transition: 340ms ease-in-out;
+      line-height: 1;
+
+      &.picked {
+        background: $primary-gradient;
+        color: white;
+        font-size: 19px !important;
+        transition: 340ms ease-in-out;
+        line-height: 1;
+        font-weight: bolder;
+      }
+    }
+  }
+}

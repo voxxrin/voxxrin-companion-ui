@@ -1,6 +1,6 @@
-<ion-grid>
+<ion-grid class="bingo-list">
     <ion-row *ngFor="let chunk of chunkedItems">
-        <ion-col *ngFor="let item of chunk">
+        <ion-col *ngFor="let item of chunk" class="bingo-list-item">
             <div class="rating-square" (click)="toggleItem(item)" [class.picked]="item.picked">
                 <div>{{ item.labels['FR'] }}</div>
             </div>

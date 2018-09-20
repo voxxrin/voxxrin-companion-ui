@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="primary">
     <ion-navbar>
         <ion-buttons start>
             <button ion-button (click)="dismiss()">Fermer</button>
@@ -11,10 +11,10 @@
         <bingo-rating-matrix [items]="items" (itemsSelected)="selectedItems = $event"></bingo-rating-matrix>
         <ion-row>
             <ion-col>
-                <button ion-button color="danger" full (click)="dismiss()">Annuler</button>
+                <button class="button white" ion-button  full (click)="dismiss()">Annuler</button>
             </ion-col>
             <ion-col>
-                <button ion-button color="danger" full (click)="submit()">Ok</button>
+                <button class="button primary" ion-button  full (click)="submit()">Ok</button>
             </ion-col>
         </ion-row>
     </div>

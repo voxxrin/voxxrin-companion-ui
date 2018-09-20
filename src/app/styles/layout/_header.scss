@@ -4,6 +4,20 @@
 
 // Custom Toolbar
 
+.toolbar-title-ios {
+  text-align: center;
+}
+
+ion-header {
+
+  &.primary {
+    .toolbar-background {
+      background: $primary-gradient !important;
+      border-bottom: 0 !important;
+    }
+  }
+}
+
 top-navbar {
   .toolbar-background {
     background: $primary-gradient !important;

@@ -4,26 +4,26 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <presentations-list [presentations]="presentations">
         <ng-template #presentationHeader let-header="headerTemplate">
             {{ header.from.toDate() | date: constants.dateFormat }} {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
         </ng-template>
         <ng-template #presentationBody let-presentation="presentationTemplate">
-            <ion-grid>
-                <ion-row>
+            <ion-grid class="card-presa card-presa-admin">
+                <ion-row class="card-presa-list-item force-inner-space-bottom-0">
                     <ion-col class="stat-pres-ion-col" text-wrap col-9>
-                        {{ presentation.title }}
-                        <div *ngIf="presentation.speakers && presentation.speakers.length > 0">
+                      <h2 text-wrap class="title-presa">{{ presentation.title }}</h2>
+                        <div *ngIf="presentation.speakers && presentation.speakers.length > 0" class="card-presa-name">
                             <p *ngFor="let speaker of presentation.speakers">
                                 <ion-icon name="ios-person"></ion-icon>
-                                {{ speaker?.name }}
+                              <span class="label name">{{ speaker?.name }}</span>
                             </p>
                         </div>
                     </ion-col>
                     <ion-col class="stat-pres-ion-col-button">
-                        <button ion-button icon-only color="sun" (click)="goToPresentationAdmin(presentation)">
-                            <ion-icon name="md-settings" color="light"></ion-icon>
+                        <button class="button round medium" ion-button icon-only (click)="goToPresentationAdmin(presentation)">
+                            <ion-icon name="md-settings" ></ion-icon>
                         </button>
                     </ion-col>
                 </ion-row>

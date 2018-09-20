@@ -1,3 +1,13 @@
-page-admin-presentations {
+.card-presa-admin {
 
+  .card-presa-list-item {
+    border-radius: 8px;
+    padding: 8px 16px 12px 16px !important;
+  }
+
+  .card-presa-name {
+    position: relative !important;
+    bottom: inherit !important;
+    padding-left: 0;
+  }
 }
