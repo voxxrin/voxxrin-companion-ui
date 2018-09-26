@@ -11,7 +11,7 @@ import { Presentation } from '../../models/presentation.model';
 export class BingoRatingModalComponent implements OnInit {
 
     public items: RatingItem[];
-    public selectedItems: RatingItem[];
+    public selectedItems: RatingItem[] = [];
     private presentation: Presentation;
 
     constructor(private viewCtrl: ViewController, private ratingService: RatingService, private params: NavParams) { }
@@ -29,7 +29,9 @@ export class BingoRatingModalComponent implements OnInit {
     }
 
     public submit(): void {
-        this.ratingService.rate(this.presentation, this.selectedItems).subscribe(prez => this.dismiss(prez));
+        if(this.selectedItems.length != 0) {
+            this.ratingService.rate(this.presentation, this.selectedItems).subscribe(prez => this.dismiss(prez));
+        }
     }
 
     public dismiss(data?: Presentation): void {
