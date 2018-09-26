@@ -1,39 +1,42 @@
 <ion-grid class="no-padding">
-  <ion-row align-items-center class="view-content">
-    <ion-col col-5>
-      <ion-avatar item-left class="fix-ratio">
+    <ion-row align-items-center class="view-content">
+        <ion-col col-5>
+            <ion-avatar item-left class="fix-ratio">
                <span class="avatar-container small">
                   <img [src]="event.imageUrl">
                </span>
-      </ion-avatar>
-    </ion-col>
-    <ion-col col-7>
-      <h5 class="primary-text space-top-0 space-bottom-0">{{ event.name }}</h5>
-    </ion-col>
-    <ion-col col-12>
-      <p class="space-top-0" [innerHTML]="event.description"></p>
-    </ion-col>
-  </ion-row>
+            </ion-avatar>
+        </ion-col>
+        <ion-col col-7>
+            <h5 class="primary-text space-top-0 space-bottom-0">{{ event.name }}</h5>
+        </ion-col>
+        <ion-col col-12>
+            <p class="space-top-0" [innerHTML]="event.description"></p>
+        </ion-col>
+    </ion-row>
 
-  <ion-row>&nbsp;</ion-row>
-  <ion-row justify-content-end align-items-end>
-    <ion-col col-12 class="no-padding">
-      <a class="btn-link" ion-button icon-start full *ngIf="event.links.facebookProfileUrl" (click)="openUrl(event.links.facebookProfileUrl)">
-        <ion-icon name="logo-facebook"></ion-icon>
-        Accéder au Facebook
-      </a>
-    </ion-col>
-    <ion-col col-12 class="no-padding">
-      <a class="btn-link" ion-button icon-start full *ngIf="event.links.twitterProfileUrl" (click)="openUrl(event.links.twitterProfileUrl)">
-        <ion-icon name="logo-twitter"></ion-icon>
-        Accéder au Twitter
-      </a>
-    </ion-col>
-    <ion-col col-12 class="no-padding">
-      <a class="btn-link" ion-button icon-start full *ngIf="event.links.websiteUrl" (click)="openUrl(event.links.websiteUrl)">
-        <ion-icon name="link"></ion-icon>
-        Accéder au site web
-      </a>
-    </ion-col>
-  </ion-row>
+    <ion-row>&nbsp;</ion-row>
+    <ion-row justify-content-end align-items-end>
+        <ion-col col-12 class="no-padding">
+            <a class="btn-link" ion-button icon-start full *ngIf="event.links.facebookProfileUrl"
+               (click)="openUrl(event.links.facebookProfileUrl)">
+                <ion-icon name="logo-facebook"></ion-icon>
+                Accéder au Facebook
+            </a>
+        </ion-col>
+        <ion-col col-12 class="no-padding">
+            <a class="btn-link" ion-button icon-start full *ngIf="event.links.twitterProfileUrl"
+               (click)="openUrl(event.links.twitterProfileUrl)">
+                <ion-icon name="logo-twitter"></ion-icon>
+                Accéder au Twitter
+            </a>
+        </ion-col>
+        <ion-col col-12 class="no-padding">
+            <a class="btn-link" ion-button icon-start full *ngIf="event.links.websiteUrl"
+               (click)="openUrl(event.links.websiteUrl)">
+                <ion-icon name="link"></ion-icon>
+                Accéder au site web
+            </a>
+        </ion-col>
+    </ion-row>
 </ion-grid>
