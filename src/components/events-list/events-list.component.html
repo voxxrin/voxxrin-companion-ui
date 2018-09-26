@@ -3,7 +3,7 @@
         <ion-item (click)="onSelectedEvent(event)" class="clickable" *ngFor="let event of events">
             <ion-avatar item-left class="fix-ratio sep-right">
                 <span class="avatar-container">
-                    <img [src]="event.imageUrl">
+                    <img [src]="event.imageUrl" defaultImg="assets/img/default-event.png">
                 </span>
             </ion-avatar>
             <ion-card-title text-wrap class="inner-space-top-0">

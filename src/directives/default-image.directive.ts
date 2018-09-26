@@ -10,7 +10,7 @@ import { Directive, Input } from '@angular/core';
 export class DefaultImageDirective {
 
     @Input() src: string;
-    public defaultImg: string = 'assets/img/default-avatar.png';
+    @Input() defaultImg: string = 'assets/img/default-avatar.png';
 
     public onError() {
         return this.src = this.defaultImg;
