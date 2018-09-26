@@ -1,7 +1,7 @@
 import { LoadingService } from '../../services/loading.service';
 import { PresentationService } from '../../services/presentation.service';
 import { Day } from '../../models/day.model';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component } from '@angular/core';
 import { ConstantsService } from '../../services/constants.service';
@@ -26,12 +26,12 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
     public presentationsFilter: 'allPresentations' | 'favoritePresentations' = 'allPresentations';
 
     constructor(private navController: NavController,
-                private navParams: NavParams,
-                private dayService: DayService,
-                private presentationService: PresentationService,
-                public constants: ConstantsService,
-                public authService: AuthService,
-                private loadingService: LoadingService) {
+        private navParams: NavParams,
+        private dayService: DayService,
+        private presentationService: PresentationService,
+        public constants: ConstantsService,
+        public authService: AuthService,
+        private loadingService: LoadingService) {
         super(authService);
         authService.currentUser()
             .filter(u => u === undefined || u === null)
@@ -39,7 +39,8 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
     }
 
     ionViewDidLoad() {
-        this.loadingService.launchLoader().then(() => {
+        let loading: Loading = this.loadingService.launchLoader();
+        loading.present().then(() => {
             this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
                 this.day = day;
                 this.presentationService
@@ -47,7 +48,7 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
                     .subscribe(presentations => {
                         this.presentations = presentations;
                         this.filteredPresentations = presentations.filter(pres => pres.favorite);
-                        this.loadingService.stopLoader();
+                        loading.dismiss();
                     });
             });
         });

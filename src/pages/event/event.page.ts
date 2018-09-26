@@ -5,7 +5,7 @@ import { EventAdminPage } from '../event-admin/event-admin.page';
 import { Day } from '../../models/day.model';
 import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from '../../models/event.model';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import * as _ from 'lodash';
@@ -25,11 +25,12 @@ export class EventPage implements OnInit {
     constructor(private navController: NavController, private navParams: NavParams, private eventService: EventService, private authService: AuthService, private loadingService: LoadingService) { }
 
     ngOnInit(): void {
-        this.loadingService.launchLoader().then(() => {
+        let loading: Loading = this.loadingService.launchLoader();
+        loading.present().then(() => {
             this.eventService.fetchEventById(this.navParams.data.eventId).subscribe(event => {
                 this.event = event;
                 this.authService.currentUser().subscribe(user => this.setUserRights(user));
-                this.loadingService.stopLoader();
+                loading.dismiss();
             });
         });
     }

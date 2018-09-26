@@ -6,14 +6,7 @@ export class LoadingService {
 
     constructor(private loadingCtrl: LoadingController) { }
 
-    private loading: Loading;
-
-    public launchLoader(): Promise<Loading> {
-        this.loading = this.loadingCtrl.create({});
-        return this.loading.present();
-    }
-
-    public stopLoader(): void {
-        this.loading.dismiss();
+    public launchLoader(): Loading {
+        return this.loadingCtrl.create({});
     }
 }
