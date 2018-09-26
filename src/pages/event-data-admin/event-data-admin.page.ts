@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, ToastController } from 'ionic-angular';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 
@@ -11,12 +11,20 @@ export class EventDataAdminPage {
 
     public event: Event;
 
-    constructor(private navParams: NavParams, private eventService: EventService) {
+    constructor(private navParams: NavParams, private eventService: EventService, private toastCtrl: ToastController) {
         this.event = this.navParams.data;
     }
 
     public updateEventData() {
-        this.eventService.updateData(this.event).subscribe(event => {});
+        this.eventService.updateData(this.event).subscribe(event => {
+            this.toastCtrl
+                .create({
+                    message: 'Mise à jour, effectuée avec succès',
+                    duration: 3000,
+                    position: 'top'
+                })
+                .present();
+        });
     }
 
     public isValid(): boolean {
