@@ -1,4 +1,3 @@
-import { LoadingService } from '../../services/loading.service';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
@@ -28,8 +27,7 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
                 private presentationService: PresentationService,
                 private ratingService: RatingService,
                 private pushService: PushService,
-                private authService: AuthService,
-                private loadingService: LoadingService) {
+                private authService: AuthService) {
         super(authService);
     }
 
