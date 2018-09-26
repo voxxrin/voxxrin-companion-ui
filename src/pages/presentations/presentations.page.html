@@ -15,7 +15,7 @@
 <ion-content>
     <div style="height:100%">
         <div *ngIf="presentationsFilter === 'allPresentations' && presentations">
-            <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event)">
+            <presentations-list [presentations]="presentations" (presentationSelected)="navigateToPresentation($event, presentations)">
                 <ng-template #presentationHeader let-header="headerTemplate">
                     {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
                 </ng-template>
@@ -25,7 +25,7 @@
             </presentations-list>
         </div>
         <div *ngIf="presentationsFilter === 'favoritePresentations' && filteredPresentations">
-            <presentations-list [presentations]="filteredPresentations" (presentationSelected)="navigateToPresentation($event)">
+            <presentations-list [presentations]="filteredPresentations" (presentationSelected)="navigateToPresentation($event, filteredPresentations)">
                 <ng-template #presentationHeader let-header="headerTemplate">
                     {{ header.from.toDate() | date: constants.hourFormat }} - {{ header.to.toDate() | date: constants.hourFormat }}
                 </ng-template>

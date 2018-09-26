@@ -60,8 +60,8 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
         }
     }
 
-    public navigateToPresentation(presentation: Presentation): void {
-        const params = { presentationId: presentation._id, presentations: this.filteredPresentations };
+    public navigateToPresentation(presentation: Presentation, presentations: Presentation[]): void {
+        const params = { presentationId: presentation._id, presentations: presentations };
         this.navController.push('PresentationPage', params, { animate: true, direction: 'forward' })
     }
 }

@@ -10,7 +10,7 @@ export class SpeakerNamesPipe implements PipeTransform {
     public transform(speakers: Speaker[]): any {
         return _.chain(speakers)
             .map(s => s.name)
-            .join(' - ')
+            .join(' ')
             .value();
     }
 }

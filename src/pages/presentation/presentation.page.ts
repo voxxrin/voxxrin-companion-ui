@@ -1,4 +1,4 @@
-import { LoadingService } from './../../services/loading.service';
+import { LoadingService } from '../../services/loading.service';
 import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
@@ -104,10 +104,12 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
         this.presentationService
             .fetchPresentationById(id)
             .map(presentation => {
-                this.ratingService
-                    .fetchPresentationRatings(presentation)
-                    .filter(subs => subs.length > 0)
-                    .subscribe(rating => presentation.rated = true);
+                if (this.isAuthenticated) {
+                    this.ratingService
+                        .fetchPresentationRatings(presentation)
+                        .filter(subs => subs.length > 0)
+                        .subscribe(rating => presentation.rated = true);
+                }
                 return presentation;
             })
             .subscribe(presentation => {
