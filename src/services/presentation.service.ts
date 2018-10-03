@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
 import { Presentation } from '../models/presentation.model';
 import { Day } from '../models/day.model';
@@ -51,27 +51,36 @@ export class PresentationService {
                     }));
     }
 
+    private buildSubscriptionRelatedParams(presentationId: string, deviceToken?: string): HttpParams {
+        let params = new HttpParams()
+            .append('presentationId', presentationId);
+        if (deviceToken && deviceToken.trim().length > 0) {
+            params.append('deviceToken', deviceToken);
+        }
+        return params;
+    }
+
     public bookmarkPresentation(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .post(`${this.envService.getBackendUrl()}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
+            .post(`${this.envService.getBackendUrl()}/favorite`, {}, {params: this.buildSubscriptionRelatedParams(presentationId, deviceToken)})
             .map((data: any) => data as Subscription);
     }
 
     public removePresentationBookmark(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .delete(`${this.envService.getBackendUrl()}/favorite?presentationId=${presentationId}&deviceToken=${deviceToken}`)
+            .delete(`${this.envService.getBackendUrl()}/favorite`, {params: this.buildSubscriptionRelatedParams(presentationId, deviceToken)})
             .map((data: any) => data as Subscription);
     }
 
     public subscribeToPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .post(`${this.envService.getBackendUrl()}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`, {})
+            .post(`${this.envService.getBackendUrl()}/remindme`, {}, {params: this.buildSubscriptionRelatedParams(presentationId, deviceToken)})
             .map((data: any) => data as Subscription);
     }
 
     public unsubscribeFromPresentationContent(presentationId: string, deviceToken?: string): Observable<Subscription> {
         return this.httpClient
-            .delete(`${this.envService.getBackendUrl()}/remindme?presentationId=${presentationId}&deviceToken=${deviceToken}`)
+            .delete(`${this.envService.getBackendUrl()}/remindme`, {params: this.buildSubscriptionRelatedParams(presentationId, deviceToken)})
             .map((data: any) => data as Subscription);
     }
 
