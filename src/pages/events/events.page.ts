@@ -2,8 +2,9 @@ import { LoadingService } from './../../services/loading.service';
 import { EventService } from '../../services/event.service';
 import { Event } from '../../models/event.model';
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { IonicPage, NavController, Loading } from 'ionic-angular';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @IonicPage({
     segment: 'events'
@@ -25,10 +26,10 @@ export class EventsPage implements OnInit {
         let loading: Loading = this.loadingService.launchLoader();
         loading.present().then(() => {
             this.eventService.fetchEvents().subscribe(events => {
-                this.allEvents = events;
                 const now = moment();
-                this.futureEvents = events.filter(event => event.from.isAfter(now));
-                this.pastEvents = events.filter(event => event.from.isSameOrBefore(now));
+                this.allEvents = _.chain(events).orderBy('from', 'desc').value();
+                this.futureEvents = _.chain(events.filter(event => event.from.isAfter(now))).orderBy('from', 'asc').value();
+                this.pastEvents = _.chain(events.filter(event => event.from.isSameOrBefore(now))).orderBy('from', 'desc').value();
                 loading.dismiss();
             });
         });

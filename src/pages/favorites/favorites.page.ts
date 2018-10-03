@@ -24,14 +24,15 @@ export class FavoritesPage extends AbstractAuthenticatedComponent{
                 private eventService: EventService,
                 private presentationService: PresentationService,
                 public constants: ConstantsService,
-                authService: AuthService
-            ) {
+                authService: AuthService) {
         super(authService);
     }
 
     ionViewWillEnter() {
-        this.eventService.fetchEvents()
-                         .subscribe( events => this.getPresentationsByEvent(events));
+        this.eventService
+            .fetchEvents()
+            .map(events => _.chain(events).orderBy('from', 'desc').value())
+            .subscribe(events => this.getPresentationsByEvent(events));
     }
 
     private getPresentationsByEvent(events: Event[]) {

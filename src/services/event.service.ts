@@ -3,7 +3,6 @@ import { Event } from '../models/event.model';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
-import * as _ from 'lodash';
 import { HttpClient } from '@angular/common/http';
 import { EnvironmentService } from './environment.service';
 
@@ -21,7 +20,6 @@ export class EventService {
     public fetchEvents(): Observable<Event[]> {
         return this.http.get(`${this.envService.getBackendUrl()}/events`)
             .map((data: any) => data as Event[])
-            .map((events: Event[]) => _.chain(events).orderBy('from', 'desc').value())
             .map((events: Event[]) => events.map(event => EventService.prepareEvent(event)));
     }
 
