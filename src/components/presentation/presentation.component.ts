@@ -4,6 +4,7 @@ import { ConstantsService } from '../../services/constants.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AbstractAuthenticatedComponent } from '../abstract-authenticated-component';
 import { AuthService } from '../../services/auth.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'presentation',
@@ -23,5 +24,9 @@ export class PresentationComponent extends AbstractAuthenticatedComponent{
     public openTwitterUrl(twitterId: string): void {
         const url = `https://twitter.com/${twitterId.substr(1)}`;
         this.iab.create(url, '_system');
+    }
+
+    public presentationHasBegun(presentation: Presentation) {
+        return presentation.from.isBefore(moment());
     }
 }

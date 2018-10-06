@@ -15,7 +15,8 @@
         <ion-icon name="md-clock"></ion-icon>
         {{ presentation.from.toDate() | date: constants.hourFormat }} - {{ presentation.to.toDate() | date: constants.hourFormat }}
         <button class="button white" [class.rated]="presentation?.rated" ion-button icon-end item-end 
-                *ngIf="isAuthenticated" (click)="ratePresentation.emit(presentation)">
+                *ngIf="isAuthenticated" (click)="ratePresentation.emit(presentation)"
+                [disabled]="!presentationHasBegun(presentation)">
             Feedback
             <ion-icon name="microphone"></ion-icon>
         </button>
