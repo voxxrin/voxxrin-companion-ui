@@ -15,6 +15,7 @@ export interface Presentation {
     from: moment.Moment;
     to: moment.Moment;
     kind: string;    
+    track: string;
     eventId: string;
     favoriteCount: number;
     remindMeCount: number;

@@ -3,6 +3,7 @@
         <ion-item no-lines color="light">
             <h2 text-wrap><b>{{ presentation.title }}</b></h2>
             <ion-badge>{{ presentation.kind }}</ion-badge>
+            <ion-badge *ngIf="presentation.track">{{ presentation.track }}</ion-badge>
         </ion-item>
         <ion-item no-lines color="light" *ngIf="presentation.location">
             <div text-wrap>
