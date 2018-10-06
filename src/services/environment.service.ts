@@ -7,6 +7,7 @@ export class EnvironmentService {
 
     private readonly storageKey: string = '__env__';
     private readonly envs: { [name: string]: Environment } = {
+        dev: { name: 'dev', backendUrl: '/api' },
         test: { name: 'test', backendUrl: 'http://appv3-test.voxxr.in/api' },
         prod: { name: 'prod', backendUrl: 'http://appv3.voxxr.in/api' }
     };
