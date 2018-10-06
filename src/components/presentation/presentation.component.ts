@@ -27,6 +27,6 @@ export class PresentationComponent extends AbstractAuthenticatedComponent{
     }
 
     public presentationHasBegun(presentation: Presentation) {
-        return presentation.from.isBefore(moment());
+        return !presentation.from || presentation.from.isBefore(moment());
     }
 }
