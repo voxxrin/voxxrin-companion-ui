@@ -26,12 +26,12 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
     public presentationsFilter: 'allPresentations' | 'favoritePresentations' = 'allPresentations';
 
     constructor(private navController: NavController,
-        private navParams: NavParams,
-        private dayService: DayService,
-        private presentationService: PresentationService,
-        public constants: ConstantsService,
-        public authService: AuthService,
-        private loadingService: LoadingService) {
+                private navParams: NavParams,
+                private dayService: DayService,
+                private presentationService: PresentationService,
+                public constants: ConstantsService,
+                public authService: AuthService,
+                private loadingService: LoadingService) {
         super(authService);
         authService.currentUser()
             .filter(u => u === undefined || u === null)

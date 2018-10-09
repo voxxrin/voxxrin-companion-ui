@@ -18,7 +18,7 @@ import { DirectivesModule } from '../directives/directives.module';
         HttpModule,
         HttpClientModule,
         BrowserModule,
-        IonicModule.forRoot(AppComponent),
+        IonicModule.forRoot(AppComponent, {swipeBackEnabled: false}),
         IonicPageModule,
         // app modules
         PagesModule,

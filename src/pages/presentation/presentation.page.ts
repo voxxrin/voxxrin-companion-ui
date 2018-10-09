@@ -1,4 +1,4 @@
-import { IonicPage, ModalController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, Nav, NavController, NavParams } from 'ionic-angular';
 import { Presentation } from '../../models/presentation.model';
 import { Component, OnInit } from '@angular/core';
 import { PresentationService } from '../../services/presentation.service';
@@ -42,14 +42,15 @@ export class PresentationPage extends AbstractAuthenticatedComponent implements 
     }
 
     public swipePresentation(swipeEvent: any) {
-        if (this.presentations) {
-            const prezIndex = this.presentations.findIndex(prez => prez._id === this.presentation._id);
-            if (swipeEvent.direction === 4 && prezIndex > 0) {
-                this.navigateToPrez(prezIndex - 1);
-            } else if (swipeEvent.direction === 2 && prezIndex < this.presentations.length) {
-                this.navigateToPrez(prezIndex + 1);
-            }
-        }
+        // disabled for the moment
+        // if (this.presentations) {
+        //     const prezIndex = this.presentations.findIndex(prez => prez._id === this.presentation._id);
+        //     if (swipeEvent.direction === 4 && prezIndex > 0) {
+        //         this.navigateToPrez(prezIndex - 1);
+        //     } else if (swipeEvent.direction === 2 && prezIndex < this.presentations.length) {
+        //         this.navigateToPrez(prezIndex + 1);
+        //     }
+        // }
     }
 
     private navigateToPrez(index: number) {
