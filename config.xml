@@ -92,5 +92,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser.git#de86501026cbef4dfba5f962d32f893bbb8a4729" />
     <plugin name="cordova-plugin-firebase" spec="^1.0.5" />
     <engine name="android" spec="7.1.1" />
-    <engine name="ios" spec="~4.5.5" />
+    <engine name="ios" spec="^4.5.5" />
 </widget>
