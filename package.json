@@ -12,7 +12,8 @@
     "serve": "ionic-app-scripts serve",
     "start": "ionic-app-scripts serve",
     "run:android": "ionic cordova run android",
-    "deploy:alpha:android": "fastlane android alpha"
+    "deploy:alpha:android": "fastlane android alpha",
+    "deploy:beta:ios": "fastlane ios beta"
   },
   "config": {
     "ionic_source_map_type": "source-map"
