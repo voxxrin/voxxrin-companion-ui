@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="10" id="com.voxxrin.v3" ios-CFBundleVersion="10" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Voxxrin - v3</name>
+    <name>Voxxrin Companion</name>
     <description>A fresh version (v3) of the voxxrin conference companion</description>
     <author>Alexandre NEDELEC</author>
     <author>Elian ORIOU</author>
