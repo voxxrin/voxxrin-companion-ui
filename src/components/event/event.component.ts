@@ -4,6 +4,8 @@ import { Event } from '../../models/event.model';
 import { Day } from '../../models/day.model';
 import { DayService } from '../../services/day.service';
 import { Location } from '../../models/location.model';
+import { StoredEventDataService } from '../../services/stored-event-data.service';
+import { PresentationService } from '../../services/presentation.service';
 
 @Component({
     selector: 'event',
@@ -18,11 +20,17 @@ export class EventComponent implements OnInit {
     days: Day[];
     location: Location;
 
-    constructor(private locationService: LocationService, private dayService: DayService) { }
+    constructor(private locationService: LocationService,
+                private dayService: DayService,
+                private presentationService: PresentationService,
+                private storedEventDataService: StoredEventDataService) { }
 
     ngOnInit(): void {
         this.locationService.geocode(this.event.location).subscribe(location => this.location = location);
-        this.dayService.fetchDays(this.event).subscribe(days => this.days = days);
+        this.dayService.fetchDays(this.event)
+            .do(days => this.days = days)
+            .flatMap(days => this.presentationService.fetchAllPresentationFromAnEvent(this.event._id))
+            .subscribe(presentations => this.storedEventDataService.storeEventData(this.event, this.days, presentations));
     }
 
     onSelectedDay(day: Day): void {

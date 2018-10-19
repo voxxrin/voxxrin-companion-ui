@@ -18,12 +18,18 @@ import { FeedService } from './feed.service';
 import { UtilsService } from './utils.service';
 import { StatsService } from './stats.service';
 import { PresentationService } from './presentation.service';
-import { JWTInterceptor } from './jwt.interceptor.service';
 import { TwitterIdPipe } from './twitter-id.pipe';
 import { TimeSlotService } from './time-slot.service';
 import { RatingService } from './rating.service';
 import { PushService } from './push.service';
 import { EnvironmentService } from './environment.service';
+import { JWTInterceptor } from './interceptors/jwt.interceptor';
+import { EventCacheInterceptor } from './interceptors/event.cache-interceptor';
+import { EventDayCacheInterceptor } from './interceptors/event-day.cache-interceptor';
+import { EventDaysCacheInterceptor } from './interceptors/event-days.cache-interceptor';
+import { PresentationCacheInterceptor } from './interceptors/presentation.cache-interceptor';
+import { PresentationsCacheInterceptor } from './interceptors/presentations.cache-interceptor';
+import { StoredEventDataService } from './stored-event-data.service';
 
 let services: any[] = [
     LocalStorageService,
@@ -45,7 +51,8 @@ let services: any[] = [
     PushService,
     DeviceService,
     EnvironmentService,
-    LoadingService
+    LoadingService,
+    StoredEventDataService
 ];
 
 let pipes: any[] = [
@@ -61,7 +68,12 @@ let pipes: any[] = [
     providers: [
         services,
         pipes,
-        { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
+        { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: EventCacheInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: EventDayCacheInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: EventDaysCacheInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: PresentationCacheInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: PresentationsCacheInterceptor, multi: true }
     ],
     declarations: pipes,
     exports: pipes
