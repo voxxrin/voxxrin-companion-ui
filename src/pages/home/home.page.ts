@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Network } from '@ionic-native/network';
+import { ConnectivityService } from './../../services/connectivity.service';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { IonicPage, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController, ToastController } from 'ionic-angular';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 import { EnvironmentSwitcherModalComponent } from '../../components/environment-switcher-modal/environment-switcher-modal.component';
 
@@ -12,9 +14,10 @@ import { EnvironmentSwitcherModalComponent } from '../../components/environment-
 })
 export class HomePage extends AbstractAuthenticatedComponent {
 
-    constructor(authService: AuthService, private modalCtrl: ModalController) {
+    constructor(authService: AuthService, private modalCtrl: ModalController, private connectivityService: ConnectivityService) {
         super(authService);
         console.log('connected user : ', this.authenticatedUser);
+        console.log('CONNECTION UP : ', connectivityService.getConnectivity());
     }
 
     public openEnvSwitcher(): void {

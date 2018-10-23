@@ -1,3 +1,4 @@
+import { ConnectivityService } from './connectivity.service';
 import { LoadingService } from './loading.service';
 import { DeviceService } from './device.service';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -52,7 +53,8 @@ let services: any[] = [
     DeviceService,
     EnvironmentService,
     LoadingService,
-    StoredEventDataService
+    StoredEventDataService,
+    ConnectivityService
 ];
 
 let pipes: any[] = [

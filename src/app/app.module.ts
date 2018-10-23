@@ -1,3 +1,4 @@
+import { Network } from '@ionic-native/network';
 import 'moment';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
@@ -31,7 +32,8 @@ import { DirectivesModule } from '../directives/directives.module';
     entryComponents: [AppComponent],
     providers: [
         { provide: ErrorHandler, useClass: IonicErrorHandler },
-        { provide: InAppBrowser, useClass: InAppBrowser }
+        { provide: InAppBrowser, useClass: InAppBrowser },
+        { provide: Network, useClass: Network}
     ]
 })
 export class AppModule {

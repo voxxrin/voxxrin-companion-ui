@@ -1,3 +1,4 @@
+import { Network } from '@ionic-native/network';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PresentationPage } from './presentation.page';
