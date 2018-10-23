@@ -1,21 +1,26 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { ConnectivityService } from './../connectivity.service';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { of } from 'rxjs/observable/of';
 
 export abstract class CacheInterceptor<T> implements HttpInterceptor {
 
     private urlRegex: RegExp;
 
-    protected constructor(urlRegex: RegExp) {
+    protected constructor(urlRegex: RegExp, private connectivityService: ConnectivityService) {
         this.urlRegex = urlRegex;
     }
 
     public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const matchingResult = this.urlRegex.exec(req.url);
-        const online = true; // TODO - replace by real network status
+        const online = this.connectivityService.getConnectivity();
         if (!online && matchingResult) {
             const cachedData: T = this.fetchDataFromCache(req, matchingResult.splice(1));
             if (cachedData) {
-                // TODO - return cached data
+                return of(new HttpResponse({
+                    body: cachedData,
+                    status: 200
+                }));
             }
         }
         return next.handle(req);
