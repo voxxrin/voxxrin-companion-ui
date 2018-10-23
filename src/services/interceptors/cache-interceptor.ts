@@ -7,7 +7,7 @@ export abstract class CacheInterceptor<T> implements HttpInterceptor {
 
     private urlRegex: RegExp;
 
-    protected constructor(urlRegex: RegExp, private connectivityService: ConnectivityService) {
+    protected constructor(urlRegex: RegExp, protected connectivityService: ConnectivityService) {
         this.urlRegex = urlRegex;
     }
 

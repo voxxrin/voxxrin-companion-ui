@@ -1,3 +1,4 @@
+import { ConnectivityService } from './../connectivity.service';
 import { Injectable } from '@angular/core';
 import { CacheInterceptor } from './cache-interceptor';
 import { HttpRequest } from '@angular/common/http';
@@ -7,8 +8,8 @@ import { Event } from '../../models/event.model';
 @Injectable()
 export class EventCacheInterceptor extends CacheInterceptor<Event> {
 
-    constructor(private storedEventDataService: StoredEventDataService) {
-        super(new RegExp('/events/([^/]+)$'));
+    constructor(private storedEventDataService: StoredEventDataService, protected connectivity: ConnectivityService) {
+        super(new RegExp('/events/([^/]+)$'), connectivity);
     }
 
     protected fetchDataFromCache(req: HttpRequest<any>, args: string[]): Event {
