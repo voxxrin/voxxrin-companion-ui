@@ -18,6 +18,7 @@ export class ConnectivityService {
                 position: 'top'
             });
 
+            toast.present();
         });
         this.network.onDisconnect().subscribe(() => {
             let toast = this.toastCtrl.create({
@@ -25,6 +26,8 @@ export class ConnectivityService {
                 duration: 3000,
                 position: 'top'
             });
+            
+            toast.present();
         });
     }
 
