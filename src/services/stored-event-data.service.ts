@@ -18,12 +18,17 @@ export class StoredEventDataService {
         this.storage = this.localStorageService.get();
     }
 
+    public getStoredEventDataByEventExternalId(externalId: string): StoredEvent {
+        const eventRef: EventRef = this.storage.getItem(this.buildEventRefDataStorageKey(externalId));
+        return eventRef ? this.getStoredEventDataByEventId(eventRef) : null;
+    }
+
     public getStoredEventDataByEventId(id: string): StoredEvent {
         return JSON.parse(this.storage.getItem(this.buildEventDataStorageKey(id)));
     }
 
-    public getStoredEventDataByDayId(id: string): StoredEvent {
-        const eventRef: EventRef = this.storage.getItem(this.buildDayDataStorageKey(id));
+    public getStoredEventDataByDayExternalId(externalId: string): StoredEvent {
+        const eventRef: EventRef = this.storage.getItem(this.buildDayDataStorageKey(externalId));
         return eventRef ? this.getStoredEventDataByEventId(eventRef) : null;
     }
 
@@ -34,16 +39,21 @@ export class StoredEventDataService {
 
     public storeEventData(event: Event, days: Day[], presentations: Presentation[]) {
         this.storage.setItem(this.buildEventDataStorageKey(event._id), new StoredEvent(event, days, presentations).toString());
-        days.forEach(day => this.storage.setItem(this.buildDayDataStorageKey(day._id), event._id));
+        this.storage.setItem(this.buildEventRefDataStorageKey(event.eventId), event._id);
+        days.forEach(day => this.storage.setItem(this.buildDayDataStorageKey(day.externalId), event._id));
         presentations.forEach(prez => this.storage.setItem(this.buildPresentationDataStorageKey(prez._id), event._id));
+    }
+
+    private buildEventRefDataStorageKey(externalId: string) {
+        return `${this.eventStorageKeyPrefix}${externalId}`;
     }
 
     private buildEventDataStorageKey(id: string) {
         return `${this.eventStorageKeyPrefix}${id}`;
     }
 
-    private buildDayDataStorageKey(id: string) {
-        return `${this.dayStorageKeyPrefix}${id}`;
+    private buildDayDataStorageKey(externalId: string) {
+        return `${this.dayStorageKeyPrefix}${externalId}`;
     }
 
     private buildPresentationDataStorageKey(id: string) {
@@ -81,7 +91,7 @@ class StoredDay {
     date: Date;
 
     constructor(day: Day) {
-        this._id = day._id;
+        this._id = day.externalId;
         this.day = day;
         this.date = new Date();
     }

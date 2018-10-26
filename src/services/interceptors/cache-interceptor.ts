@@ -15,7 +15,8 @@ export abstract class CacheInterceptor<T> implements HttpInterceptor {
         const matchingResult = this.urlRegex.exec(req.url);
         const online = this.connectivityService.getConnectivity();
         if (!online && matchingResult) {
-            const cachedData: T = this.fetchDataFromCache(req, matchingResult.splice(1));
+            const args = matchingResult.splice(1);
+            const cachedData: T = this.fetchDataFromCache(req, args);
             if (cachedData) {
                 return of(new HttpResponse({
                     body: cachedData,

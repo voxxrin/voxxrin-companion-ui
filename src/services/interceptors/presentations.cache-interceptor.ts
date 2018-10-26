@@ -14,7 +14,7 @@ export class PresentationsCacheInterceptor extends CacheInterceptor<Presentation
     }
 
     protected fetchDataFromCache(req: HttpRequest<any>, args: string[]): Presentation[] {
-        const storedEventData = this.storedEventDataService.getStoredEventDataByDayId(args[0]);
+        const storedEventData = this.storedEventDataService.getStoredEventDataByDayExternalId(args[0]);
         if (storedEventData && storedEventData.presentations) {
             return _.values(storedEventData.presentations).map(storedPresentation => storedPresentation.presentation);
         }

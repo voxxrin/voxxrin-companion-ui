@@ -13,7 +13,7 @@ export class EventCacheInterceptor extends CacheInterceptor<Event> {
     }
 
     protected fetchDataFromCache(req: HttpRequest<any>, args: string[]): Event {
-        const storedEventData = this.storedEventDataService.getStoredEventDataByEventId(args[0]);
+        const storedEventData = this.storedEventDataService.getStoredEventDataByEventExternalId(args[0]);
         if (storedEventData) {
             return storedEventData.event;
         }
