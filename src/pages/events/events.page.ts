@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, Loading } from 'ionic-angular';
 import * as moment from 'moment';
 import * as _ from 'lodash';
+import { StoredEventDataService } from '../../services/stored-event-data.service';
 
 @IonicPage({
     segment: 'events'
@@ -20,7 +21,10 @@ export class EventsPage implements OnInit {
 
     eventFilter: string = "futureEvents";
 
-    constructor(private navController: NavController, private eventService: EventService, private loadingService: LoadingService) { }
+    constructor(private navController: NavController, 
+                private eventService: EventService, 
+                private loadingService: LoadingService,
+                private storedEventDataService: StoredEventDataService) { }
 
     ngOnInit(): void {
         let loading: Loading = this.loadingService.launchLoader();
@@ -30,6 +34,7 @@ export class EventsPage implements OnInit {
                 this.allEvents = _.chain(events).orderBy('from', 'desc').value();
                 this.futureEvents = _.chain(events.filter(event => event.from.isAfter(now))).orderBy('from', 'asc').value();
                 this.pastEvents = _.chain(events.filter(event => event.from.isSameOrBefore(now))).orderBy('from', 'desc').value();
+                this.storedEventDataService.storeEventsData(events);
                 loading.dismiss();
             });
         });

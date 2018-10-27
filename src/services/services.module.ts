@@ -31,6 +31,7 @@ import { EventDaysCacheInterceptor } from './interceptors/event-days.cache-inter
 import { PresentationCacheInterceptor } from './interceptors/presentation.cache-interceptor';
 import { PresentationsCacheInterceptor } from './interceptors/presentations.cache-interceptor';
 import { StoredEventDataService } from './stored-event-data.service';
+import { EventsCacheInterceptor } from './interceptors/events.cache-interceptor';
 
 let services: any[] = [
     LocalStorageService,
@@ -74,6 +75,7 @@ let pipes: any[] = [
         { provide: HTTP_INTERCEPTORS, useClass: EventCacheInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: EventDayCacheInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: EventDaysCacheInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: EventsCacheInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: PresentationCacheInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: PresentationsCacheInterceptor, multi: true }
     ],

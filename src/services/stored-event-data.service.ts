@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 @Injectable()
 export class StoredEventDataService {
 
+    private readonly eventsStorageKey: string = 'voxxrin.cache.events';
     private readonly eventStorageKeyPrefix: string = 'voxxrin.cache.event.';
     private readonly dayStorageKeyPrefix: string = 'voxxrin.cache.day.';
     private readonly presentationStorageKeyPrefix: string = 'voxxrin.cache.presentation.';
@@ -17,6 +18,10 @@ export class StoredEventDataService {
     constructor(private localStorageService: LocalStorageService) {
         this.storage = this.localStorageService.get();
     }
+
+    public getStoredEventsData(): StoredEvents {
+        return JSON.parse(this.storage.getItem(this.eventsStorageKey));
+    } 
 
     public getStoredEventDataByEventExternalId(externalId: string): StoredEvent {
         const eventRef: EventRef = this.storage.getItem(this.buildEventRefDataStorageKey(externalId));
@@ -44,6 +49,10 @@ export class StoredEventDataService {
         presentations.forEach(prez => this.storage.setItem(this.buildPresentationDataStorageKey(prez._id), event._id));
     }
 
+    public storeEventsData(events: Event[]) {
+        this.storage.setItem(this.eventsStorageKey, new StoredEvents(events).toString());
+    }
+
     private buildEventRefDataStorageKey(externalId: string) {
         return `${this.eventStorageKeyPrefix}${externalId}`;
     }
@@ -63,6 +72,18 @@ export class StoredEventDataService {
 
 function buildDictionnary<T extends { _id: string }>(elements: T[]): Dictionnary<T> {
     return _.keyBy(elements, element => element._id);
+}
+
+class StoredEvents {
+    events: Event[];
+
+    constructor(events: Event[]) {
+        this.events = events;
+    }
+
+    public toString() {
+        return JSON.stringify(this);
+    }
 }
 
 class StoredEvent {
