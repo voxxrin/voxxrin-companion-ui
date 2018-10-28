@@ -1,9 +1,7 @@
 import { LoadingService } from '../../services/loading.service';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
-import { EventAdminPage } from '../event-admin/event-admin.page';
 import { Day } from '../../models/day.model';
-import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from '../../models/event.model';
 import { IonicPage, Loading, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';

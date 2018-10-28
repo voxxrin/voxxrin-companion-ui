@@ -4,7 +4,6 @@ import { CacheInterceptor } from './cache-interceptor';
 import { HttpRequest } from '@angular/common/http';
 import { StoredEventDataService } from '../stored-event-data.service';
 import { Day } from '../../models/day.model';
-import * as _ from 'lodash';
 
 @Injectable()
 export class EventDayCacheInterceptor extends CacheInterceptor<Day> {

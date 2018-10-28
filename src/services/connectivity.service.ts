@@ -12,7 +12,7 @@ export class ConnectivityService {
     constructor(private network: Network, private toastCtrl: ToastController, private platform: Platform) {
         // TODO: see if that can be done elsewhere (ngOnInit ?)
         this.network.onConnect().subscribe(() => {
-            if (this.isConnected) {
+            if (!this.isConnected) {
                 let toast = this.toastCtrl.create({
                     message: 'Connecté au réseau',
                     duration: 3000,
@@ -25,7 +25,7 @@ export class ConnectivityService {
             }
         });
         this.network.onDisconnect().subscribe(() => {
-            if (!this.isConnected) {
+            if (this.isConnected) {
 
                 let toast = this.toastCtrl.create({
                     message: 'Déconnecté du réseau',

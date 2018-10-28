@@ -1,8 +1,7 @@
-import { Network } from '@ionic-native/network';
 import { ConnectivityService } from './../../services/connectivity.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { IonicPage, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { AbstractAuthenticatedComponent } from '../../components/abstract-authenticated-component';
 import { EnvironmentSwitcherModalComponent } from '../../components/environment-switcher-modal/environment-switcher-modal.component';
 

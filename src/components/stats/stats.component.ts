@@ -1,7 +1,6 @@
 import { Statistic } from '../../models/stats.model';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as _ from 'lodash';
-
 import { RatingItem } from '../../models/rating-item.model';
 import { RatingService } from '../../services/rating.service';
 import { Presentation } from '../../models/presentation.model';

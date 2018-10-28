@@ -1,4 +1,3 @@
-import { LoadingService } from './loading.service';
 import { Injectable } from '@angular/core';
 import { JWTService } from './jwt.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs/Rx';

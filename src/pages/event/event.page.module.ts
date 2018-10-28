@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { PresentationPage } from './presentation.page';
 import { ComponentsModule } from '../../components/components.module';
-import { HomePage } from './home.page';
-import { EventsPage } from './events.page';
-import { EventAdminPage } from './event-admin.page';
 import { EventPage } from './event.page';
 
 let page: any = EventPage;
