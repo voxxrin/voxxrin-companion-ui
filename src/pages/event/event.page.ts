@@ -5,7 +5,7 @@ import { EventAdminPage } from '../event-admin/event-admin.page';
 import { Day } from '../../models/day.model';
 import { PresentationsPage } from '../presentations/presentations.page';
 import { Event } from '../../models/event.model';
-import { IonicPage, Loading, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import * as _ from 'lodash';
@@ -22,10 +22,11 @@ export class EventPage implements OnInit {
     public isAdmin: boolean;
 
     constructor(private navController: NavController,
-                private navParams: NavParams,
-                private eventService: EventService,
-                private authService: AuthService,
-                private loadingService: LoadingService) { }
+        private navParams: NavParams,
+        private eventService: EventService,
+        private authService: AuthService,
+        private loadingService: LoadingService,
+        private toastCtrl: ToastController) { }
 
     ngOnInit(): void {
         const loading: Loading = this.loadingService.launchLoader();
@@ -34,7 +35,20 @@ export class EventPage implements OnInit {
                 this.event = event;
                 this.authService.currentUser().subscribe(user => this.setUserRights(user));
                 loading.dismiss();
-            });
+            },
+                err => {
+                    let toast = this.toastCtrl.create({
+                        message: 'Evènement non accessible en mode offline',
+                        duration: 3000,
+                        position: 'top'
+                    });
+
+                    toast.present();
+
+                    loading.dismiss();
+
+                    this.navController.pop();
+                });
         });
     }
 
