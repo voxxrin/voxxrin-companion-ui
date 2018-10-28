@@ -21,7 +21,7 @@ export class StoredEventDataService {
 
     public getStoredEventsData(): StoredEvents {
         return JSON.parse(this.storage.getItem(this.eventsStorageKey));
-    } 
+    }
 
     public getStoredEventDataByEventExternalId(externalId: string): StoredEvent {
         const eventRef: EventRef = this.storage.getItem(this.buildEventRefDataStorageKey(externalId));
@@ -32,8 +32,8 @@ export class StoredEventDataService {
         return JSON.parse(this.storage.getItem(this.buildEventDataStorageKey(id)));
     }
 
-    public getStoredEventDataByDayExternalId(externalId: string): StoredEvent {
-        const eventRef: EventRef = this.storage.getItem(this.buildDayDataStorageKey(externalId));
+    public getStoredEventDataByDayId(id: string): StoredEvent {
+        const eventRef: EventRef = this.storage.getItem(this.buildDayDataStorageKey(id));
         return eventRef ? this.getStoredEventDataByEventId(eventRef) : null;
     }
 
@@ -45,29 +45,32 @@ export class StoredEventDataService {
     public storeEventData(event: Event, days: Day[], presentations: Presentation[]) {
         this.storage.setItem(this.buildEventDataStorageKey(event._id), new StoredEvent(event, days, presentations).toString());
         this.storage.setItem(this.buildEventRefDataStorageKey(event.eventId), event._id);
-        days.forEach(day => this.storage.setItem(this.buildDayDataStorageKey(day.externalId), event._id));
+        days.forEach(day => {
+            this.storage.setItem(this.buildDayDataStorageKey(day.externalId), event._id);
+            this.storage.setItem(this.buildDayDataStorageKey(day._id), event._id);
+        });
         presentations.forEach(prez => this.storage.setItem(this.buildPresentationDataStorageKey(prez._id), event._id));
     }
 
     public storeEventsData(events: Event[]) {
-        this.storage.setItem(this.eventsStorageKey, new StoredEvents(events).toString());
-    }
+    this.storage.setItem(this.eventsStorageKey, new StoredEvents(events).toString());
+}
 
-    private buildEventRefDataStorageKey(externalId: string) {
-        return `${this.eventStorageKeyPrefix}${externalId}`;
-    }
+    private buildEventRefDataStorageKey(id: string) {
+    return `${this.eventStorageKeyPrefix}${id}`;
+}
 
     private buildEventDataStorageKey(id: string) {
-        return `${this.eventStorageKeyPrefix}${id}`;
-    }
+    return `${this.eventStorageKeyPrefix}${id}`;
+}
 
     private buildDayDataStorageKey(externalId: string) {
-        return `${this.dayStorageKeyPrefix}${externalId}`;
-    }
+    return `${this.dayStorageKeyPrefix}${externalId}`;
+}
 
     private buildPresentationDataStorageKey(id: string) {
-        return `${this.presentationStorageKeyPrefix}${id}`;
-    }
+    return `${this.presentationStorageKeyPrefix}${id}`;
+}
 }
 
 function buildDictionnary<T extends { _id: string }>(elements: T[]): Dictionnary<T> {

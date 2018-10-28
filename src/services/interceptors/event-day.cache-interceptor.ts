@@ -14,7 +14,7 @@ export class EventDayCacheInterceptor extends CacheInterceptor<Day> {
     }
 
     protected fetchDataFromCache(req: HttpRequest<any>, args: string[]): Day {
-        const storedEventData = this.storedEventDataService.getStoredEventDataByDayExternalId(args[0]);
+        const storedEventData = this.storedEventDataService.getStoredEventDataByDayId(args[0]);
         if (storedEventData && storedEventData.days) {
             const storedDay = storedEventData.days[args[0]];
             return storedDay ? storedDay.day : null;
