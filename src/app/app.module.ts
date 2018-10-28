@@ -12,6 +12,7 @@ import { PagesModule } from '../pages/pages.module';
 import { ComponentsModule } from '../components/components.module';
 import { ServicesModule } from '../services/services.module';
 import { DirectivesModule } from '../directives/directives.module';
+import { ConnectivityService } from "../services/connectivity.service";
 
 @NgModule({
     imports: [
@@ -31,6 +32,7 @@ import { DirectivesModule } from '../directives/directives.module';
     declarations: [AppComponent],
     entryComponents: [AppComponent],
     providers: [
+        ConnectivityService,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         { provide: InAppBrowser, useClass: InAppBrowser },
         { provide: Network, useClass: Network}

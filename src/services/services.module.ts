@@ -54,8 +54,7 @@ let services: any[] = [
     DeviceService,
     EnvironmentService,
     LoadingService,
-    StoredEventDataService,
-    ConnectivityService
+    StoredEventDataService
 ];
 
 let pipes: any[] = [
