@@ -28,10 +28,10 @@ export class EventComponent implements OnInit {
                 private connectivityService: ConnectivityService) { }
 
     ngOnInit(): void {
-        this.locationService.geocode(this.event.location).subscribe(location => this.location = location);
+        // this.locationService.geocode(this.event.location).subscribe(location => this.location = location);
         this.dayService.fetchDays(this.event)
             .do(days => this.days = days)
-            .filter((day, index) => this.connectivityService.getConnectivity())
+            .filter((day, index) => this.connectivityService.isOnline())
             .flatMap(days => this.presentationService.fetchAllPresentationFromAnEvent(this.event._id))
             .subscribe(presentations => this.storedEventDataService.storeEventData(this.event, this.days, presentations));
     }

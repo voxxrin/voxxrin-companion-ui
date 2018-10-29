@@ -39,8 +39,8 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
     }
 
     ionViewDidLoad() {
-        let loading: Loading = this.loadingService.launchLoader();
-        loading.present().then(() => {
+        // let loading: Loading = this.loadingService.launchLoader();
+        // loading.present().then(() => {
             this.dayService.fetchDayById(this.navParams.data.dayId).subscribe(day => {
                 this.day = day;
                 this.presentationService
@@ -48,10 +48,10 @@ export class PresentationsPage extends AbstractAuthenticatedComponent {
                     .subscribe(presentations => {
                         this.presentations = presentations;
                         this.filteredPresentations = presentations.filter(pres => pres.favorite);
-                        loading.dismiss();
+                        // loading.dismiss();
                     });
             });
-        });
+        // });
     }
 
     ionViewWillEnter() {

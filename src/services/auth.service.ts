@@ -13,26 +13,24 @@ export class AuthService {
     private subscription: Subscription;
     public static currentUserSubject: BehaviorSubject<User> = new BehaviorSubject(null);
 
-    constructor(private jwtService: JWTService, private httpClient: HttpClient, private envService: EnvironmentService) {
-        this.validateTokenAndFetchCurrentUser();
-    }
+    constructor(private jwtService: JWTService, private httpClient: HttpClient, private envService: EnvironmentService) {}
 
     public auth(provider: OAuthProvider): void {
-            const authWindow: any = window.open(`${this.envService.getBackendUrl()}/auth/redirect/${provider}`, '_blank');
-            if (window['cordova']) {
-                authWindow.addEventListener('loadstop', () => {
-                    authWindow.executeScript({ code: 'requestCredentials()' }, response => {
-                        authWindow.close();
-                        this.retrieveCredentialsByScriptExecution(response);
-                        window.location.reload();
-                    });
+        const authWindow: any = window.open(`${this.envService.getBackendUrl()}/auth/redirect/${provider}`, '_blank');
+        if (window['cordova']) {
+            authWindow.addEventListener('loadstop', () => {
+                authWindow.executeScript({code: 'requestCredentials()'}, response => {
+                    authWindow.close();
+                    this.retrieveCredentialsByScriptExecution(response);
+                    window.location.reload();
                 });
-            } else {
-                window.addEventListener('message', (event) => this.retrieveCredentialsByPostMessage(event), false);
-                this.subscription = Observable.timer(0, 1000).subscribe(() => {
-                    authWindow.postMessage('requestCredentials', '*')
-                });
-            }
+            });
+        } else {
+            window.addEventListener('message', (event) => this.retrieveCredentialsByPostMessage(event), false);
+            this.subscription = Observable.timer(0, 1000).subscribe(() => {
+                authWindow.postMessage('requestCredentials', '*')
+            });
+        }
     }
 
     public currentUser(): Observable<User> {
@@ -53,11 +51,14 @@ export class AuthService {
         return user;
     }
 
-    private validateTokenAndFetchCurrentUser() {
+    public validateTokenAndFetchCurrentUser() {
         if (this.jwtService.currentToken() != null) {
             this.httpClient
                 .get(`${this.envService.getBackendUrl()}/auth/validate`)
-                .subscribe((user: User) => AuthService.currentUserSubject.next(user), () => this.jwtService.clearToken());
+                .subscribe(
+                    (user: User) => AuthService.currentUserSubject.next(user),
+                    () => this.jwtService.clearToken()
+                );
         }
     }
 
