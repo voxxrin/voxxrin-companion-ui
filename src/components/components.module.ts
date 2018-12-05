@@ -6,7 +6,6 @@ import { EventAbstractComponent } from './event-abstract/event-abstract.componen
 import { EventsListComponent } from './events-list/events-list.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
-import { MapsComponent } from './maps/maps.component';
 import { EventComponent } from './event/event.component';
 import { StatsComponent } from './stats/stats.component';
 import { DaysListComponent } from './days-list/days-list.component';
@@ -32,7 +31,6 @@ let components: any[] = [
     EventAbstractComponent,
     HomeActionsComponent,
     StatItemComponent,
-    MapsComponent,
     StatsComponent,
     PresentationsListComponent,
     TwitterFeedComponent,

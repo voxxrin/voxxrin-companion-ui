@@ -1,4 +1,3 @@
-import { ConnectivityService } from './connectivity.service';
 import { LoadingService } from './loading.service';
 import { DeviceService } from './device.service';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -9,7 +8,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LocalStorageService } from './local-storage.service';
 import { ConstantsService } from './constants.service';
-import { LocationService } from './location.service';
 import { DayService } from './day.service';
 import { JWTService } from './jwt.service';
 import { SpeakerNamesPipe } from './speaker-names.pipe';
@@ -42,7 +40,6 @@ let services: any[] = [
     ConstantsService,
     AuthService,
     JWTService,
-    LocationService,
     UtilsService,
     PresentationService,
     JWTService,

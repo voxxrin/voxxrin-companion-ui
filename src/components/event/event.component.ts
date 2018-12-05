@@ -21,14 +21,12 @@ export class EventComponent implements OnInit {
     days: Day[];
     location: Location;
 
-    constructor(private locationService: LocationService,
-                private dayService: DayService,
+    constructor(private dayService: DayService,
                 private presentationService: PresentationService,
                 private storedEventDataService: StoredEventDataService,
                 private connectivityService: ConnectivityService) { }
 
     ngOnInit(): void {
-        // this.locationService.geocode(this.event.location).subscribe(location => this.location = location);
         this.dayService.fetchDays(this.event)
             .do(days => this.days = days)
             .filter((day, index) => this.connectivityService.isOnline())
