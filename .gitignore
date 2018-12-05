@@ -36,3 +36,7 @@ UserInterfaceState.xcuserstate
 .vs/slnx.sqlite
 *.ipa
 *.zip
+
+fastlane
+GoogleService-Info.plist
+google-services.json
