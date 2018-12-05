@@ -1,4 +1,4 @@
-# Voxxr.in UI (v3)
+# Voxxr.in Companion - Mobile App
 
 ### On device deployment
 
